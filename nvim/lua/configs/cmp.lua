@@ -32,7 +32,7 @@ cmp.setup({
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-		["<C-y>"] = cmp.config.enable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
 		["<C-e>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
@@ -50,7 +50,7 @@ cmp.setup({
 			else
 				fallback()
 			end
-		end, { "i", "c" }),
+		end, { "i" }),
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
@@ -59,7 +59,7 @@ cmp.setup({
 			else
 				fallback()
 			end
-		end, { "i", "c" }),
+		end, { "i" }),
 	},
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
@@ -70,11 +70,11 @@ cmp.setup({
 			vim_item.menu = ({
 				nvim_lsp = "[LSP]",
 				nvim_lua = "[Nvim]",
-				snippy = "[Snippet]",
 				buffer = "[Buffer]",
 				path = "[Path]",
 				spell = "[Spell]",
 				emoji = "[Emoji]",
+				snippy = "[Snippet]",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -82,11 +82,11 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
-		{ name = "snippy" },
 		{ name = "buffer" },
 		{ name = "path" },
 		{ name = "spell" },
 		{ name = "emoji" },
+		{ name = "snippy" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
