@@ -1,19 +1,24 @@
-local status_okay, bufferline = pcall(require, 'bufferline')
+local status_okay, bufferline = pcall(require, "bufferline")
 if not status_okay then
   return
 end
 
 bufferline.setup({
-  diagnostics = 'nvim_lsp',
-  diagnostics_indicator = function(count, level, diagnostics_dict, context)
-    return '('..count..')'
-  end,
-  offsets = {
-    {
-      filetype = 'NvimTree',
-      text = 'File Explorer',
-      text_align = 'left'
-    }
+  options = {
+    diagnostics = "nvim_lsp",
+    max_name_length = 20,
+    seperator_style = "thick",
+    always_show_bufferline = true,
+    tab_size = 20,
+    show_buffer_close_icons = false,
+    show_close_icon = false,
+    offsets = {
+      {
+        filetype = "NvimTree",
+        text = "Archivos",
+        text_align = "center",
+      },
+    },
   },
 })
 
