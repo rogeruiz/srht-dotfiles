@@ -21,11 +21,6 @@ lsp_installer.on_server_ready(function(server)
     opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
   end
 
-  if server.name == "pyright" then
-    local pyright_opts = require("lsp.settings.pyright")
-    opts = vim.tbl_deep_extend("force", pyright_opts, opts)
-  end
-
   if server.name == "emmet_ls" then
     local emmet_ls_opts = require("lsp.settings.emmet_ls")
     opts = vim.tbl_deep_extend("force", emmet_ls_opts, opts)

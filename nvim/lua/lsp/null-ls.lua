@@ -17,9 +17,12 @@ null_ls.setup({
     formatting.stylua,
     formatting.eslint_d,
     formatting.prettierd,
-    diagnostics.eslint_d,
+    formatting.terraform_fmt,
+
     code_actions.eslint_d,
     code_actions.gitsigns,
+
+    diagnostics.eslint_d,
     diagnostics.vale.with({
       args = function(params)
         return {
