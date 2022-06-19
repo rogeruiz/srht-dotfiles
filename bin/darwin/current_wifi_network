@@ -3,13 +3,19 @@
 airport_bin='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
 
 network_name=$(${airport_bin} -I | awk '/ SSID:/' | cut -d':' -f2 | xargs)
-name_length=$(echo -n ${network_name} | wc -c)
 
-if [ $name_length -ge 23 ]
+# Check if network_name exists
+if [ -z ${network_name} ]
 then
-  network_name=$(echo ${network_name} | cut -c 1-23)
-  network_name="${network_name}..."
+  # Display the no wifi symbol
+  echo -ne "\ufaa9"
 else
+  # Check if the name of the SSID is greater than 23 characters.
+  name_length=$(echo -n ${network_name} | wc -c)
+  if [ ${name_length} -ge 23 ]
+  then
+    network_name="$(echo ${network_name} | cut -c 1-23)..."
+  fi
+  # Display the wifi symbol and network name
+  echo -ne "\ufaa8 ${network_name}"
 fi
-
-echo -ne "\ufaa8 ${network_name}"
