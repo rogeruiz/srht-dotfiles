@@ -15,14 +15,14 @@ null_ls.setup({
   update_on_insert = true,
   sources = {
     formatting.stylua,
-    formatting.eslint_d,
-    formatting.prettierd,
+    --[[ formatting.eslint_d, ]]
+    --[[ formatting.prettierd, ]]
     formatting.terraform_fmt,
 
-    code_actions.eslint_d,
+    --[[ code_actions.eslint_d, ]]
     code_actions.gitsigns,
 
-    diagnostics.eslint_d,
+    --[[ diagnostics.eslint_d, ]]
     diagnostics.vale.with({
       args = function(params)
         return {
@@ -37,6 +37,6 @@ null_ls.setup({
     }),
   },
   on_attach = function(_) -- client
-    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
+    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ timeout_ms = 2000 })")
   end,
 })

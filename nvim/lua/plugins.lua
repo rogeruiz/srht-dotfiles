@@ -48,6 +48,8 @@ return require("packer").startup(function()
 
   use("andymass/vim-matchup")
 
+  use("jxnblk/vim-mdx-js")
+
   use("kyazdani42/nvim-web-devicons")
 
   use("rhysd/conflict-marker.vim")
@@ -127,7 +129,12 @@ return require("packer").startup(function()
 
   use("lukas-reineke/indent-blankline.nvim")
 
-  use("tpope/vim-dadbod")
+  use({
+    "kristijanhusak/vim-dadbod-ui",
+    requires = {
+      "tpope/vim-dadbod",
+    },
+  })
 
   use("tpope/vim-fugitive")
   use("f-person/git-blame.nvim")

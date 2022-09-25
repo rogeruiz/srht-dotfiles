@@ -23,7 +23,7 @@ bufferline.setup({
 })
 
 vim.cmd([[
-nnoremap <silent>[b :BufferLineCyclePrev<CR>
-nnoremap <silent>]b :BufferLineCycleNext<CR>
 nnoremap <silent><leader>bc :BufferLinePickClose<CR>
+nnoremap <silent><leader>bcl :BufferLineCloseLeft<CR>
+nnoremap <silent><leader>bcr :BufferLineCloseRight<CR>
 ]])

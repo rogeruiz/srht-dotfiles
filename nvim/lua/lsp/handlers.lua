@@ -66,10 +66,10 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-  if client.name == "tsserver"
-      or client.name == "html"
+  if client.name == "html"
       or client.name == "jsonls"
       or client.name == "sumneko_lua"
+      or client.name == "terraform_ls"
   then
     client.server_capabilities.document_formatting = false
   end
@@ -89,7 +89,7 @@ function M.enable_format_on_save()
   vim.cmd([[
     augroup format_on_save
       autocmd!
-      autocmd BufWritePre * lua vim.lsp.buf.format()
+      autocmd BufWritePre * lua vim.lsp.buf.format({ timeout_ms = 2000 })
     augroup end
   ]])
 end

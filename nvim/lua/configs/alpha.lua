@@ -120,7 +120,7 @@ alpha.setup(dashboard.opts)
 
 -- Disable folding on alpha buffer
 vim.cmd([[
-    autocmd FileType alpha setlocal nofoldenable Indent
+    autocmd FileType alpha setlocal nofoldenable
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
 
 ]])
