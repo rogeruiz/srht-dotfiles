@@ -9,7 +9,7 @@ if [[ "$TMUX" != "" ]]; then
 fi
 
 echo "Here's what you've worked on today..." | ${lolcat_bin}
-${lolcat_bin} <(tick --verbose list | rg -A3 --color=never "$(date +"%m-%d")" || echo "Whoops! You haven't logged any time today.")
+${lolcat_bin} <(tick --verbose list | rg -A3 --color=never "$(date +"%Y-%m-%d")" || echo "Whoops! You haven't logged any time today.")
 echo
 
 PS3="Please choose your session: "
