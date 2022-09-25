@@ -56,7 +56,7 @@
 	find = "!gfind() { git grep -e $1 $(git rev-list --all -- $2) -- $2; }; gfind"
 	cima = "!cima() { git fetch --all && git rebase $1; }; cima"
 	alt = "!alt() { nvim -p $(git s | awk '{print $2}'); }; alt"
-	alt-conflicts = "!alt_conflicts() { nvim -p $(git s | rg 'UU' | awk '{print $2}'); }; alt_conflicts"
+	alt-conflicts = "!alt_conflicts() { nvim -p $(git s | rg 'U[UAD]' | awk '{print $2}'); }; alt_conflicts"
 	wtb = "!wtb() { git br -l | rg '\\*' | awk '{print $2}'; }; wtb"
 	who = "!who() { git log | rg 'Author: ' | rg -i "${1}" | sort | uniq; }; who"
 	cin = commit -v --no-verify
