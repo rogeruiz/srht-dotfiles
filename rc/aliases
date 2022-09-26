@@ -19,6 +19,8 @@ alias please='sudo'
 
 # Replace Vim with NeoVim because muscle memory...
 alias vim='nvim'
+alias nv='nvim'
+alias norg='nvim -c ":NeorgStart"'
 
 # Host files
 alias ho='$EDITOR /etc/hosts'

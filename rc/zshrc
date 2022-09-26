@@ -58,10 +58,6 @@ ulimit -n 10000
 
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
-# Loads nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-
 # GPG related activities
 LIFE=28800
 export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
@@ -86,3 +82,7 @@ export PATH=$(go env GOPATH)/bin:$PATH
 ################################################################################
 ### End MacbookPro16,1
 ################################################################################
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
