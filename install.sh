@@ -1,6 +1,9 @@
 #!/bin/bash
 
-set -u
+# The expected and only argument here is an optional `--init` in order to
+# install Hombrew and Cargo packages. Yo lo hice opcional porque muchas veces
+# lo unico que quiero hacer es sincronizar mis datos y no instalar los.
+IS_NEW_OPTION=$1
 
 TARGET_OS=$(uname -s | awk '{ print tolower($0) }')
 SLEEP_DURATION=1
@@ -63,18 +66,23 @@ shrugText () {
   echo "${shrug} ${body} ${shrug}"
 }
 
-clear
-if ! which brew
+if [ "${IS_NEW_OPTION}" == "--init" ]
 then
-  shrugText "Instalando Homebrew"
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  clear
+  if ! which brew
+  then
+    shrugText "Instalando Homebrew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  else
+    shrugText "Homebrew ya está instalado entonces lo vamos a omitir"
+  fi
+  echo
+  shrugText "Instalando paquetes de Homebrew"
+  brew bundle --file=./homebrew/Brewfile
+  echo
 else
-  shrugText "Homebrew ya está instalado entonces lo vamos a omitir"
+  shrugText "Para instalar Homebrew o Brewfile, use la bandera \`--init\`."
 fi
-echo
-shrugText "Instalando paquetes de Homebrew"
-brew bundle --file=./homebrew/Brewfile
-echo
 
 echo
 shrugText "Instalando ejecutables como son..."
@@ -117,16 +125,21 @@ do
 done
 echo
 
-sleep "${SLEEP_DURATION}"
-shrugText "Instalando Cargo ejecutables si es posible"
-echo
-if [[ -x $(which cargo) ]] && \
-   [[ -x $(which rustc) ]] && \
-   [[ -x $(which rustup) ]]
+if [ "${IS_NEW_OPTION}" == "--init" ]
 then
-  cargo install lolcat
+  sleep "${SLEEP_DURATION}"
+  shrugText "Instalando Cargo ejecutables si es posible"
+  echo
+  if [[ -x $(which cargo) ]] && \
+     [[ -x $(which rustc) ]] && \
+     [[ -x $(which rustup) ]]
+  then
+    cargo install lolcat
+  else
+    echo >&2 "Bicho: Rustup y Cargo no estan instalado"
+  fi
 else
-  echo >&2 "Bicho: Rustup y Cargo no estan instalado"
+  shrugText "Para instalar paquetes de Cargo, use la bandera \`--init\`."
 fi
 
 sleep "${SLEEP_DURATION}"
@@ -209,23 +222,30 @@ checkForFile ./tmux/tmuxlayout.default "${HOME}/.tmuxlayout.default"
 echo
 
 sleep "${SLEEP_DURATION}"
-# Try to install configuration for NeoVim first, otherwise fall back to
+# Try to install configuration for Neovim first, otherwise fall back to
 # configuring Vim if it's installed.
 if [[ -x $NVIM_INSTALL ]]
 then
-  mkdir -p ~/.config/nvim
-  shrugText "Comprobando archivos de configuración NeoVim..."
-  echo
-  cp -vr -n ./nvim/colors "${HOME}/.config/nvim/colors"
-  cp -vr -n ./nvim/language-servers "${HOME}/.config/nvim/language-servers"
-  cp -vr -n ./nvim/spell "${HOME}/.config/nvim/spell"
-  checkForFile ./nvim/init.vim "${HOME}/.config/nvim/init.vim"
-  checkForFile ./nvim/bundles.vim "${HOME}/.config/nvim/bundles.vim"
-  checkForFile ./nvim/coc-settings.json "${HOME}/.config/nvim/coc-settings.json"
+  if [ -d ~/.config/nvim ]
+  then
+    for nvim_file_or_dir in ~/.config/nvim/*
+    do
+      if [ -d "${nvim_file_or_dir}" ]
+      then
+        rm -rvf "./nvim/$(basename "${nvim_file_or_dir}")"
+      fi
+      cp -vr -n "${nvim_file_or_dir}" ./nvim/
+    done
+  else
+    mkdir -p ~/.config/nvim
+    shrugText "Comprobando archivos de configuración Neovim..."
+    echo
+    cp -rvn ./nvim ~/.config/
+  fi
 elif [[ -x $VIMDIFF_INSTALL ]]
 then
   mkdir -p ~/.vim
-  shrugText "Considere instalar NeoVim ya que estos archivos de configuración de Vim pueden estar desactualizados"
+  shrugText "Considere instalar Neovim ya que estos archivos de configuración de Vim pueden estar desactualizados"
   sleep "${SLEEP_DURATION}"
   shrugText "Comprobando archivos de configuración Vim..."
   echo
