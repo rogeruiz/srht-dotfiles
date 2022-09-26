@@ -1,14 +1,14 @@
 Host github.com
-  IdentityFile
+  IdentityFile ~/.ssh/path-to-file
   Port 22
   User git
   PreferredAuthentications publickey
 
 Host git.sr.ht
-  IdentityFile
+  IdentityFile ~/.ssh/path-to-file
   PreferredAuthentications publickey
 
 Host rw.rs
-  IdentityFile
+  IdentityFile ~/.ssh/path-to-file
   PreferredAuthentications publickey
   User rsr
