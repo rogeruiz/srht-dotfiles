@@ -63,9 +63,44 @@ prompt_pure_env_status() {
   then
     echo -ne "\uf17a  " # Windows logo
   fi
-  if [[ $(env | rg -i aws) ]]
+  if [[ $(env | rg 'AWS(_SECRET)?_ACCESS_KEY(_ID)?|AWS_(SECURITY|SESSION)?_TOKEN') ]]
   then
     echo -ne "\uf270  " # AWS logo
+  fi
+  if [[ -n $AWS_VAULT && ${AWS_VAULT} =~ '^transcom-gov' ]]
+  then
+    if [[ ${AWS_VAULT} =~ 'org-root$' ]]
+    then
+      echo -ne "\uf42b  \uf21d  "
+    fi
+    if [[ ${AWS_VAULT} =~ '(demo|exp|loadtest)$' ]]
+    then
+      echo -ne "\uf473  "
+      if [[ ${AWS_VAULT} =~ 'demo$' ]]
+      then
+        echo -ne "\uf927  "
+      fi
+      if [[ ${AWS_VAULT} =~ 'exp$' ]]
+      then
+        echo -ne "\uf2de  "
+      fi
+      if [[ ${AWS_VAULT} =~ 'loadtest$' ]]
+      then
+        echo -ne "\uf499  "
+      fi
+    fi
+    if [[ ${AWS_VAULT} =~ '(stg|prd)$' ]]
+    then
+      echo -ne "\uf991 "
+      if [[ ${AWS_VAULT} =~ 'stg$' ]]
+      then
+        echo -ne "\uf085  "
+      fi
+      if [[ ${AWS_VAULT} =~ 'prd$' ]]
+      then
+        echo -ne "\ufa37  "
+      fi
+    fi
   fi
   if [[ -n $REPLICATED_API_TOKEN ]]
   then
