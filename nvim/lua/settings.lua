@@ -88,6 +88,10 @@ vim.cmd([[
   au BufNewFile,BufRead Brewfile set ft=ruby
 ]])
 
+vim.cmd([[
+  au TermOpen * setlocal nonumber norelativenumber
+]])
+
 -- Filetypes configurations
 vim.cmd([[
   au FileType markdown setlocal shiftwidth=4 tabstop=4 wrap spell expandtab tw=80 wm=0 linebreak list
