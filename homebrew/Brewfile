@@ -10,8 +10,10 @@ tap "sparkbox/commit-colors"
 brew "commit-colors"
 # }
 
+# This gives me a more Linux-y feel than the standard tools on Darwin. {
 brew "gawk"
 brew "coreutils"
+# }
 
 brew "jq"
 
