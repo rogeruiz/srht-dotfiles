@@ -1,3 +1,6 @@
+# This tmux statusbar config was created by tmuxline.vim
+# on Fri, 04 Mar 2022
+
 set -g status-justify "centre"
 set -g status "on"
 set -g status-left-style "none"

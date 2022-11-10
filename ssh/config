@@ -1,3 +1,9 @@
+Host gist.github.com
+  IdentityFile ~/.ssh/path-to-file
+  Port 22
+  User git
+  PreferredAuthentications publickey
+
 Host github.com
   IdentityFile ~/.ssh/path-to-file
   Port 22
