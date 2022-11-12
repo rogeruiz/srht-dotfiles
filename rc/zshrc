@@ -11,6 +11,8 @@ ZSH_THEME="real"
 autoload -Uz compinit
 compinit
 
+eval "$(zoxide init zsh)"
+
 # ZSH Auto Suggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -41,12 +43,6 @@ unsetopt correct_all
 set -o vi
 bindkey "\e[1;5D" backward-word
 bindkey "\e[1;5C" forward-word
-
-# Include Z-Script
-. /usr/local/bin/z
-function precmd () {
-  _z --add "$(pwd -P)"
-}
 
 # Include Enviroment Variables
 . $HOME/Developer/.variables
