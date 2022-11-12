@@ -1,17 +1,20 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+# ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="real"
+# ZSH_THEME="real"
 
 # ZSH Completions
 autoload -Uz compinit
 compinit
 
 eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
+
 
 # ZSH Auto Suggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -21,13 +24,13 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Example aliases
 alias zshconfig="$EDITOR ~/.zshrc"
-alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
+# alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
 # I can update my ZSH when I see fit
-DISABLE_AUTO_UPDATE="true"
+# DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
@@ -35,9 +38,9 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rvm)
+# plugins=(git rvm)
 
-. $ZSH/oh-my-zsh.sh
+# . $ZSH/oh-my-zsh.sh
 
 unsetopt correct_all
 set -o vi
@@ -63,7 +66,6 @@ export GPG_TTY=`tty`
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$HOME/.rvm/bin:$PATH"
 
-eval "$(direnv hook zsh)"
 
 ################################################################################
 ### Begin MacbookPro16,1
