@@ -1,7 +1,10 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = "$all$directory$character"
+format = """$all\
+$package\
+[ﲾ ](bold yellow) $rust$nodejs$golang$terraform$ruby
+$cmd_duration$character"""
 
 [character]
 success_symbol = "[    ](bold green)"
@@ -11,7 +14,7 @@ format = "$symbol "
 
 [cmd_duration]
 min_time = 5_000
-format = "[  $duration](bold yellow)"
+format = "[  $duration](bold yellow) "
 
 [ruby]
 symbol = " "
