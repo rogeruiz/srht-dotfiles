@@ -25,5 +25,17 @@ format = "[$symbol](bright-green)[$version ](dimmed bright-green)"
 symbol = "ﳑ "
 format = "[$symbol](bright-cyan)[$version ](dimmed bright-cyan)"
 
+[git_branch]
+symbol = " "
+format = "[$symbol](bold green)[$branch(:$remote_branch)](bold #A393BF) "
+
+[git_status]
+format = "([$all_status$ahead_behind]($style))"
+modified = "[ ](bold cyan) "
+untracked = "[ﱐ](bold yellow) "
+ahead = "[](bold green) "
+behind = "[](bold green) "
+stashed = "[](bold magenta) "
+
 [directory]
 truncation_symbol = "  "
