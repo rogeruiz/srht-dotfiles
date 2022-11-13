@@ -182,7 +182,7 @@ echo
 sleep "${SLEEP_DURATION}"
 shrugText "Comprobando tema de terminal personalizado..."
 echo
-checkForFile ./oh-my-zsh/custom/real.zsh-theme "${HOME}/.oh-my-zsh/custom/real.zsh-theme"
+checkForFile ./config/starship.toml "${HOME}/.config/starship.toml"
 echo
 
 sleep "${SLEEP_DURATION}"

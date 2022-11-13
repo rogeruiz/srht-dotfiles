@@ -1,3 +1,7 @@
+# Customization for my prompt {
+brew "starship"
+# }
+
 # Core git related things that make Git better for me {
 brew "git"
 brew "gh"
