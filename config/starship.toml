@@ -1,5 +1,4 @@
-# Use custom format
-format = """
-[┌───────────────────>](bold green)
-[│](bold green)$directory$rust$package
-[└─>](bold green) """
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = "$all$directory$character"
