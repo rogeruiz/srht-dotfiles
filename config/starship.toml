@@ -38,7 +38,7 @@ detect_files = [".terraform-version"]
 format = "[$symbol](bright-cyan) [$version ](dimmed bright-cyan)"
 
 [package]
-symbol = "  "
+symbol = " "
 display_private = true
 format = "[$symbol$version]($style) "
 
