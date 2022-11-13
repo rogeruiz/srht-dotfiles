@@ -28,6 +28,20 @@ format = "[$symbol](bright-green)[$version ](dimmed bright-green)"
 symbol = "ﳑ "
 format = "[$symbol](bright-cyan)[$version ](dimmed bright-cyan)"
 
+[rust]
+symbol = " "
+format = "[$symbol](bright-red)[$version ](dimmed bright-red)"
+
+[terraform]
+symbol = " "
+detect_files = [".terraform-version"]
+format = "[$symbol](bright-cyan) [$version ](dimmed bright-cyan)"
+
+[package]
+symbol = "  "
+display_private = true
+format = "[$symbol$version]($style) "
+
 [git_branch]
 symbol = " "
 format = "[$symbol](bold green)[$branch(:$remote_branch)](bold #A393BF) "
