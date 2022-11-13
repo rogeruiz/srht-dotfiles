@@ -58,4 +58,8 @@ conflicted = "[](bold yellow) "
 stashed = "[﬒](bold magenta) "
 
 [directory]
-truncation_symbol = "  "
+truncation_symbol = " "
+home_symbol = "~"
+style = "bold #A393BF dimmed"
+repo_root_format = "[$before_root_path]($style)[ $repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
+format = "[ ](bold cyan) [$path]($style)[$read_only]($read_only_style) "
