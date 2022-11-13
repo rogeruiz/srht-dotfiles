@@ -13,5 +13,17 @@ format = "$symbol "
 min_time = 5_000
 format = "[  $duration](bold yellow)"
 
+[ruby]
+symbol = " "
+format = "[$symbol](bright-red)[$version ](dimmed bright-red)"
+
+[nodejs]
+symbol = " "
+format = "[$symbol](bright-green)[$version ](dimmed bright-green)"
+
+[golang]
+symbol = "ﳑ "
+format = "[$symbol](bright-cyan)[$version ](dimmed bright-cyan)"
+
 [directory]
 truncation_symbol = "  "
