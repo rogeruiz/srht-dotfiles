@@ -47,12 +47,15 @@ symbol = " "
 format = "[$symbol](bold green)[$branch(:$remote_branch)](bold #A393BF) "
 
 [git_status]
-format = "([$all_status$ahead_behind]($style))"
-modified = "[ ](bold cyan) "
-untracked = "[ﱐ](bold yellow) "
-ahead = "[](bold green) "
-behind = "[](bold green) "
-stashed = "[](bold magenta) "
+format = "([](bold #F17300) [$all_status$ahead_behind]($style))"
+modified = "[ﱐ](bold cyan) "
+staged = "[](bold cyan) "
+deleted = "[](bold red) "
+untracked = "[](bold yellow) "
+ahead = "[](bold cyan) "
+behind = "[](bold cyan) "
+conflicted = "[](bold yellow) "
+stashed = "[﬒](bold magenta) "
 
 [directory]
 truncation_symbol = "  "
