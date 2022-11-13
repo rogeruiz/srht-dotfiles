@@ -9,5 +9,9 @@ error_symbol = "[    ](bold red)"
 vimcmd_symbol = "[    ](bold purple)"
 format = "$symbol "
 
+[cmd_duration]
+min_time = 5_000
+format = "[  $duration](bold yellow)"
+
 [directory]
 truncation_symbol = "  "
