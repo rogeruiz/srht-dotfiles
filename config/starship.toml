@@ -40,7 +40,7 @@ format = "[$symbol](bright-cyan) [$version ](dimmed bright-cyan)"
 [package]
 symbol = " "
 display_private = true
-format = "[$symbol$version]($style) "
+format = "[$symbol]($style)[$version]($style dimmed) "
 
 [git_branch]
 symbol = " "
