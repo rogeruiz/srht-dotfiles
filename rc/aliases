@@ -104,3 +104,17 @@ limpiaGit() {
 }
 
 alias limpia-git=limpiaGit
+
+coloresGit() {
+  remote_name="${1:-origin}"
+  if git rev-parse --is-inside-work-tree &>/dev/null
+  then
+    local default_branch=$(g remote show ${remote_name} | rg 'HEAD branch' | choose 2)
+    for sha in $(g rev-list origin/${default_branch}...$(g wtb))
+    do
+      echo -n $(commit-colors ${sha} | sed -n '2p')
+    done
+  fi
+}
+
+alias colores-git=coloresGit
