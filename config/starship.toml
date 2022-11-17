@@ -100,3 +100,21 @@ repo_root_format = "[  ]($style)[$before_root_path]($style)[$repo_root]($repo
 [jobs]
 symbol = " "
 style = "bold purple"
+
+[time]
+disabled = false
+time_format = "%T"
+format = "[﨟](#815355)[$time](bold #c3b299 dimmed) "
+utc_time_offset = "local"
+
+# [custom.git_spark]
+# command = "current_git_activity"
+# symbol = " "
+# style = "white bold dimmed"
+# format = "[$symbol](bold #F04E33)[($output )]($style)"
+# detect_folders = [".git"]                              # filters git directories
+
+[custom.git_color]
+command = 'current_git_color'
+symbol = ""
+detect_folders = ['.git']
