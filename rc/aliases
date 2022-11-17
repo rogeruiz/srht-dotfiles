@@ -87,7 +87,7 @@ tickName() {
 alias tick-names=tickName
 
 limpiaGit() {
-  remote_name="${1:-origin}"
+  local remote_name="${1:-origin}"
   if git rev-parse --is-inside-work-tree &>/dev/null
   then
     git remote prune $remote_name
