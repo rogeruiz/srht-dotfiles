@@ -18,24 +18,24 @@ format = "[  $duration](bold yellow) "
 
 [ruby]
 symbol = " "
-format = "[$symbol](bright-red)[$version ](dimmed bright-red)"
+format = "[$symbol](bright-red)[$version ](bold dimmed bright-red)"
 
 [nodejs]
 symbol = " "
-format = "[$symbol](bright-green)[$version ](dimmed bright-green)"
+format = "[$symbol](bright-green)[$version ](bold dimmed bright-green)"
 
 [golang]
 symbol = "ﳑ "
-format = "[$symbol](bright-cyan)[$version ](dimmed bright-cyan)"
+format = "[$symbol](bright-cyan)[$version ](bold dimmed bright-cyan)"
 
 [rust]
 symbol = " "
-format = "[$symbol](bright-red)[$version ](dimmed bright-red)"
+format = "[$symbol](bright-red)[$version ](bold dimmed bright-red)"
 
 [terraform]
 symbol = " "
 detect_files = [".terraform-version"]
-format = "[$symbol](bright-cyan) [$version ](dimmed bright-cyan)"
+format = "[$symbol](bright-cyan) [$version ](bold dimmed bright-cyan)"
 
 [package]
 symbol = " "
