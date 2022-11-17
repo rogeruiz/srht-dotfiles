@@ -65,7 +65,7 @@ symbol = " "
 format = "[$symbol](bold green)[$branch(:$remote_branch)](bold #A393BF) "
 
 [git_status]
-format = "([](bold #F04E33) [$all_status$ahead_behind]($style))"
+format = "([](bold #F04E33) [$all_status$ahead_behind]($style) )"
 modified = "[ﱐ](bold cyan) "
 staged = "[](bold cyan) "
 deleted = "[](bold red) "
