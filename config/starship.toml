@@ -85,10 +85,17 @@ only_detached = false
 format = '[\($hash$tag\)](bold #A393BF dimmed) '
 
 [directory]
+truncation_length = 5
 truncation_symbol = " "
 home_symbol = "~"
 style = "bold #7FDEFF"
+repo_root_style = "bold #F04E33"
+truncate_to_repo = true
 format = "[  $path]($style)[$read_only]($read_only_style) "
+repo_root_format = "[  ]($style)[$before_root_path]($style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
+
+# [directory.substitutions]
+# "~/Developer/transcom/mymove" = "transcom/mymove"
 
 [jobs]
 symbol = " "
