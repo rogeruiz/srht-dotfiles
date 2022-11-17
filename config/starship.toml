@@ -1,11 +1,11 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = """$all\
+format = """$directory$git_branch$git_commit${custom.git_color}$git_state$git_metrics$git_status$time
 $aws\
 $package\
-[ﲾ ](bold yellow) $rust$nodejs$golang$terraform$ruby
-$cmd_duration$character"""
+[ﲾ ](bold yellow) $rust$nodejs$golang$terraform$ruby$nix_shell
+$jobs$cmd_duration$character"""
 
 [character]
 success_symbol = "[    ](bold green)"
