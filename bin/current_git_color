@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+if type commit-colors 2>&1 > /dev/null
+then
+  commit-colors $(git rev-parse HEAD) | sed -n '3p' | sed -e 's/\(Your commit color is .*$\)//'
+fi
