@@ -22,6 +22,9 @@ alias vim='nvim'
 alias nv='nvim'
 alias norg='nvim -c ":NeorgStart"'
 
+alias g='git'
+alias tf='terraform'
+
 # Host files
 alias ho='$EDITOR /etc/hosts'
 
