@@ -110,11 +110,10 @@ utc_time_offset = "local"
 # [custom.git_spark]
 # command = "current_git_activity"
 # symbol = " "
+# when = """ git rev-parse --is-inside-work-tree """
 # style = "white bold dimmed"
 # format = "[$symbol](bold #F04E33)[($output )]($style)"
-# detect_folders = [".git"]                              # filters git directories
 
 [custom.git_color]
 command = 'current_git_color'
-symbol = ""
-detect_folders = ['.git']
+when = """ git rev-parse --is-inside-work-tree """
