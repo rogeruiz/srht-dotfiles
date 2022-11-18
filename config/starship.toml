@@ -117,3 +117,4 @@ utc_time_offset = "local"
 [custom.git_color]
 command = 'current_git_color'
 when = """ git rev-parse --is-inside-work-tree """
+description = "The current hexidecimal color for current Git sha at HEAD."
