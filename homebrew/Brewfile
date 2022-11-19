@@ -1,3 +1,8 @@
+##
+#~ This is a Brewfile with all the necessary tools 
+#~ I like and need to feel or need to be productive.
+##
+
 # Customization for my prompt {
 brew "starship"
 # }
@@ -72,8 +77,10 @@ brew "reattach-to-user-namespace"
 # }
 
 # I need this for my emotional productivity in the terminal
+# I need this for my emotional productivity in the terminal {
 brew "imagemagick"
 brew "ffmpeg"
+# }
 
 # The GPG package I use to use GPG with my signed commits.
 brew "gpg2"
@@ -86,6 +93,7 @@ brew "go"
 brew "rustup"
 brew "tidy-html5"
 
+# The applications I use {
 cask "1password"
 cask "adobe-creative-cloud"
 cask "anki"
@@ -116,3 +124,4 @@ cask "visual-studio-code"
 cask "wireshark"
 cask "writer"
 cask "zoom"
+# } 
