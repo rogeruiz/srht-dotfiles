@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+if defaults read -g AppleInterfaceStyle &>/dev/null
+then
+  echo "Dark"
+else
+  echo "Light"
+fi
