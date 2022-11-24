@@ -16,3 +16,6 @@ sed -E -i '' "s/^(colors: \*).+$/\1${current_mode}/" ~/.alacritty.yml
 sed -E -i '' "s/^(set.background = ).+$/\1\"${current_mode}\"/" ~/.config/nvim/lua/theme.lua
 sed -E -i '' "s/^(palette = ).+$/\1\"${current_mode}\"/" ~/.config/starship.toml
 sed -E -i '' "s/^(set -g @catppuccin_flavour ).+$/\1'${catppuccin_flavour}'/" ~/.tmux.conf
+tmux source-file ~/.tmux.conf
+
+export BAT_THEME="Catpuccin-${catppuccin_flavour}"
