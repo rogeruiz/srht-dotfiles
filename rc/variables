@@ -38,5 +38,5 @@ export LC_ALL="en_US.UTF-8"
 #
 export DISABLE_AUTO_TITLE=true
 
-# Bat Theme
-export BAT_THEME="OneHalfDark" # Hopscotch and/or Dracula
+# Bat Theme is set by current_visual_mode on startup so it's no longer needed
+# in this file.
