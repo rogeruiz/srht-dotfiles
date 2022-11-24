@@ -46,6 +46,7 @@
 	df = diff
 	dr = !"dr() { git fetch --all; clear; git diff --patch-with-stat $1 -- $2; }; dr"
 	patch = add --patch
+	ch = diff --cached --
 	cached = diff --cached --
 	discard = checkout --
 	local = branch --list
