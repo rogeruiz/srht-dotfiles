@@ -203,19 +203,12 @@ echo
 sleep "${SLEEP_DURATION}"
 shrugText "Comprobando archivos de configuración Tmux..."
 echo
-mkdir -p ~/.tmux/
-if [ ! -d ~/.tmux/tmux-weather ]
+mkdir -p ~/.tmux/plugins/
+if [ ! -d ~/.tmux/plugins/tpm ]
 then
   git clone \
-    https://github.com/rogeruiz/tmux-weather \
-    ~/.tmux/tmux-weather
-fi
-if [ ! -d ~/.tmux/tmux-network-bandwidth ]
-then
-  git clone \
-    --branch-name customize-units \
-    https://github.com/rogeruiz/tmux-network-bandwidth \
-    ~/.tmux/tmux-network-bandwidth
+    https://github.com/tmux-plugins/tpm \
+    ~/.tmux/plugins/tpm
 fi
 checkForFile ./tmux/tmux.conf "${HOME}/.tmux.conf"
 checkForFile ./tmux/tmuxlayout.default "${HOME}/.tmuxlayout.default"
