@@ -7,6 +7,8 @@ $package\
 [ﲾ ](bold yellow) $rust$nodejs$golang$terraform$ruby$nix_shell
 $jobs$cmd_duration$character"""
 
+palette = "dark"
+
 [character]
 success_symbol = "[    ](bold green)"
 error_symbol = "[    ](bold red)"
@@ -120,4 +122,40 @@ utc_time_offset = "local"
 [custom.git_color]
 command = 'current_git_color'
 when = """ git rev-parse --is-inside-work-tree """
-description = "The current hexidecimal color for current Git sha at HEAD."
+description = "The current hexidecimal color based on the current Git SHA at HEAD."
+
+[palettes.light]
+bright-black = "#bfbabb"
+bright-red = "#be3c6d"
+bright-green = "#487249"
+bright-yellow = "#a76b48"
+bright-blue = "#006f89"
+bright-magenta = "#7f4c7e"
+bright-cyan = "#006f70"
+bright-white = "#777777"
+black = "#e2e2e2"
+red = "#dc5284"
+green = "#628562"
+yellow = "#c48562"
+blue = "#0084a3"
+magenta = "#896788"
+cyan = "#008586"
+white = "#555555"
+
+[palettes.dark]
+bright-black = "#797379"
+bright-red = "#dd464c"
+bright-green = "#8fc13e"
+bright-yellow = "#fdcc59"
+bright-blue = "#1290bf"
+bright-magenta = "#c85e7c"
+bright-cyan = "#149b93"
+bright-white = "#ffffff"
+black = "#322931"
+red = "#dd464c"
+green = "#8fc13e"
+yellow = "#fdcc59"
+blue = "#1290bf"
+magenta = "#c85e7c"
+cyan = "#149b93"
+white = "#b9b5b8"
