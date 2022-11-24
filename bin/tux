@@ -2,6 +2,13 @@
 export PATH="$PATH:/usr/local/bin"
 lolcat_bin=$(which lolcat)
 
+# Set all my themes to Dark or Light modes based on macOS (for now) Dark or
+# Night modes.
+if type current_visual_mode &>/dev/null
+then
+  current_visual_mode
+fi
+
 # Check if we're already in a tmux session
 if [[ "$TMUX" != "" ]]; then
   echo "Already running within tmux so bailing." | lolcat
