@@ -84,7 +84,7 @@ end
 lualine.setup({
   options = {
     icons_enabled = true,
-    theme = "dracula",
+    theme = "catppuccin",
     component_separators = {
       left = icons.ui.PowerlineRightEmpty,
       right = icons.ui.PowerlineLeftEmpty,

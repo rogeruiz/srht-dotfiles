@@ -46,6 +46,8 @@ return require("packer").startup(function()
     },
   })
 
+  use({ "catppuccin/nvim", as = "catppuccin" })
+
   use("andymass/vim-matchup")
 
   use("jxnblk/vim-mdx-js")
@@ -143,6 +145,11 @@ return require("packer").startup(function()
   use("norcalli/nvim-colorizer.lua")
 
   use("liuchengxu/vista.vim")
+
+  use({
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+  })
 
   -- Markdown preview
   use({
