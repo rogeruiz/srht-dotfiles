@@ -3,8 +3,8 @@
 let spotify_name = 'Spotify';
 let music_name = 'Music';
 let separator_symbol = ' \ue0bb  ';
-let playing_symbol = '\ufc58  ';
-let not_playing_symbol = '\ufc59  ';
+let playing_symbol = '\ufc58 ';
+let not_playing_symbol = '\ufc59 ';
 let apple_symbol = '\uf179  ';
 let spotify_symbol = '\uf1bc  ';
 var music_player_open = false;
@@ -39,7 +39,7 @@ function trimName(n, l) {
 }
 
 function getNowPlaying(t) {
-  let np = '';
+  let np = ' ';
   if (!t.artist()) {
     np += trimName(t.album(), 12);
   } else {
