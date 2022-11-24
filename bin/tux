@@ -11,7 +11,7 @@ fi
 
 # Check if we're already in a tmux session
 if [[ "$TMUX" != "" ]]; then
-  echo "Already running within tmux so bailing." | lolcat
+  echo "Already running within tmux so bailing." | ${lolcat_bin}
   exit 0
 fi
 
@@ -45,9 +45,9 @@ function punch_clock {
  fi
 }
 
-lolcat <(echo ">-< ------------------ >-<")
-lolcat <(echo "    Available Sessions")
-lolcat <(echo ">-< ------------------ >-<")
+${lolcat_bin} <(echo ">-< ------------------ >-<")
+${lolcat_bin} <(echo "    Available Sessions")
+${lolcat_bin} <(echo ">-< ------------------ >-<")
 echo
 
 # Let's start by punching in.
@@ -92,16 +92,16 @@ then
   read -r "session_message?"
   punch_clock "stop" "$current_tux_session" "$outgoing_message $session_message"
   echo
-  lolcat <(echo ">-< --------------------------- >-<")
-  lolcat <(echo "    Here is a log of your time.")
-  lolcat <(echo ">-< --------------------------- >-<")
-  lolcat <(punch_clock "list" "$current_tux_session")
+  ${lolcat_bin} <(echo ">-< --------------------------- >-<")
+  ${lolcat_bin} <(echo "    Here is a log of your time.")
+  ${lolcat_bin} <(echo ">-< --------------------------- >-<")
+  ${lolcat_bin} <(punch_clock "list" "$current_tux_session")
 fi
 
 echo
-lolcat <(echo ">-< -------------------- >-<")
-lolcat <(echo "    You look nice today.")
-lolcat <(echo ">-< -------------------- >-<")
+${lolcat_bin} <(echo ">-< -------------------- >-<")
+${lolcat_bin} <(echo "    You look nice today.")
+${lolcat_bin} <(echo ">-< -------------------- >-<")
 
 # Wait for it
 #
