@@ -9,5 +9,5 @@ then
     echo -n '\ue001'
     echo -n " ${time}"
 else
-    echo -n '\ue002'
+    echo -n '\ue002 '
 fi
