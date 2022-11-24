@@ -183,6 +183,7 @@ sleep "${SLEEP_DURATION}"
 shrugText "Comprobando tema de terminal personalizado..."
 echo
 checkForFile ./config/starship.toml "${HOME}/.config/starship.toml"
+checkForFile ./alacritty/alacritty.yml "${HOME}/.alacritty.yml"
 echo
 
 sleep "${SLEEP_DURATION}"
@@ -217,7 +218,6 @@ then
     ~/.tmux/tmux-network-bandwidth
 fi
 checkForFile ./tmux/tmux.conf "${HOME}/.tmux.conf"
-checkForFile ./tmux/tmuxline.snapshot "${HOME}/.tmuxline.snapshot"
 checkForFile ./tmux/tmuxlayout.default "${HOME}/.tmuxlayout.default"
 echo
 
