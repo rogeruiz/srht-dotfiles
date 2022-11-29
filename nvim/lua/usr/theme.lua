@@ -1,7 +1,7 @@
 local set = vim.opt
 
 set.termguicolors = true
-set.background = "dark"
+set.background = "light"
 
 vim.cmd("hi Normal guibg=NONE")
 

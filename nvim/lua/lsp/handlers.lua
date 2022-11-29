@@ -1,7 +1,7 @@
 local M = {}
 
 M.setup = function()
-  local icons = require("icons")
+  local icons = require("usr.icons")
   local signs = {
 
     { name = "DiagnosticSignError", text = icons.diagnostics.Error },

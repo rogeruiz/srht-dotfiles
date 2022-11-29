@@ -94,7 +94,7 @@ local function get_current_directory()
 end
 
 -- Set menu
-local icons = require("icons")
+local icons = require("usr.icons")
 dashboard.section.buttons.val = {
   dashboard.button("n", icons.documents.File .. "  Nuevo archivo", ":ene <BAR> startinsert <CR>"),
   dashboard.button(

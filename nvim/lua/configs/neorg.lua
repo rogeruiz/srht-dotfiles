@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-local icon = require("icons").neorg
+local icon = require("usr.icons").neorg
 
 neorg.setup({
   load = {

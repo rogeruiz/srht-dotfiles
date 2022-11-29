@@ -8,7 +8,7 @@ if not snippy_status_ok then
   return
 end
 
-local icons = require("icons")
+local icons = require("usr.icons")
 
 local kind_icons = icons.kind
 

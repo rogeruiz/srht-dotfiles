@@ -18,7 +18,7 @@ local colors = {
   green = "#8ec07c",
 }
 
-local icons = require("icons")
+local icons = require("usr.icons")
 
 -- local empty = require('lualine.component'):extend()
 -- function empty:draw(default_highlight)

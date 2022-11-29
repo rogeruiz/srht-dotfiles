@@ -65,6 +65,21 @@ kmap("n", "<S-h>", ":bprevious<CR>", opts)
 kmap("v", "<", "<gv", opts)
 kmap("v", ">", ">gv", opts)
 
+--[[ Inside an init.vim file ]]
+function _G.ReloadConfig()
+  for name, _ in pairs(package.loaded) do
+    if name:match("^usr") or name:match("^configs") or name:match("^lsp") then
+      package.loaded[name] = nil
+    end
+  end
+
+  dofile(vim.env.MYVIMRC)
+end
+
+vim.cmd([[
+  command! ReloadConfig lua ReloadConfig()
+]])
+
 -- Filetype mappings
 vim.cmd([[
   au BufRead,BufNewFile *.jshintrc set ft=json
