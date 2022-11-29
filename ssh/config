@@ -10,11 +10,19 @@ Host github.com
   User git
   PreferredAuthentications publickey
 
+Host *.runners.sr.ht
+  IdentityFile ~/.ssh/path-to-file
+  Port 22
+  User builds
+  PreferredAuthentications publickey
+
 Host git.sr.ht
   IdentityFile ~/.ssh/path-to-file
+  Port 22
   PreferredAuthentications publickey
 
 Host rw.rs
   IdentityFile ~/.ssh/path-to-file
-  PreferredAuthentications publickey
+  Port 22
   User rsr
+  PreferredAuthentications publickey
