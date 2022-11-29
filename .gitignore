@@ -31,4 +31,4 @@ Icon*
 
 # Don't ignore the icons.lua though! This is because of the Icon* in the name
 # above. I did not know that `gitignore` entries isn't case-sensitive.
-!nvim/lua/icons.lua
+!nvim/lua/usr/icons.lua
