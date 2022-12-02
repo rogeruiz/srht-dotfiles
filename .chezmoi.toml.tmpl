@@ -1,0 +1,6 @@
+{{- $work_email := promptStringOnce . "work_email" "Work email address" -}}
+{{- $personal_email := promptStringOnce . "personal_email" "Personal email address" -}}
+
+[data]
+  work_email = {{ $work_email | quote }}
+  personal_email = {{ $personal_email | quote }}
