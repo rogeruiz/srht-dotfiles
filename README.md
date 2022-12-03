@@ -47,3 +47,10 @@
                         @%                 "+:*%`
                       :"
 ```
+
+## Descripción
+
+Este repositorio contiene mis archivos de configuración pa' mi computadoras.
+Algunas de mis computadoras son de macOS y otras son de algún sabor de Linux.
+Por eso es que yo uso a chezmoi para configura todo mi computadoras de una manera
+eficiente.
