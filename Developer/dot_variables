@@ -1,0 +1,42 @@
+# Terminal
+#
+export TERM="xterm-256color"
+
+# Text Editor
+#
+export EDITOR="nvim"
+
+# Homebrew
+#
+export PATH=/usr/local/opt/python/libexec/bin:/usr/local/bin:/usr/local/sbin:$PATH
+
+# Composer
+#
+export PATH=$HOME/.composer/vendor/bin:$PATH
+
+# Path for RVM
+#
+export PATH=$HOME/.rvm/bin:$PATH
+
+# Path for `go get`
+#
+export GOPATH=$HOME/Developer/golang
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+# Path for `cargo install`
+#
+export PATH=$PATH:~/.cargo/bin
+
+# For Python3+ pipenv projects
+# https://pipenv.pypa.io/en/latest/diagnose/#valueerror-unknown-locale-utf-8
+#
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+# Disable Tmux auto-titling of windows
+#
+export DISABLE_AUTO_TITLE=true
+
+# Bat Theme is set by current_visual_mode on startup so it's no longer needed
+# in this file.

@@ -1,0 +1,121 @@
+# Directory operations
+alias ..='cd ..'
+alias ...='cd ../..'
+alias -- -='cd -'
+#alias l='ls -amPF'
+#alias ll='ls -al -GF'
+alias l='exa -xa'
+alias ll='exa -lah --git'
+treeDir() {
+    #tree -lhcr --dirsfirst $@ | more
+    exa -lhT --git "${@}" | more
+}
+alias lll=treeDir
+
+# Super user
+alias _='sudo'
+alias pls='sudo'
+alias please='sudo'
+
+# Replace Vim with NeoVim because muscle memory...
+alias vim='nvim'
+alias nv='nvim'
+alias norg='nvim -c ":NeorgStart"'
+
+alias g='git'
+alias tf='terraform'
+
+# Host files
+alias ho='$EDITOR /etc/hosts'
+
+# Rake noglob for ZSH
+alias rake='noglob rake'
+
+# Restart VirtualBox
+alias vbfix='pls /Library/StartupItems/VirtualBox/VirtualBox restart'
+
+# Copy ~/.lolcommits/config.yml to ~/.lolcommits/<repo_name>/config.yml
+
+cpLulz() {
+  lulname="${PWD##*/}"
+  lulpath="${HOME}/.lolcommits/${lulname}"
+  if [[ ! -d $lulpath ]]; then
+    echo "Whoops! Doesn't seem like '${lulpath}' even exists."
+    mkdir $lulpath && echo "Made ${lulpath} for you dude."
+  fi
+  echo "Copying over '${HOME}/.lolcommits/config.yml' to '${lulpath}/config.yml'"
+  cp -v $HOME/.lolcommits/config.yml $HOME/.lolcommits/$lulname/config.yml
+}
+
+alias moar-lulz=cpLulz
+
+chooseEnv() {
+  # Manually adding envs here as I `envchain --set` them because envchain
+  # doesn't have a `--list` or `ls` command.
+  # See: https://github.com/sorah/envchain/issues/17
+  select env_name in $(< ~/.config/envchain/list.env)
+  do
+    if [[ $env_name == "" ]]
+    then
+      echo "Please choose from the available environments!"
+      continue
+    fi
+    envchain ${env_name} zsh
+    break
+  done
+}
+
+alias wenv=chooseEnv
+
+tickDay() {
+  timerIs=$1
+  today=$(date +"%m-%d")
+
+  tick list | rg --color=never "${today}" | rg --color=never "${timerIs}"
+}
+
+alias tick-today=tickDay
+
+tickName() {
+  tick list | \
+    rg -o "\[\s[a-z-]+\s\]" | \
+    sort | \
+    uniq | \
+    sd '\[\s|\s\]' ''
+}
+
+alias tick-names=tickName
+
+limpiaGit() {
+  local remote_name="${1:-origin}"
+  if git rev-parse --is-inside-work-tree &>/dev/null
+  then
+    git remote prune $remote_name
+
+    git branch -r | \
+    awk '{print $1}' | \
+    egrep -v -f /dev/fd/0 <(git branch -vv | rg ${remote_name}) | \
+    awk '{print $1}' | \
+    xargs git branch -D
+
+  else
+    echo "There's not \".git/\" directory in \"$(pwd)\"."
+  fi
+}
+
+alias limpia-git=limpiaGit
+
+coloresGit() {
+  remote_name="${1:-origin}"
+  if git rev-parse --is-inside-work-tree &>/dev/null
+  then
+    local default_branch=$(g remote show ${remote_name} | rg 'HEAD branch' | choose 2)
+    for sha in $(g rev-list ${remote_name}/${default_branch}...$(g wtb))
+    do
+      echo -n $(commit-colors ${sha} | sed -n '2p')
+    done
+    echo
+  fi
+}
+
+alias colores-git=coloresGit
