@@ -1,0 +1,33 @@
+---
+tumblr:
+  :enabled: true
+  :access_token: {{ onePasswordRead "op://Personal/tumblr.com/add more/access_token" }}
+  :secret: {{ onePasswordRead "op://Personal/tumblr.com/add more/secret" }}
+  :tumblr_name: rogerisworking
+twitter:
+  :enabled: true
+  :token: {{ onePasswordRead "op://Personal/lol commits Twitter/add more/token" }}
+  :token_secret: {{ onePasswordRead "op://Personal/lol commits Twitter/add more/token_secret" }}
+  :prefix: ''
+  :suffix: "#rogerisworking"
+  :open_tweet_url: false
+loltext:
+  :enabled: true
+  :overlay:
+    :enabled: true
+    :overlay_colors: "#9400D3,#4B0082,#0000FF,#00FF00,#FFFF00,#FF7F00,#FF0000"
+    :overlay_percent: 45
+  :message:
+    :color: white
+    :font: "/Users/rsr/Library/Fonts/M+\ 2m\ light\ Nerd\ Font\ Complete.ttf"
+    :position: NW
+    :size: 20
+    :stroke_color: none
+    :uppercase: false
+  :sha:
+    :color: white
+    :font: "/Users/rsr/Library/Fonts/M+\ 2m\ light\ Nerd\ Font\ Complete.ttf"
+    :position: NE
+    :size: 18
+    :stroke_color: none
+    :uppercase: false
