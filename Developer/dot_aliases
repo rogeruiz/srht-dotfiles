@@ -20,7 +20,10 @@ alias please='sudo'
 # Replace Vim with NeoVim because muscle memory...
 alias vim='nvim'
 alias nv='nvim'
-alias norg='nvim -c ":NeorgStart"'
+alias norg='nvim -c ":Neorg journal today"'
+
+# Replace chezmoi for better mechanics
+alias cz='chezmoi'
 
 alias g='git'
 alias tf='terraform'
