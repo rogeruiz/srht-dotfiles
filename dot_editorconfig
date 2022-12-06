@@ -1,0 +1,45 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+root = false
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+
+[*.ledger]
+indent_style = space
+indent_size = 4
+
+# 4 space indentation
+[*.py]
+indent_style = space
+indent_size = 4
+
+# 4 space indentation
+[*.rs]
+indent_style = space
+indent_size = 4
+
+# 8 space indentation
+[*.go]
+indent_style = tab
+indent_size = 8
+
+# 4 tab indentation
+[.{gitconfig,gitconfig_oss.inc}]
+indent_style = tab
+indent_size = 4
+
+# 4 tab indentation
+[Makefile]
+indent_style = tab
+indent_size = 4
+
+[*.{txt,md,markdown}]
+indent_style = space
+indent_size = 4
