@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+time=$(tick status | rg -o "\s[0-9:]+")
+out=$?
+
+
+if [ $out -eq 0 ]
+then
+    echo -n '\ue001'
+    echo -n "${time}"
+else
+    echo -n '\ue002 '
+fi

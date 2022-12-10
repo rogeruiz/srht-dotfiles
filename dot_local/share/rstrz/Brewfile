@@ -1,0 +1,127 @@
+##
+#~ This is a Brewfile with all the necessary tools 
+#~ I like and need to feel or need to be productive.
+##
+
+# Customization for my prompt {
+brew "starship"
+# }
+
+# Core git related things that make Git better for me {
+brew "git"
+brew "gh"
+brew "pre-commit"
+brew "diffr"
+brew "direnv"
+brew "unar"
+brew "zstd"
+tap "sparkbox/commit-colors"
+brew "commit-colors"
+# }
+
+# This gives me a more Linux-y feel than the standard tools on Darwin. {
+brew "gawk"
+brew "coreutils"
+# }
+
+brew "jq"
+
+# Pipe viewer: http://ivarch.com/programs/pv
+brew "pv"
+
+# These are all the neat Rust tools I use that I can install via Homebrew {
+tap "clementtsang/bottom"
+brew "bottom"
+brew "bandwhich"
+brew "bat"
+brew "dust"
+brew "exa"
+brew "fd"
+brew "grex"
+brew "procs"
+brew "ripgrep"
+brew "sd"
+brew "tealdeer"
+brew "zoxide"
+# }
+
+brew "ranger"
+brew "catimg"
+brew "httpie"
+brew "tree"
+
+brew "shellcheck"
+brew "shfmt"
+
+brew "keychain"
+
+brew "lynx"
+brew "spotify-tui"
+
+# The ZSH plugins I use for my terminal
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
+brew "zsh-completions"
+
+# I need this for my productivity in the terminal {
+brew "tmux"
+brew "tree-sitter"
+brew "luajit", args: ["HEAD"]
+brew "neovim", args: ["HEAD"]
+brew "spark"
+brew "htop"
+brew "entr"
+brew "ctags"
+# I need this to be able to have a unified clipboard in Tmux, Vim, and iTerm2
+brew "reattach-to-user-namespace"
+# }
+
+# I need this for my emotional productivity in the terminal
+# I need this for my emotional productivity in the terminal {
+brew "imagemagick"
+brew "ffmpeg"
+# }
+
+# The GPG package I use to use GPG with my signed commits.
+brew "gpg2"
+
+brew "nvm"
+brew "python"
+brew "erlang"
+brew "elixir"
+brew "go"
+brew "rustup"
+brew "tidy-html5"
+
+# The applications I use {
+cask "1password"
+cask "adobe-creative-cloud"
+cask "anki"
+cask "audacity"
+cask "aws-vault"
+cask "docker"
+cask "dropbox"
+cask "firefox"
+cask "flux"
+cask "gitify"
+cask "handbrake"
+cask "hot"
+cask "imageoptim"
+cask "iterm2"
+cask "keybase"
+cask "launchbar"
+cask "lagrange"
+cask "notational-velocity"
+cask "postman"
+cask "rar"
+cask "slack"
+cask "soulver"
+cask "spotify"
+cask "time-out"
+cask "transmission"
+cask "virtualbox"
+cask "visual-studio-code"
+cask "wireshark"
+cask "writer"
+cask "zoom"
+# } 

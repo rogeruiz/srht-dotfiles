@@ -1,0 +1,110 @@
+#!/bin/zsh
+export PATH="$PATH:/usr/local/bin"
+lolcat_bin=$(which lolcat)
+
+# Set all my themes to Dark or Light modes based on macOS (for now) Dark or
+# Night modes.
+if type current_visual_mode &>/dev/null
+then
+  current_visual_mode
+fi
+
+# Check if we're already in a tmux session
+if [[ "$TMUX" != "" ]]; then
+  echo "Already running within tmux so bailing." | ${lolcat_bin}
+  exit 0
+fi
+
+echo "Here's what you've worked on today..." | ${lolcat_bin}
+${lolcat_bin} <(tick --verbose list | rg -A3 --color=never "$(date +"%Y-%m-%d")" || echo "Whoops! You haven't logged any time today.")
+echo
+
+PS3="Please choose your session: "
+#shellcheck disable=2207
+sessions=($(tmux list-sessions -F "#S" 2>/dev/null) "New Session" "zsh")
+incoming_message='What do you want to accomplish?: '
+outgoing_message='What did you accomplish?: '
+
+# A wrapper function around tick, lovingly named punch_clock.
+# @param $1 tick sub-command
+# @param $2 -n Name parameter for tick
+# @param $3 -m Entry parameter for tick
+#
+function punch_clock {
+ if [[ -n $1 && ($(which tick) != "tick not found") ]]
+ then
+   if [[ $1 == 'list' ]]
+   then
+     tick -v "$1" | grep -E "\[\s${2}\s\]" | tail -n 25
+   elif [[ $3 != '' ]]
+    then
+     tick "$1" -n "$2" -m "$3"
+   else
+     tick "$1" -n "$2"
+   fi
+ fi
+}
+
+${lolcat_bin} <(echo ">-< ------------------ >-<")
+${lolcat_bin} <(echo "    Available Sessions")
+${lolcat_bin} <(echo ">-< ------------------ >-<")
+echo
+
+# Let's start by punching in.
+#
+select session in "${sessions[@]}"
+do
+ case $session in
+   "New Session")
+      echo -n "What are you working on? ( ex: abbr-name-with-dashes ): "
+      read -r "new_session?"
+      echo -n $incoming_message
+      read -r "session_message?"
+      current_tux_session="$new_session"
+      punch_clock "start" "$new_session" "$incoming_message $session_message"
+      tmux new-session -s "$new_session"
+      break
+      ;;
+   "zsh")
+     zsh --login
+     break
+     ;;
+   *)
+     if [[ $session == "" ]]; then
+       echo "Please choose from the available sessions!"
+       continue
+     fi
+     echo -n "$incoming_message"
+     read -er "session_message?"
+     current_tux_session="$session"
+     punch_clock "start" "$session" "$incoming_message $session_message"
+     tmux attach-session -t "$session"
+     break
+     ;;
+ esac
+done
+
+# Don't forget to punch out
+#
+if [[ "$?" == 0 && -n $current_tux_session ]];
+then
+  echo -n "$outgoing_message"
+  read -r "session_message?"
+  punch_clock "stop" "$current_tux_session" "$outgoing_message $session_message"
+  echo
+  ${lolcat_bin} <(echo ">-< --------------------------- >-<")
+  ${lolcat_bin} <(echo "    Here is a log of your time.")
+  ${lolcat_bin} <(echo ">-< --------------------------- >-<")
+  ${lolcat_bin} <(punch_clock "list" "$current_tux_session")
+fi
+
+echo
+${lolcat_bin} <(echo ">-< -------------------- >-<")
+${lolcat_bin} <(echo "    You look nice today.")
+${lolcat_bin} <(echo ">-< -------------------- >-<")
+
+# Wait for it
+#
+echo
+read -sk '?Press any key to close your terminal...'
+exit 0
