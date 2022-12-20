@@ -54,3 +54,18 @@ Este repositorio contiene mis archivos de configuración pa' mi computadoras.
 Algunas de mis computadoras son de macOS y otras son de algún sabor de Linux.
 Por eso es que yo uso a chezmoi para configura todo mi computadoras de una manera
 eficiente.
+
+## La mecánica de las operaciones de chezmoi pa' mi
+
+Para yo mismo, yo le pongo una alias de `cz` a `chezmoi` para hacer corto la
+operación de usar la herramienta toda las veces. Como lo uso todo los
+días sin mucho frecuencia, lo trato de llamar a la atención aquí.
+
+Tal vez tu también lo puedes encontrar buen uso a las cositas que hago yo pa'
+yo. Mis archivos de configuración son únicos a mi miso pero sirven también pa'
+todo tipo de estilos mecánicas que necesito para macOS y Linux.
+
+El archivo llamado `.chezmoi.toml.tmpl` se puede usar pa' personalizar la
+instalación de la configuración del objetivo del sistema. Mucho de lo que hago
+yo aquí es simple pero robusto.
+
