@@ -1,6 +1,12 @@
 {{- $work_email := promptStringOnce . "work_email" "Work email address" -}}
 {{- $personal_email := promptStringOnce . "personal_email" "Personal email address" -}}
+{{- $work_signingkey := promptStringOnce . "work_signingkey" "Work Git SSH signing key" }}
+{{- $personal_signingkey := promptStringOnce . "personal_signingkey" "Personal Git SSH signing key" }}
 
 [data]
-  work_email = {{ $work_email | quote }}
-  personal_email = {{ $personal_email | quote }}
+
+[data.git]
+work_email = {{ $work_email | quote }}
+work_signingkey = {{ $work_signingkey | quote }}
+personal_email = {{ $personal_email | quote }}
+personal_signingkey = {{ $personal_signingkey | quote }}

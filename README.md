@@ -69,3 +69,14 @@ El archivo llamado `.chezmoi.toml.tmpl` se puede usar pa' personalizar la
 instalación de la configuración del objetivo del sistema. Mucho de lo que hago
 yo aquí es simple pero robusto.
 
+### Edición de los archivos de configuración
+
+Al vez en cuando tengo que edificar los archivos y uso el comando `cz edit
+<archivo>`. Por ejemplo:
+
+```bash
+# mi archivo pa' ZSH
+cz edit ~/.zshrc
+# o mi archivo pa' Homebrew
+cz edit ~/.local/share/rstrz/Brewfile
+```
