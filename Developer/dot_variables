@@ -6,6 +6,7 @@ export TERM="xterm-256color"
 #
 export EDITOR="nvim"
 
+
 # Homebrew
 #
 export PATH=/usr/local/opt/python/libexec/bin:/usr/local/bin:/usr/local/sbin:$PATH
@@ -27,6 +28,11 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # Path for `cargo install`
 #
 export PATH=$PATH:~/.cargo/bin
+
+# Local binaries go last
+#
+export PATH=/Users/rsr/.local/bin:/Users/rsr/.local/bin/darwin:$PATH
+
 
 # For Python3+ pipenv projects
 # https://pipenv.pypa.io/en/latest/diagnose/#valueerror-unknown-locale-utf-8

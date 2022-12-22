@@ -276,7 +276,7 @@ shell:
  program: /bin/zsh
  args:
    - --exec
-   - /usr/local/bin/tux
+   - /Users/rsr/.local/bin/tux
 
 # Startup directory
 #
