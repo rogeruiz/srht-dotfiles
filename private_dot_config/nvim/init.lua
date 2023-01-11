@@ -8,7 +8,6 @@ require("configs.treesitter")
 require("configs.cmp")
 
 require("configs.gitsigns")
-require("configs.fugitive")
 require("configs.git-blame")
 require("configs.conflict-marker")
 
