@@ -1,32 +1,28 @@
-{{- $gh_ssh_path := promptStringOnce . "gh_ssh_path" "Path for ssh for GitHub" -}}
-{{- $sh_ssh_path := promptStringOnce . "sh_ssh_path" "Path for ssh for sourcehut" -}}
-{{- $rwrs_ssh_path := promptStringOnce . "rwrs_ssh_path" "Path for ssh for rw.rs" -}}
-
 Host gist.github.com
-  IdentityFile {{ $gh_ssh_path }}
+  IdentityFile ~/.ssh/github-id_ed25519
   Port 22
   User git
   PreferredAuthentications publickey
 
 Host github.com
-  IdentityFile {{ $gh_ssh_path }}
+  IdentityFile ~/.ssh/github-id_ed25519
   Port 22
   User git
   PreferredAuthentications publickey
 
 Host *.runners.sr.ht
-  IdentityFile {{ $sh_ssh_path }}
+  IdentityFile ~/.ssh/srht-id_ed25519
   Port 22
   User builds
   PreferredAuthentications publickey
 
 Host git.sr.ht
-  IdentityFile {{ $sh_ssh_path }}
+  IdentityFile ~/.ssh/srht-id_ed25519
   Port 22
   PreferredAuthentications publickey
 
 Host rw.rs
-  IdentityFile {{ $rwrs_ssh_path }}
+  IdentityFile ~/.ssh/rwrs-id_rsa
   Port 22
   User rsr
   PreferredAuthentications publickey
