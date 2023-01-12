@@ -26,7 +26,7 @@ require("configs.telescope")
 require("configs.indent-blankline")
 require("configs.autopairs")
 
-require("configs.neorg")
+--[[ require("configs.neorg") ]]
 
 require("configs.go")
 

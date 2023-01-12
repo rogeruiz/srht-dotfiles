@@ -6,7 +6,8 @@ vim.cmd([[
 language es_ES.UTF-8
 ]])
 
-vim.g.mapleader = ","
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 set.tabstop = 2
 set.shiftwidth = 2
@@ -23,7 +24,7 @@ set.splitbelow = true
 set.splitright = true
 
 -- Set spacebar to start search
-kmap("", "<space>", "/", opts)
+--[[ kmap("", "<space>", "/", opts) ]]
 
 set.ignorecase = true
 set.smartcase = true
@@ -78,6 +79,7 @@ end
 
 vim.cmd([[
   command! ReloadConfig lua ReloadConfig()
+  nnoremap <leader>R <cmd>ReloadConfig<cr>
 ]])
 
 -- Filetype mappings

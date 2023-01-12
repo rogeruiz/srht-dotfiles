@@ -5,7 +5,40 @@ end
 
 treesitter_configs.setup({
   -- One of "all" or a list of languages
-  ensure_installed = "all",
+  ensure_installed = {
+    "bash",
+    "css",
+    "dockerfile",
+    "diff",
+    "git_rebase",
+    "gitattributes",
+    "gitcommit",
+    "gitignore",
+    "go",
+    "gomod",
+    "hcl",
+    "html",
+    "json",
+    "jq",
+    "lua",
+    "make",
+    "markdown",
+    "nix",
+    --[[ "norg", ]]
+    "php",
+    "python",
+    "regex",
+    "ruby",
+    "rust",
+    "scss",
+    "sql",
+    "terraform",
+    "toml",
+    "tsx",
+    "typescript",
+    "vim",
+    "yaml",
+  },
 
   autopairs = {
     enable = true,

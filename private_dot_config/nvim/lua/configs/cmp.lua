@@ -21,10 +21,6 @@ cmp.setup({
   experimental = {
     ghost_text = true,
   },
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
   mapping = cmp.mapping.preset.insert({
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -43,10 +39,9 @@ cmp.setup({
       -- NOTE: order matters
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
-        nvim_lua = "[Nvim]",
+        --[[ nvim_lua = "[Nvim]", ]]
         buffer = "[Buffer]",
         path = "[Path]",
-        spell = "[Spell]",
         emoji = "[Emoji]",
         snippy = "[Snippet]",
       })[entry.source.name]
@@ -55,10 +50,9 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
-    { name = "nvim_lua" },
+    --[[ { name = "nvim_lua" }, ]]
     { name = "buffer" },
     { name = "path" },
-    { name = "spell" },
     { name = "emoji" },
     { name = "snippy" },
   }, {
@@ -76,9 +70,8 @@ cmp.setup({
   cmp.setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
-      { name = "path" },
-    }, {
       { name = "cmdline" },
+      { name = "path" },
     }),
   }),
 })

@@ -33,11 +33,16 @@ return require("packer").startup(function()
   use("nvim-lua/plenary.nvim")
   --
   -- LSP
-  use("neovim/nvim-lspconfig")
-  use("williamboman/nvim-lsp-installer") -- simple to use language server installer
-  use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+  use({
+    "williamboman/mason.nvim", -- simple to use language server installer
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+    "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
+  })
 
   use("b0o/schemastore.nvim")
+
+  use("simrat39/rust-tools.nvim")
 
   use({
     "numToStr/Comment.nvim",
@@ -139,7 +144,6 @@ return require("packer").startup(function()
     },
   })
 
-  use("tpope/vim-fugitive")
   use("f-person/git-blame.nvim")
   use("lewis6991/gitsigns.nvim")
 
@@ -159,10 +163,10 @@ return require("packer").startup(function()
     run = "cd app && yarn install",
   })
 
-  use({
-    "nvim-neorg/neorg",
-    requires = "nvim-lua/plenary.nvim",
-  })
+  --[[ use({ ]]
+  --[[ 	"nvim-neorg/neorg", ]]
+  --[[ 	requires = "nvim-lua/plenary.nvim", ]]
+  --[[ }) ]]
 
   use({
     "cuducos/yaml.nvim",
@@ -181,4 +185,6 @@ return require("packer").startup(function()
       })
     end,
   })
+
+  use("sitiom/nvim-numbertoggle")
 end)
