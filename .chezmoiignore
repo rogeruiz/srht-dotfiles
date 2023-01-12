@@ -1,0 +1,6 @@
+README.md
+LICENSE
+
+# Ignore the compiled Packer Lua code.
+.config/nvim/plugin/
+.config/nvim/plugin/**
