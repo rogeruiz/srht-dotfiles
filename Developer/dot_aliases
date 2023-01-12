@@ -25,9 +25,6 @@ alias norg='nvim -c ":Neorg journal today"'
 # Replace chezmoi for better mechanics
 alias cz='chezmoi'
 
-# Call nnn with the flags I like by default
-alias nnn='nnn -dce'
-
 alias g='git'
 alias tf='terraform'
 
