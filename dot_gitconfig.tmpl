@@ -1,7 +1,7 @@
 [user]
 	name = Roger Steve Ruiz
-	email = {{ .chezmoi.git.work_email }}
-	signingkey = {{ .chezmoi.git.work_signingkey }}
+	email = {{ .git.work_email }}
+	signingkey = {{ .git.work_signingkey }}
 [includeIf "gitdir:~/Developer/oss/"]
 	path = ~/.gitconfig_oss.inc
 [color]
