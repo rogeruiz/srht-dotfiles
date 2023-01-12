@@ -6,7 +6,9 @@ lolcat_bin=$(which lolcat)
 # Night modes.
 if type current_visual_mode &>/dev/null
 then
-  current_visual_mode
+  {
+    current_visual_mode &>/dev/null;
+  } &
 fi
 
 # Check if we're already in a tmux session
@@ -107,4 +109,5 @@ ${lolcat_bin} <(echo ">-< -------------------- >-<")
 #
 echo
 read -sk '?Press any key to close your terminal...'
+echo
 exit 0

@@ -8,4 +8,4 @@ if [[ ! -z "$2" && $2 =~ -a|--alpha ]]; then
   MATCH='a-zA-Z0-9'
 fi
 
-cat /dev/urandom | LC_ALL=C tr -dc "${MATCH}" | head -c "${LENGTH}"
+echo $(cat /dev/urandom | LC_ALL=C tr -dc "${MATCH}" | head -c "${LENGTH}")
