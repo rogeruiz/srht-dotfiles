@@ -46,3 +46,7 @@ export DISABLE_AUTO_TITLE=true
 
 # Bat Theme is set by current_visual_mode on startup so it's no longer needed
 # in this file.
+
+# The nnn varibles needed
+export NNN_FIFO=/tmp/nnn.fifo nnn
+export NNN_PLUG='p:preview-tui'
