@@ -80,3 +80,15 @@ cz edit ~/.zshrc
 # o mi archivo pa' Homebrew
 cz edit ~/.local/share/rstrz/Brewfile
 ```
+
+### Viendo el estado de los archivos y compáralos
+
+Por en caso que quiero saber le estado di los archivos y saber donde esta las
+modificaciones aquí o allá.
+
+```bash
+# ver el estado
+cz status
+# ver la diferencia
+cz diff
+```
