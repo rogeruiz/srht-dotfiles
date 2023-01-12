@@ -1,13 +1,13 @@
 ---
 tumblr:
   :enabled: true
-  :access_token: {{ onePasswordRead "op://Personal/tumblr.com/add more/access_token" }}
-  :secret: {{ onePasswordRead "op://Personal/tumblr.com/add more/secret" }}
+  :access_token: {{ onepasswordRead "op://Personal/tumblr.com/add more/access_token" "my.1password.com" }}
+  :secret: {{ onepasswordRead "op://Personal/tumblr.com/add more/secret" "my.1password.com" }}
   :tumblr_name: rogerisworking
 twitter:
   :enabled: true
-  :token: {{ onePasswordRead "op://Personal/lol commits Twitter/add more/token" }}
-  :token_secret: {{ onePasswordRead "op://Personal/lol commits Twitter/add more/token_secret" }}
+  :token: {{ onepasswordRead "op://Personal/lol commits Twitter/add more/token" "my.1password.com" }}
+  :token_secret: {{ onepasswordRead "op://Personal/lol commits Twitter/add more/token_secret" "my.1password.com" }}
   :prefix: ''
   :suffix: "#rogerisworking"
   :open_tweet_url: false
