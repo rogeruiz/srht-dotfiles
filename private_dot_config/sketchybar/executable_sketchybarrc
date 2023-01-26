@@ -57,8 +57,8 @@ do
                               background.drawing=off \
                               label.drawing=off \
                               script="$PLUGIN_DIR/space.sh" \
-                              click_script="yabai -m space --focus $sid" \
              --subscribe system_woke
+                              # click_script="yabai -m space --focus $sid" \
 done
 
 # Current application section
@@ -75,9 +75,11 @@ sketchybar --add item front_app  left \
                                  updates=when_shown \
            --subscribe front_app front_app_switched
 
+sketchybar --add event spotify_change "com.spotify.client.PlaybackStateChanged"
+sketchybar --add event music_change "com.apple.Music.playerInfo"
+
 sketchybar --add item music  left \
            --set music       script="$PLUGIN_DIR/music.sh" \
-                             update_freq=1 \
                              background.height=$bar_height \
                              background.padding_left=0 \
                              background.padding_right=10 \
@@ -85,7 +87,9 @@ sketchybar --add item music  left \
                              icon.padding_right=0 \
                              label.padding_left=10 \
                              label.padding_right=10 \
-                             icon.drawing=off
+                             icon.drawing=off \
+           --subscribe music music_change \
+           --subscribe music spotify_change
 
 ##### Adding Right Items #####
 # In the same way as the left items we can add items to the right side.
@@ -117,8 +121,10 @@ sketchybar --add item wifi right \
                       background.padding_left=0 \
                       background.padding_right=0 \
                       icon.padding_left=10 \
-                      label.padding_right=10 \
-                      update_freq=5
+                      label.padding_right=10
+                      #update_freq=60
+
+sketchybar --add event bt_connect com.apple.bluetooth.status
 
 sketchybar --add item headphones right \
               --set headphones \
@@ -126,12 +132,11 @@ sketchybar --add item headphones right \
                     icon.padding_left=5 \
                     label.padding_right=10 \
                     background.height=$bar_height \
-                    update_freq=3 \
                     script="$PLUGIN_DIR/ble_headset.sh" \
+              --subscribe bluetooth bt_connect
 
 sketchybar --add item sound right \
            --set sound \
-                 update_freq=3 \
                  background.height=$bar_height \
                  icon.padding_left=10 \
                  icon.padding_right=0 \
@@ -140,12 +145,14 @@ sketchybar --add item sound right \
            --subscribe sound volume_change
 
 sketchybar --add item mic right \
-           --set mic update_freq=3 \
-                     script="$PLUGIN_DIR/mic.sh" \
+           --set mic script="$PLUGIN_DIR/mic.sh" \
                      background.height=$bar_height \
                      label.drawing=off \
                      icon.padding_left=10 \
                      icon.padding_right=5 \
-                     click_script="$PLUGIN_DIR/mic_click.sh"
+                     click_script="$PLUGIN_DIR/mic_click.sh" \
+           --subscribe mic mouse.clicked \
+           --subscribe mic mouse.entered.global \
+           --subscribe mic mouse.exited.global
 
 sketchybar --update
