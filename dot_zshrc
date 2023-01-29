@@ -13,6 +13,12 @@ eval "$(op completion zsh)"; compdef _op op
 # https://github.com/alacritty/alacritty/issues/2950#issuecomment-706610878
 # printf "\e[?1042l"
 
+# ZSH History saving
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
 # ZSH Auto Suggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
