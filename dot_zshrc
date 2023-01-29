@@ -38,10 +38,10 @@ ulimit -n 10000
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
 # GPG related activities
-LIFE=28800
-export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
-eval `keychain --noask --eval --agents gpg,ssh --inherit any --timeout $LIFE id_rsa`
-export GPG_TTY=`tty`
+# LIFE=28800
+# export GPG_AGENT_INFO="~/.gnupg/S.gpg-agent:$(pgrep gpg-agent):1"
+# eval `keychain --noask --eval --agents gpg,ssh --inherit any --timeout $LIFE id_rsa`
+# export GPG_TTY=`tty`
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$HOME/.rvm/bin:$PATH"
