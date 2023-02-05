@@ -13,26 +13,37 @@ then
   fi
 fi
 
-# PERF: La sección de `lolcommits` es un poco despacio. Tengo que hacer mas
-# pruebas de rendimiento para tenerlo mas rápido como me gusta.
 if [ -z "${LOLCOMMITS_CAPTURE_DISABLED}" ]
 then
-  LOLCOMMITS_DEVICE=$(lolcommits --devices | rg '\*.+C920' | cut -d'*' -f2 | xargs)
+  # PERF: Usando el `system_profiler` de macOS y no la instrucción `lolcommits
+  # --devices` porque es mui despacio. Con el `system_profiler` ahoro casi 2.8
+  # segundos para saber si mi camera de 1080p esta conectado o no.
+  LOLCOMMITS_DEVICE=$(
+    system_profiler \
+      SPCameraDataType \
+      -json \
+      -detailLevel basic \
+    | jq -r '.SPCameraDataType[0]."_name" | select(. == "HD Pro Webcam C920")'
+  )
   if [ -z "${LOLCOMMITS_DEVICE}" ]
   then
     unset LOLCOMMITS_DEVICE
   else
     export LOLCOMMITS_DEVICE
   fi
-  ### lolcommits hook (empieza) ###
   LANG="" && \
-  PATH="$PATH:/Users/rsr/.rvm/rubies/ruby-3.0.1/bin:/usr/local/bin" && \
+  PATH="$PATH:/Users/rsr/.rvm/rubies/ruby-3.0.1/bin" && \
   if [ ! -d "${GIT_DIR}/rebase-merge" ] && \
      [ "${LOLCOMMITS_CAPTURE_DISABLED}" != "true" ]
   then
-    lolcommits --capture --stealth --delay 2 --fork "${animado}"
+    # shellcheck disable=SC2086
+    lolcommits \
+      --capture \
+      --stealth \
+      --delay 2 \
+      --fork \
+      ${animado-}
   fi
-  ###  lolcommits hook (acabado)  ###
 fi
 
 # NOTE: Esto muestra el color que corresponde a la última confirmación
