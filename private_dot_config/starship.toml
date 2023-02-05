@@ -7,7 +7,7 @@ $package\
 [ﲾ ](yellow) $rust$nodejs$golang$terraform$ruby$nix_shell
 $jobs$cmd_duration$character"""
 
-palette = "dark"
+palette = "light"
 
 [character]
 success_symbol = "[    ](bold green)"
@@ -43,19 +43,20 @@ format = "[$symbol](bright-cyan) [$version ](bold dimmed bright-cyan)"
 [aws]
 symbol = "  "
 expiration_symbol = ""
-format = '[ ](bold bright-white) [$symbol](bold #ff9900)[($profile )(\($region\) )($duration )]($style) '
+format = '[ ](bold bright-white) [$symbol](bold #ff9900)[($profile )($region )($duration )]($style) '
 
 [aws.region_aliases]
-us-gov-west-1 = "  us-gov-west-1"
-us-gov-east-1 = "  us-gov-east-1"
+us-gov-west-1 = "   us-gov-west-1"
+us-gov-east-1 = "   us-gov-east-1"
 
 [aws.profile_aliases]
-transcom-gov-milmove-demo = "  蠟"
-transcom-gov-milmove-exp = "   "
-transcom-gov-milmove-loadtest = "   "
-transcom-gov-milmove-stg = "撚   "
-transcom-gov-milmove-prd = "撚 嘆"
-transcom-gov-org-root = "   "
+transcom-gov-dev = "    nonato/dev"
+transcom-gov-milmove-demo = "  蠟 nonato/demo"
+transcom-gov-milmove-exp = "    nonato/exp"
+transcom-gov-milmove-loadtest = "    nonato/loadtest"
+transcom-gov-milmove-stg = "撚    ato/stg"
+transcom-gov-milmove-prd = "撚 嘆 ato/prd"
+transcom-gov-org-root = "    org-root"
 
 [package]
 symbol = " "
