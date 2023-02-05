@@ -1,17 +1,41 @@
 #!/bin/sh
 
-LOLCOMMITS_DEVICE=$(lolcommits --devices | rg '\*.+C920' | cut -d'*' -f2 | xargs)
-if [ -z "${LOLCOMMITS_DEVICE}" ]
+# Definimos a `animado` afuera de la comprueba abajo para que todas las
+# capturas son quieto.
+animado=""
+
+# NOTE: Requiere `coreutils` instalado entonces vamos a comprobar
+if type shuf > /dev/null 2>&1
 then
-  unset LOLCOMMITS_DEVICE
-else
-  export LOLCOMMITS_DEVICE
+  if test "$(shuf -i 1-10 -n 1)" -gt 5
+  then
+    animado="--animate 3"
+  fi
 fi
 
-### lolcommits hook (begin) ###
-LANG="" && PATH="$PATH:/Users/rsr/.rvm/rubies/ruby-3.0.1/bin:/usr/local/bin" && if [ ! -d "$GIT_DIR/rebase-merge" ] && [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then lolcommits --capture --stealth --delay 2; fi
-###  lolcommits hook (end)  ###
+# PERF: La sección de `lolcommits` es un poco despacio. Tengo que hacer mas
+# pruebas de rendimiento para tenerlo mas rápido como me gusta.
+if [ -z "${LOLCOMMITS_CAPTURE_DISABLED}" ]
+then
+  LOLCOMMITS_DEVICE=$(lolcommits --devices | rg '\*.+C920' | cut -d'*' -f2 | xargs)
+  if [ -z "${LOLCOMMITS_DEVICE}" ]
+  then
+    unset LOLCOMMITS_DEVICE
+  else
+    export LOLCOMMITS_DEVICE
+  fi
+  ### lolcommits hook (empieza) ###
+  LANG="" && \
+  PATH="$PATH:/Users/rsr/.rvm/rubies/ruby-3.0.1/bin:/usr/local/bin" && \
+  if [ ! -d "${GIT_DIR}/rebase-merge" ] && \
+     [ "${LOLCOMMITS_CAPTURE_DISABLED}" != "true" ]
+  then
+    lolcommits --capture --stealth --delay 2 --fork "${animado}"
+  fi
+  ###  lolcommits hook (acabado)  ###
+fi
 
+# NOTE: Esto muestra el color que corresponde a la última confirmación
 if [ -x "$(which commit-colors)" ]
 then
   commit-colors "$(git rev-parse HEAD)"
