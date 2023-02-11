@@ -106,14 +106,16 @@ sketchybar --add item clock right \
 
 sketchybar --add item battery right \
            --set battery script="$PLUGIN_DIR/battery.sh" \
-                         update_freq=3 \
                          background.height=$bar_height \
                          background.padding_left=0 \
                          background.padding_right=0 \
                          icon.padding_left=10 \
                          icon.padding_right=0 \
                          label.padding_right=10 \
-           --subscribe battery system_woke
+           --subscribe battery system_woke \
+           --subscribe battery power_source_change \
+           --subscribe battery brightness_change \
+           --subscribe battery front_app_switched
 
 sketchybar --add item wifi right \
            --set wifi script="$PLUGIN_DIR/wifi.sh" \
