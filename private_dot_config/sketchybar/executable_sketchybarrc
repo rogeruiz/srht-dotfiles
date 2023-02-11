@@ -130,13 +130,13 @@ sketchybar --add item wifi right \
 sketchybar --add event bt_connect com.apple.bluetooth.status
 
 sketchybar --add item headphones right \
-              --set headphones \
-                    icon= \
-                    icon.padding_left=5 \
-                    label.padding_right=10 \
-                    background.height=$bar_height \
-                    script="$PLUGIN_DIR/ble_headset.sh" \
-              --subscribe bluetooth bt_connect
+           --set headphones \
+                 icon= \
+                 icon.padding_left=5 \
+                 label.padding_right=10 \
+                 background.height=$bar_height \
+                 script="$PLUGIN_DIR/ble_headset.sh" \
+           --subscribe headphones bt_connect
 
 sketchybar --add item sound right \
            --set sound \
