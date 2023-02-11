@@ -17,13 +17,13 @@ if [ -z "${LOLCOMMITS_CAPTURE_DISABLED}" ]
 then
   # PERF: Usando el `system_profiler` de macOS y no la instrucción `lolcommits
   # --devices` porque es mui despacio. Con el `system_profiler` ahoro casi 2.8
-  # segundos para saber si mi camera de 1080p esta conectado o no.
+  # segundos para saber si mi cámara de 1080p esta conectado o no.
   LOLCOMMITS_DEVICE=$(
     system_profiler \
       SPCameraDataType \
       -json \
       -detailLevel basic \
-    | jq -r '.SPCameraDataType[0]."_name" | select(. == "HD Pro Webcam C920")'
+      | jq -r '.SPCameraDataType[]."_name" | select(. | test("C920"))'
   )
   if [ -z "${LOLCOMMITS_DEVICE}" ]
   then
