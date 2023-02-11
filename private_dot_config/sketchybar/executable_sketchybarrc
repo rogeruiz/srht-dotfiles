@@ -121,8 +121,9 @@ sketchybar --add item wifi right \
                       background.padding_left=0 \
                       background.padding_right=0 \
                       icon.padding_left=10 \
-                      label.padding_right=10
-                      #update_freq=60
+                      label.padding_right=10 \
+           --subscribe wifi system_woke \
+           --subscribe wifi mouse.clicked
 
 sketchybar --add event bt_connect com.apple.bluetooth.status
 
