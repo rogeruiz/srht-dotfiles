@@ -122,3 +122,14 @@ coloresGit() {
 }
 
 alias colores-git=coloresGit
+
+# Esto es para cunado necesito usar el Prime API con mi tarjeta inteligente CAC
+murl() {
+  OPENSSL_CONF=~/.local/share/rstrz/pkcs11/custom.conf \
+  $(brew --prefix curl)/bin/curl \
+  -s \
+  --cacert ~/.local/share/rstrz/pkcs11/DODROOTCA3_IT.p7c.cert.pem \
+  --key $(cat ~/.local/share/rstrz/pkcs11/cac_piv_private_key_url) \
+  --cert $(cat ~/.local/share/rstrz/pkcs11/cac_piv_cert_url) \
+  "$@"
+}
