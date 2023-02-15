@@ -1,16 +1,14 @@
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 
-# Esta medida fue con Photoshop
-barra_de_apple_alto=48
+# WARN: Este variable tiene que ser el mismo de ~/.yabairc con el mismo nombre.
+margins=30
 
-yabai_espacio_de_ventana=20
+altura=40
 
-barra_alto=40
-
-sketchybar --bar height=$barra_alto \
+sketchybar --bar height=$altura \
   --bar corner_radius="10" \
-  --bar margin=$yabai_espacio_de_ventana \
-  --bar y_offset=$((yabai_espacio_de_ventana)) \
+  --bar margin=$margins \
+  --bar y_offset=$((margins)) \
   --bar padding_left="5" \
   --bar padding_right="5"
 
@@ -70,7 +68,7 @@ done
 sketchybar --add item front_app  left \
            --set front_app       script="$PLUGIN_DIR/front_app.sh" \
                                  icon=ﬓ \
-                                 background.height=$barra_alto \
+                                 background.height=$altura \
                                  background.padding_left=0 \
                                  background.padding_right=0 \
                                  label.padding_right=10 \
@@ -85,7 +83,7 @@ sketchybar --add event music_change "com.apple.Music.playerInfo"
 
 sketchybar --add item music  left \
            --set music       script="$PLUGIN_DIR/music.sh" \
-                             background.height=$barra_alto \
+                             background.height=$altura \
                              background.padding_left=0 \
                              background.padding_right=10 \
                              icon.padding_left=0 \
@@ -103,7 +101,7 @@ sketchybar --add item music  left \
 sketchybar --add item clock right \
            --set clock update_freq=1 \
                        icon= \
-                       background.height=$barra_alto \
+                       background.height=$altura \
                        background.padding_left=10 \
                        icon.padding_right=0 \
                        label.padding_right=10 \
@@ -111,7 +109,7 @@ sketchybar --add item clock right \
 
 sketchybar --add item battery right \
            --set battery script="$PLUGIN_DIR/battery.sh" \
-                         background.height=$barra_alto \
+                         background.height=$altura \
                          background.padding_left=0 \
                          background.padding_right=0 \
                          icon.padding_left=10 \
@@ -124,7 +122,7 @@ sketchybar --add item battery right \
 
 sketchybar --add item wifi right \
            --set wifi script="$PLUGIN_DIR/wifi.sh" \
-                      background.height=$barra_alto \
+                      background.height=$altura \
                       background.padding_left=0 \
                       background.padding_right=0 \
                       icon.padding_left=10 \
@@ -139,13 +137,13 @@ sketchybar --add item headphones right \
                  icon= \
                  icon.padding_left=5 \
                  label.padding_right=10 \
-                 background.height=$barra_alto \
+                 background.height=$altura \
                  script="$PLUGIN_DIR/ble_headset.sh" \
            --subscribe headphones bt_connect
 
 sketchybar --add item sound right \
            --set sound \
-                 background.height=$barra_alto \
+                 background.height=$altura \
                  icon.padding_left=10 \
                  icon.padding_right=0 \
                  label.padding_right=10 \
@@ -154,7 +152,7 @@ sketchybar --add item sound right \
 
 sketchybar --add item mic right \
            --set mic script="$PLUGIN_DIR/mic.sh" \
-                     background.height=$barra_alto \
+                     background.height=$altura \
                      label.drawing=off \
                      icon.padding_left=10 \
                      icon.padding_right=5 \
