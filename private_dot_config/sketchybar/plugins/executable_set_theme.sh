@@ -142,42 +142,42 @@ function color() {
 
 sketchybar \
 	--bar \
-	color="$(color crust 189)" \
+	color="$(color base)" \
 	--default \
 	icon.color="$(color subtext0)" \
 	label.color="$(color subtext1)" \
 	--set /space\./ \
 	icon.color="$(color rosewater)" \
-	icon.highlight_color="$(color sky)" \
+	icon.highlight_color="$(color mauve)" \
 	--set front_app \
-  background.color="$(color mantle)" \
-	icon.color="$(color yellow)" \
-	label.color="$(color subtext0)" \
+  background.color="$(color mauve)" \
+	icon.color="$(color mantle)" \
+  label.color="$(color mantle)" \
 	--set music \
-  background.color="$(color base)" \
-	label.color="$(color surface1)" \
-	--set clock \
-	icon.color="$(color yellow)" \
-	label.color="$(color subtext0)" \
-  --set battery \
-  background.color="$(color mantle)" \
-  label.color="$(color surface2)" \
-  --set wifi \
-  background.color="$(color base)" \
-  icon.color="$(color peach)" \
-	label.color="$(color overlay0)" \
-  --set sound \
-  background.color="$(color mantle)" \
-  icon.color="$(color lavender)" \
-	label.color="$(color surface2)" \
-  --set headphones \
-  background.color="$(color mantle)" \
-  icon.color="$(color sapphire)" \
-	label.color="$(color surface2)" \
+  background.color="$(color flamingo)" \
+	label.color="$(color crust)" \
   --set mic \
-  background.color="$(color mantle)" \
+  background.color="$(color base)" \
   icon.color="$(color red)" \
   icon.highlight_color="$(color green)" \
+  --set sound \
+  background.color="$(color crust)" \
+	icon.color="$(color green)" \
+	label.color="$(color subtext1)" \
+  --set headphones \
+  background.color="$(color crust)" \
+	icon.color="$(color sapphire)" \
+	label.color="$(color subtext1)" \
+  --set wifi \
+  background.color="$(color mantle)" \
+	icon.color="$(color flamingo)" \
+  label.color="$(color subtext1)" \
+  --set battery \
+  background.color="$(color crust)" \
+	label.color="$(color subtext0)" \
+	--set clock \
+	icon.color="$(color mauve)" \
+	label.color="$(color subtext0)" \
 
 ~/.local/bin/darwin/current_visual_mode
 

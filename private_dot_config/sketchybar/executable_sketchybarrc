@@ -1,11 +1,16 @@
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 
-bar_height=35
+# Esta medida fue con Photoshop
+barra_de_apple_alto=48
 
-sketchybar --bar height=$bar_height \
+yabai_espacio_de_ventana=20
+
+barra_alto=40
+
+sketchybar --bar height=$barra_alto \
   --bar corner_radius="10" \
-  --bar margin=$bar_height \
-  --bar y_offset=34 \
+  --bar margin=$yabai_espacio_de_ventana \
+  --bar y_offset=$((yabai_espacio_de_ventana)) \
   --bar padding_left="5" \
   --bar padding_right="5"
 
@@ -28,7 +33,7 @@ sketchybar \
 
 sketchybar --default updates=when_shown                    \
                      drawing=on                            \
-                     icon.font="mplus Nerd Font:Bold:16.0"  \
+                     icon.font="mplus Nerd Font:regular:16.0"  \
                      label.font="mplus Nerd Font:regular:16.0" \
                      label.padding_left=4                  \
                      label.padding_right=4                 \
@@ -65,7 +70,7 @@ done
 sketchybar --add item front_app  left \
            --set front_app       script="$PLUGIN_DIR/front_app.sh" \
                                  icon=ﬓ \
-                                 background.height=$bar_height \
+                                 background.height=$barra_alto \
                                  background.padding_left=0 \
                                  background.padding_right=0 \
                                  label.padding_right=10 \
@@ -80,7 +85,7 @@ sketchybar --add event music_change "com.apple.Music.playerInfo"
 
 sketchybar --add item music  left \
            --set music       script="$PLUGIN_DIR/music.sh" \
-                             background.height=$bar_height \
+                             background.height=$barra_alto \
                              background.padding_left=0 \
                              background.padding_right=10 \
                              icon.padding_left=0 \
@@ -98,7 +103,7 @@ sketchybar --add item music  left \
 sketchybar --add item clock right \
            --set clock update_freq=1 \
                        icon= \
-                       background.height=$bar_height \
+                       background.height=$barra_alto \
                        background.padding_left=10 \
                        icon.padding_right=0 \
                        label.padding_right=10 \
@@ -106,7 +111,7 @@ sketchybar --add item clock right \
 
 sketchybar --add item battery right \
            --set battery script="$PLUGIN_DIR/battery.sh" \
-                         background.height=$bar_height \
+                         background.height=$barra_alto \
                          background.padding_left=0 \
                          background.padding_right=0 \
                          icon.padding_left=10 \
@@ -119,7 +124,7 @@ sketchybar --add item battery right \
 
 sketchybar --add item wifi right \
            --set wifi script="$PLUGIN_DIR/wifi.sh" \
-                      background.height=$bar_height \
+                      background.height=$barra_alto \
                       background.padding_left=0 \
                       background.padding_right=0 \
                       icon.padding_left=10 \
@@ -134,13 +139,13 @@ sketchybar --add item headphones right \
                  icon= \
                  icon.padding_left=5 \
                  label.padding_right=10 \
-                 background.height=$bar_height \
+                 background.height=$barra_alto \
                  script="$PLUGIN_DIR/ble_headset.sh" \
            --subscribe headphones bt_connect
 
 sketchybar --add item sound right \
            --set sound \
-                 background.height=$bar_height \
+                 background.height=$barra_alto \
                  icon.padding_left=10 \
                  icon.padding_right=0 \
                  label.padding_right=10 \
@@ -149,7 +154,7 @@ sketchybar --add item sound right \
 
 sketchybar --add item mic right \
            --set mic script="$PLUGIN_DIR/mic.sh" \
-                     background.height=$bar_height \
+                     background.height=$barra_alto \
                      label.drawing=off \
                      icon.padding_left=10 \
                      icon.padding_right=5 \
