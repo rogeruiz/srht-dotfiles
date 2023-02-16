@@ -77,7 +77,7 @@ do
        continue
      fi
      echo -n "$incoming_message"
-     read -er "session_message?"
+     read -r "session_message?"
      current_tux_session="$session"
      punch_clock "start" "$session" "$incoming_message $session_message"
      tmux attach-session -t "$session"
