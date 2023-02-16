@@ -194,4 +194,6 @@ return require("packer").startup(function()
 			"cook",
 		},
 	})
+
+	use("j-hui/fidget.nvim")
 end)

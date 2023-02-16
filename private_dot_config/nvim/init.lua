@@ -12,6 +12,7 @@ require("configs.git-blame")
 require("configs.conflict-marker")
 
 require("configs.colorizer")
+require("configs.fidget")
 
 require("configs.matchup")
 require("configs.lualine")
