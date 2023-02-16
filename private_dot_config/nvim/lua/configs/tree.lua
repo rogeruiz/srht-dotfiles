@@ -1,6 +1,6 @@
 local status_ok, tree = pcall(require, "nvim-tree")
 if not status_ok then
-  return
+	return
 end
 
 vim.cmd([[
@@ -9,8 +9,8 @@ nnoremap <leader>r :NvimTreeRefresh<CR>
 ]])
 
 tree.setup({
-  git = {
-    enable = true,
-    ignore = false,
-  },
+	git = {
+		enable = true,
+		ignore = false,
+	},
 })

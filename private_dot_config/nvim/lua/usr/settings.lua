@@ -68,13 +68,13 @@ kmap("v", ">", ">gv", opts)
 
 --[[ Inside an init.vim file ]]
 function _G.ReloadConfig()
-  for name, _ in pairs(package.loaded) do
-    if name:match("^usr") or name:match("^configs") or name:match("^lsp") then
-      package.loaded[name] = nil
-    end
-  end
+	for name, _ in pairs(package.loaded) do
+		if name:match("^usr") or name:match("^configs") or name:match("^lsp") then
+			package.loaded[name] = nil
+		end
+	end
 
-  dofile(vim.env.MYVIMRC)
+	dofile(vim.env.MYVIMRC)
 end
 
 vim.cmd([[

@@ -1,14 +1,14 @@
 local status_ok, colorizer = pcall(require, "colorizer")
 if not status_ok then
-  return
+	return
 end
 
 colorizer.setup({
-  css = { css = true },
-  scss = { css = true },
-  html = { mode = "foreground" },
-  "javascript",
-  "javascript.jsx",
-  "javascriptreact",
-  "jsx",
+	css = { css = true },
+	scss = { css = true },
+	html = { mode = "foreground" },
+	"javascript",
+	"javascript.jsx",
+	"javascriptreact",
+	"jsx",
 })
