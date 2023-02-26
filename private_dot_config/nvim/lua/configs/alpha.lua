@@ -26,12 +26,10 @@ dashboard.section.header.opts.hl = pick_color()
 -- the dashboard theme.
 local function get_current_directory()
 	local directory_length = 20
-	local wd = os.getenv("PWD")
-	wd = wd:match("^.+/(.+/.+)$") -- Matches the last two directories.
+	local wd = os.getenv("PWD"):match("^.+/(.+/.+)$") -- Matches the last two directories.
 	if wd == nil then
 		return os.getenv("PWD")
-	end
-	if #wd > directory_length then
+	elseif #wd > directory_length then
 		wd = string.sub(wd, 0, directory_length) .. "..." -- Truncates the second directory with three dots.
 	end
 	return wd

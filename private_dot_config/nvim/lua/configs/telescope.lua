@@ -122,7 +122,6 @@ telescope.setup({
 		find_files = {
 			-- Usando la instrución `fd` porque es muy reapido y genial.
 			find_command = { "fd", "--strip-cwd-prefix", "--type", "f" },
-
 			mappings = {
 				n = {
 					["kj"] = "close",
