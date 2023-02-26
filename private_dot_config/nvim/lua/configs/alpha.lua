@@ -18,8 +18,8 @@ local function pick_color()
 end
 
 -- Set header
-local fortune = require("alpha.fortune")
-dashboard.section.header.val = fortune()
+dashboard.section.header.val = random_header_figlet()
+dashboard.section.header.opts.hl = pick_color()
 
 -- This function returns the name of the current directory and the parent
 -- direcory and truncates the new path into two characters so it doesn't break
@@ -57,7 +57,9 @@ dashboard.section.buttons.val = {
 }
 
 -- Set footer
-dashboard.section.footer.val = random_header_figlet()
+local fortune = require("alpha.fortune")
+dashboard.section.footer.val = fortune()
+dashboard.section.footer.opts.hl = pick_color()
 
 -- Send config to alpha
 alpha.setup(dashboard.opts)
