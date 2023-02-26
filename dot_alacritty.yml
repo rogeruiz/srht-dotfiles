@@ -1,7 +1,7 @@
 window:
   dynamic_padding: false
   decorations: buttonless
-  # opacity: 0.85
+  opacity: 0.92
   startup_mode: Windowed
   title: you look nice today
   dynamic_title: true
