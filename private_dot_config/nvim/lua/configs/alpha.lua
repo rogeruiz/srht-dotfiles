@@ -5,6 +5,8 @@ end
 
 local dashboard = require("alpha.themes.dashboard")
 
+math.randomseed(os.time())
+
 local function random_header_figlet()
 	math.randomseed(os.time())
 	local headers = {
@@ -71,6 +73,11 @@ local function random_header_figlet()
 		},
 	}
 	return headers[math.random(1, #headers)]
+end
+
+local function pick_color()
+	local colors = { "String", "Identifier", "Keyword", "Number" }
+	return colors[math.random(#colors)]
 end
 
 -- Set header
