@@ -1,6 +1,9 @@
 # ZSH Completions
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' menu select
 autoload -Uz compinit
 compinit
+fpath=(/Users/rsr/Developer/oss/zsh-completions/src $fpath)
 
 eval "$(nodenv init -)"
 eval "$(zoxide init zsh)"
@@ -35,6 +38,7 @@ set -o vi
 bindkey "\e[1;5D" backward-word
 bindkey "\e[1;5C" forward-word
 bindkey -M vicmd ' ' edit-command-line
+bindkey '^[[Z' reverse-menu-complete
 
 # Include Enviroment Variables
 . $HOME/Developer/.variables
