@@ -24,7 +24,7 @@ treesitter_configs.setup({
 		"make",
 		"markdown",
 		"nix",
-		--[[ "norg", ]]
+		"norg",
 		"php",
 		"python",
 		"regex",

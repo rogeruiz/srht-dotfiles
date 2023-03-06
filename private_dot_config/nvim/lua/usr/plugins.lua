@@ -163,10 +163,10 @@ return require("packer").startup(function()
 		run = "cd app && yarn install",
 	})
 
-	--[[ use({ ]]
-	--[[ 	"nvim-neorg/neorg", ]]
-	--[[ 	requires = "nvim-lua/plenary.nvim", ]]
-	--[[ }) ]]
+	use({
+		"nvim-neorg/neorg",
+		requires = "nvim-lua/plenary.nvim",
+	})
 
 	use({
 		"cuducos/yaml.nvim",
