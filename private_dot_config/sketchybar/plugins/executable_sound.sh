@@ -6,7 +6,7 @@ MUTED=$(osascript -e "output muted of (get volume settings)")
 if [[ $VOLUME == "missing value" ]]
 then
   ICON="﴿ "
-  VOLUME=""
+  VOLUME="  "
 else
   if [[ $MUTED != "false" ]]; then
     ICON="ﱝ"
