@@ -30,7 +30,7 @@ yabai -m config                                   \
     split_ratio                  0.50             \
     split_type                   auto             \
     auto_balance                 off              \
-    top_padding                  $((margins * 4)) \
+    top_padding                  $((margins * 3)) \
     bottom_padding               "${margins}"     \
     left_padding                 "${margins}"     \
     right_padding                "${margins}"     \
