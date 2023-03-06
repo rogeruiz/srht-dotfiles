@@ -13,19 +13,20 @@ fi
 
 # Check if we're already in a tmux session
 if [[ "$TMUX" != "" ]]; then
-  echo "Already running within tmux so bailing." | ${lolcat_bin}
+  # echo "Already running within tmux so bailing." | ${lolcat_bin}
+  echo "Ya se está ejecutando dentro de tmux, por lo que está saliendo." | ${lolcat_bin}
   exit 0
 fi
 
-echo "Here's what you've worked on today..." | ${lolcat_bin}
-${lolcat_bin} <(tick --verbose list | rg -A3 --color=never "$(date +"%Y-%m-%d")" || echo "Whoops! You haven't logged any time today.")
+echo "Esto es lo que has trabajado hoy..." | ${lolcat_bin}
+${lolcat_bin} <(tick --verbose list | rg -A3 --color=never "$(date +"%Y-%m-%d")" || echo "¡Vaya! No has iniciado sesión en ningún momento hoy.")
 echo
 
-PS3="Please choose your session: "
+PS3="Por favor elige tu sesión: "
 #shellcheck disable=2207
-sessions=($(tmux list-sessions -F "#S" 2>/dev/null) "New Session" "zsh")
-incoming_message='What do you want to accomplish?: '
-outgoing_message='What did you accomplish?: '
+sessions=($(tmux list-sessions -F "#S" 2>/dev/null) "nuevo sesión" "zsh" "nushell")
+incoming_message='¿Qué quieres lograr?:'
+outgoing_message='¿Qué lograste?:'
 
 # A wrapper function around tick, lovingly named punch_clock.
 # @param $1 tick sub-command
@@ -48,7 +49,7 @@ function punch_clock {
 }
 
 ${lolcat_bin} <(echo ">-< ------------------ >-<")
-${lolcat_bin} <(echo "    Available Sessions")
+${lolcat_bin} <(echo "    Sesiones disponibles")
 ${lolcat_bin} <(echo ">-< ------------------ >-<")
 echo
 
@@ -57,8 +58,8 @@ echo
 select session in "${sessions[@]}"
 do
  case $session in
-   "New Session")
-      echo -n "What are you working on? ( ex: abbr-name-with-dashes ): "
+   "nuevo sesión")
+      echo -n "¿En que estas trabajando? (ej.: nombre-abreviado-con-guiones): "
       read -r "new_session?"
       echo -n $incoming_message
       read -r "session_message?"
@@ -68,12 +69,16 @@ do
       break
       ;;
    "zsh")
-     zsh --login
+     /bin/zsh --login
+     break
+     ;;
+   "nushell")
+     /usr/local/bin/nu --login
      break
      ;;
    *)
      if [[ $session == "" ]]; then
-       echo "Please choose from the available sessions!"
+       echo '¡Elige entre las sesiones disponibles!'
        continue
      fi
      echo -n "$incoming_message"
@@ -95,19 +100,19 @@ then
   punch_clock "stop" "$current_tux_session" "$outgoing_message $session_message"
   echo
   ${lolcat_bin} <(echo ">-< --------------------------- >-<")
-  ${lolcat_bin} <(echo "    Here is a log of your time.")
+  ${lolcat_bin} <(echo "    Aquí hay un registro de su tiempo.")
   ${lolcat_bin} <(echo ">-< --------------------------- >-<")
   ${lolcat_bin} <(punch_clock "list" "$current_tux_session")
 fi
 
 echo
 ${lolcat_bin} <(echo ">-< -------------------- >-<")
-${lolcat_bin} <(echo "    You look nice today.")
+${lolcat_bin} <(echo "    Te ves bien hoy.")
 ${lolcat_bin} <(echo ">-< -------------------- >-<")
 
 # Wait for it
 #
 echo
-read -sk '?Press any key to close your terminal...'
+read -sk '?Presiona cualquier tecla para cerrar tu terminal...'
 echo
 exit 0
