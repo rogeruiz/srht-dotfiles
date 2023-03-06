@@ -7,7 +7,7 @@ $aws\
 [ ﲾ  ](bg:sky fg:surface0)$package$rust$nodejs$golang$terraform$ruby$nix_shell[ ](bg:sky)
 $jobs$cmd_duration$character"""
 
-palette = "dark"
+palette = "light"
 
 # 
 # 
@@ -28,24 +28,24 @@ format = "[   ](bold bg:yellow fg:surface0)[ $duration ](italic bg:surface0 f
 
 [ruby]
 symbol = " "
-format = "[ $symbol](bg:red fg:surface0)[ $version ](italic bg:surface0 fg:red)"
+format = "[ $symbol ](bg:red fg:surface0)[ $version ](italic bg:surface0 fg:red)"
 
 [nodejs]
 symbol = " "
-format = "[ $symbol](bg:green fg:surface0)[ $version ](italic bg:surface0 fg:green)"
+format = "[ $symbol ](bg:green fg:surface0)[ $version ](italic bg:surface0 fg:green)"
 
 [golang]
 symbol = "ﳑ "
-format = "[ $symbol](bg:sapphire fg:surface0)[ $version ](italic bg:surface0 fg:sapphire)"
+format = "[ $symbol ](bg:sapphire fg:surface0)[ $version ](italic bg:surface0 fg:sapphire)"
 
 [rust]
 symbol = " "
-format = "[ $symbol](bg:overlay2 fg:surface0)[ $version ](italic bg:surface0 fg:overlay2)"
+format = "[ $symbol ](bg:overlay2 fg:surface0)[ $version ](italic bg:surface0 fg:overlay2)"
 
 [terraform]
 symbol = "  "
 detect_files = [".terraform-version"]
-format = "[ $symbol](bg:mauve fg:surface0)[ $version ](italic bg:surface0 fg:mauve)"
+format = "[ $symbol ](bg:mauve fg:surface0)[ $version ](italic bg:surface0 fg:mauve)"
 
 [aws]
 symbol = "  "
@@ -68,11 +68,11 @@ transcom-gov-org-root = "    org-root"
 [package]
 symbol = " "
 display_private = true
-format = "[ $symbol](bg:peach fg:surface0)[ $version ](italic bg:surface0 fg:peach)"
+format = "[ $symbol ](bg:peach fg:surface0)[ $version ](italic bg:surface0 fg:peach)"
 
 [git_branch]
 symbol = "  "
-format = " [$symbol](bold bg:#f14e32 fg:surface0)[ $branch(:$remote_branch) ](italic bg:surface0 fg:#f14e32)[ ](bg:#f14e32)"
+format = "[$symbol](bold bg:#f14e32 fg:surface0)[ $branch(:$remote_branch) ](italic bg:surface0 fg:#f14e32)[ ](bg:#f14e32)"
 
 [git_status]
 format = "([](bold #f14e32) [$all_status$ahead_behind]($style) )" # NOTE: This is Git orange
@@ -94,7 +94,7 @@ disabled = false
 [git_commit]
 commit_hash_length = 7
 only_detached = false
-format = " [＃](bold bg:flamingo fg:surface0)[ $hash$tag ](italic bg:surface0 fg:flamingo)[ ](bg:flamingo)"
+format = "[＃](bold bg:flamingo fg:surface0)[ $hash$tag ](italic bg:surface0 fg:flamingo)[ ](bg:flamingo)"
 
 [directory]
 truncation_length = 5
