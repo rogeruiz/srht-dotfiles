@@ -45,6 +45,13 @@ return require("packer").startup(function()
 	use("simrat39/rust-tools.nvim")
 
 	use({
+		"danymat/neogen",
+		requires = "nvim-treesitter/nvim-treesitter",
+		-- Uncomment next line if you want to follow only stable versions
+		-- tag = "*"
+	})
+
+	use({
 		"numToStr/Comment.nvim",
 		requires = {
 			"JoosepAlviste/nvim-ts-context-commentstring",
