@@ -3,8 +3,8 @@ if not status_ok then
 	return
 end
 
-local status_gps_ok, gps = pcall(require, "nvim-gps")
-if not status_gps_ok then
+local status_navic_ok, navic = pcall(require, "nvim-navic")
+if not status_navic_ok then
 	return
 end
 

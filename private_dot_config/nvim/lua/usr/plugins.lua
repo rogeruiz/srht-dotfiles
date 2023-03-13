@@ -64,7 +64,7 @@ return require("packer").startup(function()
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = {
-			"SmiteshP/nvim-gps",
+			"SmiteshP/nvim-navic",
 			"nvim-treesitter/nvim-treesitter",
 		},
 	})
