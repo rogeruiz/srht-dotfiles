@@ -121,6 +121,59 @@ lualine.setup({
 				source = diff_source,
 			},
 		},
+
+		lualine_c = {},
+		lualine_x = {
+			{
+				"diagnostics",
+				source = { "nvim" },
+				sections = { "error", "warn", "info", "hint" },
+				diagnostics_color = {
+					error = { bg = colors.maroon, fg = colors.crust },
+					warn = { bg = colors.peach, fg = colors.crust },
+					info = { bg = colors.blue, fg = colors.crust },
+					hint = { bg = colors.rosewater, fg = colors.crust },
+				},
+				always_visible = false,
+			},
+		},
+		lualine_y = { search_result },
+		lualine_z = {
+			"fileformat",
+			location_with_icons,
+			linenumber_with_icons,
+		},
+	},
+	inactive_sections = {
+		lualine_b = {
+			{
+				"b:gitsigns_head",
+				icon = "",
+				fmt = trunc(80, 4, nil, true),
+			},
+			{
+				"diff",
+				source = diff_source,
+			},
+		},
+
+		lualine_c = {
+			{
+				"filename",
+				icon = icons.ui.NewFile .. " ",
+				icons_enabled = true,
+				file_status = true,
+				path = 2,
+			},
+		},
+		lualine_z = {
+			"fileformat",
+			location_with_icons,
+			linenumber_with_icons,
+		},
+	},
+	tabline = {},
+	winbar = {
 		lualine_c = {
 			{
 				"filename",
@@ -134,53 +187,32 @@ lualine.setup({
 				modified,
 				icon = icons.git.Diff .. "",
 				icons_enabled = true,
-				color = { bg = colors.red },
+				color = { bg = colors.peach, fg = colors.mantle },
 			},
-			{ gps.get_location, cond = gps.is_available },
+			{ navic.get_location, cond = navic.is_available },
 		},
-		lualine_x = {
-			{
-				"diagnostics",
-				source = { "nvim" },
-				sections = { "error", "warn", "info", "hint" },
-				diagnostics_color = {
-					error = { bg = colors.red, fg = colors.white },
-					warn = { bg = colors.orange, fg = colors.white },
-					info = { bg = colors.light_green, fg = colors.white },
-					hint = { bg = colors.green, fg = colors.white },
-				},
-				always_visible = false,
-			},
-		},
-		lualine_y = { search_result, "filetype" },
-		lualine_z = {
-			"fileformat",
-			location_with_icons,
-			linenumber_with_icons,
-		},
+
+		lualine_y = { "filetype" },
 	},
-	inactive_sections = {
-		lualine_a = {
+	inactive_winbar = {
+		lualine_c = {
 			{
 				"filename",
 				icon = icons.ui.NewFile .. " ",
 				icons_enabled = true,
-				file_status = true,
-				path = 2,
+				file_status = false,
+				path = 1,
+				shorting_target = 50,
 			},
+			{
+				modified,
+				icon = icons.git.Diff .. "",
+				icons_enabled = true,
+				color = { bg = colors.peach, fg = colors.mantle },
+			},
+			{ navic.get_location, cond = navic.is_available },
 		},
-		lualine_b = {},
-		lualine_c = {},
-		lualine_x = {},
-		lualine_y = {
-			"filetype",
-		},
-		lualine_z = {
-			"fileformat",
-			location_with_icons,
-			linenumber_with_icons,
-		},
+		lualine_y = { "filetype" },
 	},
-	tabline = {},
 	extensions = {},
 })
