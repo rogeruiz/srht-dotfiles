@@ -8,11 +8,6 @@ local icon = require("usr.icons").neorg
 neorg.setup({
 	load = {
 		["core.defaults"] = {},
-		["core.keybinds"] = {
-			config = {
-				default_keybinds = true,
-			},
-		},
 		["core.highlights"] = {},
 		["core.norg.news"] = {
 			config = {
@@ -21,7 +16,7 @@ neorg.setup({
 		},
 		["core.norg.journal"] = {
 			config = {
-				workspace = "personal",
+				workspace = "yo",
 			},
 		},
 		["core.norg.concealer"] = {
@@ -119,8 +114,8 @@ neorg.setup({
 		["core.norg.dirman"] = {
 			config = {
 				workspaces = {
-					work = "~/Dropbox/Notebooks/work",
-					personal = "~/Dropbox/Notebooks/personal",
+					trussworks = "~/Dropbox/Notebooks/trussworks",
+					yo = "~/Dropbox/Notebooks/yo",
 				},
 			},
 		},
