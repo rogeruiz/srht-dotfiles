@@ -8,15 +8,12 @@ if not status_navic_ok then
 	return
 end
 
-local colors = {
-	red = "#ca1243",
-	grey = "#a0a1a7",
-	black = "#383a42",
-	white = "#f3f3f3",
-	light_green = "#83a598",
-	orange = "#fe8019",
-	green = "#8ec07c",
-}
+local catppuccin_ok, catppuccin = pcall(require, "catppuccin.palettes")
+if not catppuccin_ok then
+	return
+end
+
+local colors = catppuccin.get_palette()
 
 local icons = require("usr.icons")
 

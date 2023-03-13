@@ -76,7 +76,7 @@ return require("packer").startup(function()
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 		requires = {
-			"https://git.sr.ht/~p00f/nvim-ts-rainbow",
+			"HiPhish/nvim-ts-rainbow2",
 			"nvim-treesitter/nvim-treesitter-refactor",
 		},
 	})

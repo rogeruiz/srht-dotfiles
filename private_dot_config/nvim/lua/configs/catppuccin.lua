@@ -9,10 +9,10 @@ catppuccin.setup({
 		light = "latte",
 		dark = "mocha",
 	},
-	transparent_background = false,
+	transparent_background = true,
 	term_colors = false,
 	dim_inactive = {
-		enabled = false,
+		enabled = true,
 		shade = "dark",
 		percentage = 0.15,
 	},
@@ -36,11 +36,22 @@ catppuccin.setup({
 	custom_highlights = {},
 	integrations = {
 		cmp = true,
+		dap = true,
+		fidget = true,
 		gitsigns = true,
+		indent_blankline = {
+      enabled = true,
+      colored_indent_levels = false
+    },
+		lsp_trouble = true,
+		markdown = true,
+		mason = true,
+		mini = false,
+		navic = true,
+		notify = false,
 		nvimtree = true,
 		telescope = true,
-		notify = false,
-		mini = false,
+		ts_rainbow2 = true,
 		-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 	},
 })
