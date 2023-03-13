@@ -91,6 +91,8 @@ sketchybar --add item music  left \
                              label.padding_left=10 \
                              label.padding_right=10 \
                              icon.drawing=off \
+           --subscribe music mouse.clicked \
+           --subscribe music system_woke \
            --subscribe music music_change \
            --subscribe music spotify_change
 
