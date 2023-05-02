@@ -29,6 +29,7 @@
   "neorg": { "branch": "main", "commit": "d61c4d1dd9442ec34d57e4a296b35a1117e65dbb" },
   "neorg-telescope": { "branch": "main", "commit": "787f95c527d4f3fe1c25600e92d939456967e944" },
   "nui.nvim": { "branch": "main", "commit": "ecd9def93891b9260b15b5fcef542eaabf4145c9" },
+  "null-ls.nvim": { "branch": "main", "commit": "33b853a3933eed3137cd055aac4e539e69832ad0" },
   "nvim": { "branch": "main", "commit": "939be5f7fcbc15abeaad9214bb253a4551f6f6e6" },
   "nvim-autopairs": { "branch": "master", "commit": "7566a86f44bb72ba2b1a609f528a27d93241502d" },
   "nvim-cmp": { "branch": "main", "commit": "777450fd0ae289463a14481673e26246b5e38bf2" },

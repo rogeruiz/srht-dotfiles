@@ -53,15 +53,6 @@ return {
             return "%p%%" .. icons.ui.SeparatorForward .. "  %L"
         end
 
-        local function modified()
-            if vim.bo.modified then
-                return "+"
-            elseif vim.bo.modifiable == false or vim.bo.readonly == true then
-                return "-"
-            end
-            return ""
-        end
-
         require("lualine").setup({
             options = {
                 icons_enabled = true,
@@ -85,9 +76,12 @@ return {
                     "dbout",
                     "dbui",
                     "guihua",
-                    "help",
                     "neo-tree",
+                    "qf",
                     "toggleterm",
+                    winbar = {
+                        "help",
+                    },
                 },
                 always_divide_middle = true,
             },
@@ -105,10 +99,16 @@ return {
                         fmt = trunc(80, 4, nil, true),
                     },
                     {
-                        "diff",
+                        'diff',
+                        symbols = {
+                            added = icons.git.Add .. ' ',
+                            modified = icons.git.Mod .. ' ',
+                            removed = icons.git.Remove .. ' ',
+                        },
                         source = diff_source,
                     },
                 },
+                lualine_c = {},
                 lualine_x = {
                     {
                         "diagnostics",
@@ -120,7 +120,6 @@ return {
                             info = { bg = colors.teal, fg = colors.crust },
                             hint = { bg = colors.rosewater, fg = colors.crust },
                         },
-                        always_visible = false,
                     },
                 },
                 lualine_y = { search_result },
@@ -131,6 +130,7 @@ return {
                 },
             },
             inactive_sections = {
+                lualine_a = {},
                 lualine_b = {
                     {
                         "b:gitsigns_head",
@@ -138,19 +138,18 @@ return {
                         fmt = trunc(80, 4, nil, true),
                     },
                     {
-                        "diff",
+                        'diff',
+                        symbols = {
+                            added = icons.git.Add .. ' ',
+                            modified = icons.git.Mod .. ' ',
+                            removed = icons.git.Remove .. ' ',
+                        },
                         source = diff_source,
                     },
                 },
-                lualine_c = {
-                    {
-                        "filename",
-                        icon = icons.ui.NewFile .. " ",
-                        icons_enabled = true,
-                        file_status = true,
-                        path = 2,
-                    },
-                },
+                lualine_c = {},
+                lualine_x = {},
+                lualine_y = {},
                 lualine_z = {
                     "fileformat",
                     location_with_icons,
@@ -171,13 +170,31 @@ return {
                 },
                 lualine_b = {
                     {
-                        modified,
-                        icon = icons.git.Diff .. "",
-                        icons_enabled = true,
-                        color = { bg = colors.blue, fg = colors.mantle },
+                        function()
+                            return navic.get_location()
+                        end,
+                        cond = function()
+                            return navic.is_available()
+                        end,
                     },
                 },
-                lualine_c = {
+                lualine_c = {},
+                lualine_x = {},
+                lualine_y = { "filetype" },
+                lualine_z = {},
+            },
+            inactive_winbar = {
+                lualine_a = {
+                    {
+                        "filename",
+                        icon = icons.ui.NewFile .. " ",
+                        icons_enabled = true,
+                        file_status = false,
+                        path = 1,
+                        shorting_target = 50,
+                    },
+                },
+                lualine_b = {
                     {
                         function()
                             return navic.get_location()
@@ -187,13 +204,6 @@ return {
                         end,
                     },
                 },
-                lualine_x = {},
-                lualine_y = { "filetype" },
-                lualine_z = {},
-            },
-            inactive_winbar = {
-                lualine_a = { "filetype" },
-                lualine_b = {},
                 lualine_c = {},
                 lualine_x = {},
                 lualine_y = { "filetype" },

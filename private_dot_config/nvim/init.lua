@@ -310,11 +310,11 @@ require('telescope').setup {
       },
     },
     theme = "dropdown",
-    layout_strategy = 'flex',
+    layout_strategy = 'vertical',
     layout_config = {
-      prompt_position = "top",
       width = 0.80,
       height = 0.90,
+      preview_height = 0.70,
     },
   },
 }

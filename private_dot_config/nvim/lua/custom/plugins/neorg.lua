@@ -6,7 +6,10 @@ return {
         'nvim-lua/plenary.nvim',
         'nvim-neorg/neorg-telescope',
     },
-    ft = "norg",
+    ft = {
+        "alpha",
+        "norg",
+    },
     opts = {
         load = {
             ["core.defaults"] = {},
