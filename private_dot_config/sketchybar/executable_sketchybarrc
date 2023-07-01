@@ -1,8 +1,8 @@
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 
-# WARN: Este variable tiene que ser el mismo de ~/.yabairc con el mismo nombre.
-margins=30
-
+# WARN: Estos variables tiene que ser el mismo de ~/.yabairc con el mismo
+# nombre.
+margins=22
 altura=40
 
 sketchybar --bar height=$altura \
@@ -31,8 +31,8 @@ sketchybar \
 
 sketchybar --default updates=when_shown                    \
                      drawing=on                            \
-                     icon.font="mplus Nerd Font:regular:16.0"  \
-                     label.font="mplus Nerd Font:regular:16.0" \
+                     icon.font="mplus Nerd Font:regular:18.0"  \
+                     label.font="mplus Nerd Font:regular:14.0" \
                      label.padding_left=4                  \
                      label.padding_right=4                 \
                      icon.padding_left=4                   \
