@@ -164,6 +164,8 @@ sketchybar \
   background.color="$(color crust)" \
 	icon.color="$(color green)" \
 	label.color="$(color subtext1)" \
+	icon.highlight_color="$(color red)" \
+	label.highlight_color="$(color red)" \
   --set headphones \
   background.color="$(color crust)" \
 	icon.color="$(color sapphire)" \
