@@ -71,6 +71,13 @@ require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
+  {
+    "ruifm/gitlinker.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    }
+  },
+
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
@@ -99,12 +106,16 @@ require('lazy').setup({
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
 
-      -- Useful status updates for LSP
+      -- Useful status updates for LSP status progress
       {
         'j-hui/fidget.nvim',
         opts = {
+          text = {
+            spinner = "triangle",
+          },
           window = { blend = 0 },
-        }
+        },
+        tag = "legacy",
       },
 
       -- Additional lua configuration, makes nvim stuff amazing!
@@ -116,7 +127,8 @@ require('lazy').setup({
   {
     "iamcco/markdown-preview.nvim",
     ft = "markdown",
-    run = "cd app && yarn install",
+    lazy = true,
+    build = "cd app && yarn install",
   },
 
   -- Autocompletacíon
@@ -197,6 +209,8 @@ require('lazy').setup({
     enabled = true,
   },
 })
+
+require("gitlinker").setup()
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -314,7 +328,7 @@ require('telescope').setup {
     layout_config = {
       width = 0.80,
       height = 0.90,
-      preview_height = 0.70,
+      -- preview_height = 0.70,
     },
   },
 }
@@ -330,6 +344,9 @@ vim.keymap.set('n', '<leader>/', function()
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
     previewer = false,
+    -- layout_config = {
+    --   preview_height = nil,
+    -- },
   })
 end, { desc = '[/] Búsqueda aproximada en el búfer actual' })
 
@@ -472,10 +489,11 @@ local on_attach = function(client, bufnr)
 
   -- Solomente prender ha _navic_ y _lsp-folding_ para ciertos servidores.
   if (client.name ~= "efm" and
-      client.name ~= "diagnosticls" and
-      client.name ~= "eslint" and
-      client.name ~= "emmet_ls" and
-      client.name ~= "tailwindcss") then
+        client.name ~= "diagnosticls" and
+        client.name ~= "spectral" and
+        client.name ~= "eslint" and
+        client.name ~= "emmet_ls" and
+        client.name ~= "tailwindcss") then
     require("nvim-navic").attach(client, bufnr)
   end
 end
@@ -542,6 +560,14 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  yamlls = {
+    yaml = {
+      schemas = {
+        ["https://json.schemastore.org/circleciconfig.json"] = "/.circleci/*",
+        ["https://json.schemastore.org/github-action.json"] = "/.github/workflows/*",
+      }
+    }
+  }
 }
 
 -- Setup neovim lua configuration
@@ -583,6 +609,9 @@ cmp.setup {
       luasnip.lsp_expand(args.body)
     end,
   },
+  experimental = {
+    ghost_test = true,
+  },
   mapping = cmp.mapping.preset.insert {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -610,10 +639,46 @@ cmp.setup {
       end
     end, { 'i', 's' }),
   },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+  formatting = {
+    fields = { "kind", "abbr", "menu" },
+    format = function(entry, vim_item)
+      -- Kind icons
+      local kind_icons = require("custom.icons").kind
+      vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+      -- NOTE: order matters
+      vim_item.menu = ({
+        nvim_lsp = "[LSP]",
+        buffer = "[Buffer]",
+        path = "[Path]",
+        emoji = "[Emoji]",
+        luasnip = "[LuaSnip]",
+      })[entry.source.name]
+      return vim_item
+    end,
   },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+    { name = 'path' },
+    { name = 'emoji' },
+    { name = 'luasnip' },
+  }, {
+    { name = "buffer" },
+  }),
+  cmp.setup.cmdline({ "/", "?" },
+    {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = "buffer" },
+      },
+    }),
+  cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = "cmdline" },
+      { name = "path" },
+    }),
+  }),
 }
 
 -- Filetype mappings
@@ -630,8 +695,8 @@ vim.cmd([[
   au BufNewFile,BufRead *.ejs set ft=liquid.html.js.css
   au BufNewFile,BufRead *.twig set ft=html.twig
   au BufNewFile,BufRead *.toml set ft=toml
-  au BufNewFile,BufRead *.js set ft=javascriptreact
-  au BufNewFile,BufRead *.jsx set ft=javascriptreact
+  au BufNewFile,BufRead *.js set ft=javascript
+  au BufNewFile,BufRead *.jsx set ft=javascript
   au BufNewFile,BufRead nginx.config set ft=nginx
   au BufRead,BufNewFile spec set ft=yaml
   au BufNewFile,BufRead *.ledger set ft=ledger

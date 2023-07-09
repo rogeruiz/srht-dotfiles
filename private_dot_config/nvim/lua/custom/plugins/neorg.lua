@@ -15,11 +15,6 @@ return {
             ["core.defaults"] = {},
             ["core.highlights"] = {},
             ["core.integrations.telescope"] = {},
-            ["core.news"] = {
-                config = {
-                    check_news = false,
-                },
-            },
             ["core.journal"] = {
                 config = {
                     workspace = "yo",

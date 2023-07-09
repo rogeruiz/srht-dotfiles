@@ -44,13 +44,13 @@ return {
 
         -- Basic debugging keymaps, feel free to change to your liking!
         vim.keymap.set('n', '<F5>', dap.continue)
-        vim.keymap.set('n', '<F1>', dap.step_into)
-        vim.keymap.set('n', '<F2>', dap.step_over)
-        vim.keymap.set('n', '<F3>', dap.step_out)
-        vim.keymap.set('n', '<leader>p', dap.toggle_breakpoint)
+        vim.keymap.set('n', '<F6>', dap.step_into)
+        vim.keymap.set('n', '<F7>', dap.step_over)
+        vim.keymap.set('n', '<F8>', dap.step_out)
+        vim.keymap.set('n', '<leader>p', dap.toggle_breakpoint, { desc = "Añadir un punto para pausar" })
         vim.keymap.set('n', '<leader>P', function()
             dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-        end)
+        end, { desc = "Añadir un punto con expresíon para pausar" })
 
         -- Dap UI setup
         -- For more information, see |:help nvim-dap-ui|
@@ -87,7 +87,24 @@ return {
         vim.fn.sign_define('DapStopped', { text = '', texthl = '', linehl = '', numhl = '' })
         vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl = '', linehl = '', numhl = '' })
 
+        -- Esta funcíon exsite para que la funcíon interna de dap.utils no se corre cuando empiezo a Neovim. Porque
+        -- cunado uso a dap.utils#pick_process directamente se requiere selecíonar el ID del processo cuando impiezo
+        -- Neovim. Pero con esta funcíon puedo esperar hasta que llamo al DAP para ejecutar dap.utils#pick_process.
+        local pick_process = function()
+            return require("dap.utils").pick_process({ filter = "milmove_gin" })
+        end
+
         -- Install golang specific config
-        require('dap-go').setup()
+        require('dap-go').setup({
+            dap_configurations = {
+                {
+                    name = "Debug Server",
+                    type = "go",
+                    request = "attach",
+                    mode = "local",
+                    processId = pick_process,
+                },
+            },
+        })
     end,
 }
