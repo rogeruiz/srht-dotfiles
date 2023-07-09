@@ -6,4 +6,7 @@
 
 meses_del_ano=("enero" "febrero" "marzo" "abril" "mayo" "junio" "julio" "agosto" "septiembre" "octubre" "noviembre" "diciembre")
 
-sketchybar --set $NAME label="$(date "+%d de ${meses_del_ano[$(date "+%m")]} %Y %H:%M:%S")"
+meses_del_ano_corto=("enero" "feb." "marzo" "abr." "mayo" "jun." "jul." "agosto" "set." "oct." "nov." "dic.")
+
+# sketchybar --set $NAME label="$(date "+%d ${meses_del_ano_corto[$(date "+%m")]} '%y %H:%M:%S")"
+sketchybar --set $NAME label="$(date "+%d/%m/%y %H:%M:%S")"
