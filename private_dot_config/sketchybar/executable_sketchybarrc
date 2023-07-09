@@ -69,16 +69,18 @@ done
 # Current application section
 sketchybar --add item front_app  left \
            --set front_app       script="$PLUGIN_DIR/front_app.sh" \
-                                 icon=ﬓ \
                                  background.height=$altura \
                                  background.padding_left=0 \
                                  background.padding_right=0 \
-                                 label.padding_right=10 \
-                                 icon.padding_left=10 \
-                                 icon.padding_right=5 \
+                                 icon.drawing=off \
+                                 label.padding_left=10 \
+                                 label.font="mplus Nerd Font:regular:18.0" \
                                  label.padding_right=10 \
                                  updates=when_shown \
            --subscribe front_app front_app_switched
+                                 # icon.padding_left=10 \
+                                 # icon.padding_right=5 \
+                                 # icon=󰣆 \
 
 sketchybar --add event spotify_change "com.spotify.client.PlaybackStateChanged"
 sketchybar --add event music_change "com.apple.Music.playerInfo"
