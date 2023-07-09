@@ -147,14 +147,14 @@ sketchybar \
 	icon.color="$(color subtext0)" \
 	label.color="$(color subtext1)" \
 	--set /space\./ \
-	icon.color="$(color rosewater)" \
-	icon.highlight_color="$(color mauve)" \
+	icon.color="$(color mauve)" \
+	icon.highlight_color="$(color green)" \
 	--set front_app \
-  background.color="$(color mauve)" \
+  background.color="$(color green)" \
 	icon.color="$(color mantle)" \
   label.color="$(color mantle)" \
 	--set music \
-  background.color="$(color flamingo)" \
+  background.color="$(color mauve)" \
 	label.color="$(color crust)" \
   --set mic \
   background.color="$(color base)" \
