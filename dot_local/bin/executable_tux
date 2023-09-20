@@ -25,8 +25,8 @@ echo
 PS3="Por favor elige tu sesión: "
 #shellcheck disable=2207
 sessions=($(tmux list-sessions -F "#S" 2>/dev/null) "nuevo sesión" "zsh" "nushell")
-incoming_message='¿Qué quieres lograr?:'
-outgoing_message='¿Qué lograste?:'
+incoming_message='¿Qué quieres lograr?: '
+outgoing_message='¿Qué lograste?: '
 
 # A wrapper function around tick, lovingly named punch_clock.
 # @param $1 tick sub-command
@@ -64,7 +64,7 @@ do
       echo -n $incoming_message
       read -r "session_message?"
       current_tux_session="$new_session"
-      punch_clock "start" "$new_session" "$incoming_message $session_message"
+      punch_clock "start" "$new_session" "$incoming_message$session_message"
       tmux new-session -s "$new_session"
       break
       ;;
@@ -84,7 +84,7 @@ do
      echo -n "$incoming_message"
      read -r "session_message?"
      current_tux_session="$session"
-     punch_clock "start" "$session" "$incoming_message $session_message"
+     punch_clock "start" "$session" "$incoming_message$session_message"
      tmux attach-session -t "$session"
      break
      ;;
@@ -97,7 +97,7 @@ if [[ "$?" == 0 && -n $current_tux_session ]];
 then
   echo -n "$outgoing_message"
   read -r "session_message?"
-  punch_clock "stop" "$current_tux_session" "$outgoing_message $session_message"
+  punch_clock "stop" "$current_tux_session" "$outgoing_message$session_message"
   echo
   ${lolcat_bin} <(echo ">-< --------------------------- >-<")
   ${lolcat_bin} <(echo "    Aquí hay un registro de su tiempo.")

@@ -13,7 +13,7 @@ else
 fi
 
 sed -E -i '' "s/^(colors: \*).+$/\1${current_mode}/" ~/.alacritty.yml
-sed -E -i '' "s/^(set.background = ).+$/\1\"${current_mode}\"/" ~/.config/nvim/lua/usr/theme.lua
+sed -E -i '' "s/(vim.o.background = ).+$/\1\"${current_mode}\"/" ~/.config/nvim/lua/custom/plugins/catppuccin.lua
 sed -E -i '' "s/^(palette = ).+$/\1\"${current_mode}\"/" ~/.config/starship.toml
 sed -E -i '' "s/^(set -g @catppuccin_flavour ).+$/\1'${catppuccin_flavour}'/" ~/.tmux.conf
 tmux source-file ~/.tmux.conf &
