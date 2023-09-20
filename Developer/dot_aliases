@@ -123,7 +123,11 @@ coloresGit() {
 
 alias colores-git=coloresGit
 
-# Esto es para cunado necesito usar el Prime API con mi tarjeta inteligente CAC
+# Esto es para cunado necesito usar el Prime API con mi tarjeta inteligente
+# CAC. Los archivos que empiezan con `cac_piv_` se pueden generan con los
+# próximos pasos:
+# - p11tool --provider /Library/OpenSC/lib/opensc-pkcs11.so --list-privkeys --login --only-urls | rg 'PIV' > ./cac_piv_private_key_url
+# - p11tool --provider /Library/OpenSC/lib/opensc-pkcs11.so --list-certs --only-urls | rg 'PIV' > ./cac_piv_cert_url
 murl() {
   OPENSSL_CONF=~/.local/share/rstrz/pkcs11/custom.conf \
   $(brew --prefix curl)/bin/curl \
