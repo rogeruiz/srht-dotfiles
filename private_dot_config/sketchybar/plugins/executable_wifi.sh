@@ -59,7 +59,7 @@ then
 fi
 
 if [[ -z "$SSID" ]]; then
-  sketchybar --set $NAME label.drawing=off icon=睊
+  sketchybar --set $NAME label.drawing=off icon="睊"
 else
   sketchybar --set $NAME label.drawing=on label="$SSID ${CURR_FUERZA}" icon=直
 fi

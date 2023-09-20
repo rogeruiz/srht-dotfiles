@@ -20,7 +20,7 @@ eval "$(op completion zsh)"; compdef _op op
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt appendhistory
+setopt share_history
 
 # ZSH Auto Suggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -41,10 +41,10 @@ bindkey -M vicmd ' ' edit-command-line
 bindkey '^[[Z' reverse-menu-complete
 
 # Include Enviroment Variables
-. $HOME/Developer/.variables
+source $HOME/Developer/.variables
 
 # Include Custom Aliases
-. $HOME/Developer/.aliases
+source $HOME/Developer/.aliases
 
 ulimit -n 10000
 
@@ -70,3 +70,10 @@ export PATH=$(go env GOPATH)/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# bun completions
+[ -s "/Users/rsr/.bun/_bun" ] && source "/Users/rsr/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -64,9 +64,9 @@ return {
                 ":lua require('telescope.builtin').live_grep()<CR>"
             ),
             dashboard.button("r", icons.ui.History .. "  Reciente archivos", ":Telescope oldfiles<CR>"),
-            dashboard.button("d", icons.ui.Pencil .. "  Diario de hoy", ":Neorg journal today<CR>"),
-            dashboard.button("da", icons.ui.Pencil .. "  Diario de ayer", ":Neorg journal yesterday<CR>"),
-            dashboard.button("dm", icons.ui.Pencil .. "  Diario de mañana", ":Neorg journal tomorrow<CR>"),
+            dashboard.button("d", icons.ui.Pencil .. "  Diario", ":Telekasten panel<CR>"),
+            dashboard.button("dh", icons.ui.Pencil .. "  Diario de hoy", ":Telekasten goto_today<CR>"),
+            dashboard.button("ds", icons.ui.Pencil .. "  Diario de semana", ":Telekasten goto_thisweek<CR>"),
             dashboard.button("a", icons.ui.Gear .. "  Ajustes", ":e $MYVIMRC | :cd %:p:h | :Neotree<CR>"),
             dashboard.button("s", icons.diagnostics.Error .. "  Salir de NVIM", ":qa<CR>"),
         }

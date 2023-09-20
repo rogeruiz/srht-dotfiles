@@ -126,7 +126,7 @@ require('lazy').setup({
   -- Markdown
   {
     "iamcco/markdown-preview.nvim",
-    ft = "markdown",
+    ft = { "markdown", "telekasten" },
     lazy = true,
     build = "cd app && yarn install",
   },
@@ -365,7 +365,6 @@ require('nvim-treesitter.configs').setup {
     'cpp',
     'go',
     'lua',
-    'norg',
     'python',
     'rust',
     'tsx',
@@ -712,9 +711,9 @@ vim.cmd([[
 -- Filetypes configurations
 vim.cmd([[
   au FileType markdown setlocal shiftwidth=4 tabstop=4 wrap spell expandtab tw=80 wm=0 linebreak list
-  au FileType norg setlocal wrap spell expandtab tw=80 wm=0 linebreak list
   au FileType yaml setlocal shiftwidth=2 tabstop=2 nowrap spell expandtab tw=80 wm=0 linebreak list
-  au FileType gitcommit setlocal shiftwidth=4 tabstop=4 expandtab wrap spell tw=72 wm=0 linebreak list
+  au FileType toml setlocal shiftwidth=2 tabstop=2 nowrap spell expandtab tw=80 wm=0 linebreak list
+  au FileType gitcommit setlocal shiftwidth=4 tabstop=4 expandtab wrap spell tw=80 wm=0 linebreak list
 ]])
 
 -- The line beneath this is called `modeline`. See `:help modeline`
