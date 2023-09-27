@@ -19,9 +19,11 @@ case $INFO in
   "calibre") INFO="󱉟" ;;
   "Calendario") INFO="󰧒" ;;
   "Catálogo Tipográfico") INFO="" ;;
+  "Centro de control") INFO="󰕮" ;;
   "Configuración del Sistema") INFO="" ;;
   "Creative Cloud") INFO="" ;;
   "Docker") INFO="󰡨" ;;
+  "Dropbox") INFO="" ;;
   "Finder") INFO="󰀶" ;;
   "Firefox") INFO="󰈹" ;;
   "Google Chrome") INFO="󰊯" ;;
@@ -51,6 +53,8 @@ case $INFO in
   "Velja") INFO="󰄛" ;;
   "Vista Previa") INFO="" ;;
   "zoom.us") INFO="󰨜" ;;
+  "UserNotificationCenter") INFO="" ;;
+  "Compilador de problemas") INFO="" ;;
   *)
     ;;
 esac

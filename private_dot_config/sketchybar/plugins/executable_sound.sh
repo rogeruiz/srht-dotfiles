@@ -6,11 +6,11 @@ HIGHLIGHT="false"
 
 if [[ $VOLUME == "missing value" ]]
 then
-  ICON="﴿ "
+  ICON="󰡁 "
   VOLUME="  "
 else
   if [[ $MUTED != "false" ]]; then
-    ICON="ﱝ"
+    ICON="󰝟"
     HIGHLIGHT="true"
   else
     case ${VOLUME} in

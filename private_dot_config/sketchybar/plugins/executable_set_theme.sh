@@ -184,7 +184,7 @@ sketchybar \
 ~/.local/bin/darwin/current_visual_mode
 
 # set the yabai colours as well
-# yabai \
-# 	-m config active_window_border_color "$(color pink)" \
-# 	-m config normal_window_border_color "$(color mauve)" \
-# 	-m config heedback_color "$(color pink)"
+yabai \
+	-m config active_window_border_color "$(color pink)" \
+	-m config normal_window_border_color "$(color mauve)" \
+	-m config feedback_color "$(color pink)"
