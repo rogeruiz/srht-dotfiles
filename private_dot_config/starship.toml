@@ -4,10 +4,10 @@
 format = """$time$git_branch$git_commit$git_state$git_metrics$git_status
 $battery$directory
 $aws\
-[ ﲾ  ](bg:sky fg:surface0)$package$rust$nodejs$golang$terraform$ruby$nix_shell[ ](bg:sky)
+[ 󰟀 ](bg:sky fg:surface0)$package$rust$nodejs$golang$terraform$ruby$nix_shell[ ](bg:sky)
 $jobs$cmd_duration$character"""
 
-palette = "light"
+palette = "dark"
 
 # 
 # 
@@ -17,9 +17,9 @@ palette = "light"
 # 
 
 [character]
-success_symbol = "[    ](bg:green fg:base)[](fg:green)"
-error_symbol = "[     ](bg:red fg:base)[  ](fg:red)"
-vimcmd_symbol = "[    ](bg:mauve fg:base)[](fg:mauve)"
+success_symbol = "[   ](bg:green fg:base)[](fg:green)"
+error_symbol = "[    ](bg:red fg:base)[  ](fg:red)"
+vimcmd_symbol = "[   ](bg:mauve fg:base)[](fg:mauve)"
 format = "$symbol   "
 
 [cmd_duration]
@@ -31,11 +31,11 @@ symbol = " "
 format = "[ $symbol ](bg:red fg:surface0)[ $version ](italic bg:surface0 fg:red)"
 
 [nodejs]
-symbol = " "
+symbol = "󰎙 "
 format = "[ $symbol ](bg:green fg:surface0)[ $version ](italic bg:surface0 fg:green)"
 
 [golang]
-symbol = "ﳑ "
+symbol = " "
 format = "[ $symbol ](bg:sapphire fg:surface0)[ $version ](italic bg:surface0 fg:sapphire)"
 
 [rust]
@@ -56,17 +56,17 @@ format = "[   ](bold bg:#ff9900 fg:surface0)[ $symbol](bold fg:#ff9900 bg:bas
 us-gov-west-1 = "    us-gov-west-1"
 us-gov-east-1 = "    us-gov-east-1"
 
-[aws.profile_aliases]
-transcom-gov-dev = "    nonato/dev"
-transcom-gov-milmove-demo = "  蠟 nonato/demo"
-transcom-gov-milmove-exp = "    nonato/exp"
-transcom-gov-milmove-loadtest = "    nonato/loadtest"
-transcom-gov-milmove-stg = "撚   ato/stg"
-transcom-gov-milmove-prd = "撚 嘆 ato/prd"
-transcom-gov-org-root = "    org-root"
+# [aws.profile_aliases]
+# transcom-gov-dev = "    nonato/dev"
+# transcom-gov-milmove-demo = "  蠟 nonato/demo"
+# transcom-gov-milmove-exp = "    nonato/exp"
+# transcom-gov-milmove-loadtest = "    nonato/loadtest"
+# transcom-gov-milmove-stg = "撚   ato/stg"
+# transcom-gov-milmove-prd = "撚 嘆 ato/prd"
+# transcom-gov-org-root = "    org-root"
 
 [package]
-symbol = " "
+symbol = " "
 display_private = true
 format = "[ $symbol ](bg:peach fg:surface0)[ $version ](italic bg:surface0 fg:peach)"
 
@@ -76,16 +76,16 @@ format = "[$symbol](bold bg:#f14e32 fg:surface0)[ $branch(:$remote_branch) ](ita
 
 [git_status]
 format = "([](bold #f14e32) [$all_status$ahead_behind]($style) )" # NOTE: This is Git orange
-modified = "[ﱐ](bold blue) "
-staged = "[](bold green) "
-deleted = "[](bold red) "
-renamed = "[](bold peach) "
-untracked = "[](bold yellow) "
+modified = "[](bold blue) "
+staged = "[](bold green) "
+deleted = "[](bold red) "
+renamed = "[](bold peach) "
+untracked = "[󰡯](bold yellow) "
 diverged = "[](bold maroon)"
 ahead = "[](bold green) "
 behind = "[](bold flamingo) "
 conflicted = "[](bold yellow) "
-stashed = "[﬒](bold magenta) "
+stashed = "[󰘓](bold magenta) "
 
 [git_metrics]
 format = " ([ $added]($added_style) )([ $deleted]($deleted_style) )"
@@ -98,7 +98,7 @@ format = "[＃](bold bg:flamingo fg:surface0)[ $hash$tag ](italic bg:surface0 fg
 
 [directory]
 truncation_length = 5
-truncation_symbol = " "
+truncation_symbol = "  "
 home_symbol = "~"
 style = "bold bg:surface0 fg:green"
 
@@ -122,7 +122,7 @@ format = "[ $symbol ]($style)[$number](bold bg:surface0 fg:subtext1)"
 [time]
 disabled = false
 time_format = "%T"
-format = "[ 﨟 ](bg:yellow fg:crust)[ $time ](italic bg:surface0 fg:yellow)[ ](bg:yellow)"
+format = "[ 󰥔  ](bg:yellow fg:crust)[ $time ](italic bg:surface0 fg:yellow)[ ](bg:yellow)"
 utc_time_offset = "local"
 
 # [custom.git_spark]
