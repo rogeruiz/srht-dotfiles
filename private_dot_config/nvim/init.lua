@@ -274,6 +274,8 @@ vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldlevel = 3
 
+vim.o.spelllang = "en,es"
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience

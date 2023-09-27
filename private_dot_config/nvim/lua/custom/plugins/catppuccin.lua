@@ -60,7 +60,7 @@ return {
     },
     config = function()
         -- Establecer el color de fondo del tema más temprano
-        vim.o.background = "light"
+        vim.o.background = "dark"
         vim.cmd.colorscheme 'catppuccin'
     end,
 }
