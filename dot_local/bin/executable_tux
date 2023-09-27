@@ -1,5 +1,5 @@
 #!/bin/zsh
-export PATH="$PATH:/usr/local/bin"
+export PATH="$PATH:/Users/yo/.local/bin/darwin:/usr/local/bin"
 lolcat_bin=$(which lolcat)
 
 # Set all my themes to Dark or Light modes based on macOS (for now) Dark or
