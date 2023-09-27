@@ -12,6 +12,7 @@ case $INFO in
   "Asistente de Redes Captivas") INFO="󰀂" ;;
   "Alacritty") INFO="" ;;
   "Amphetamine") INFO="" ;;
+  "App Store") INFO="" ;;
   "Backblaze") INFO="" ;;
   "bzbmenu") INFO="󰈸" ;;
   "Bitdefender Endpoint Security Tools") INFO="󰒃" ;;
@@ -24,6 +25,7 @@ case $INFO in
   "Creative Cloud") INFO="" ;;
   "Docker") INFO="󰡨" ;;
   "Dropbox") INFO="" ;;
+  "FaceTime") INFO="" ;;
   "Finder") INFO="󰀶" ;;
   "Firefox") INFO="󰈹" ;;
   "Google Chrome") INFO="󰊯" ;;
@@ -41,6 +43,7 @@ case $INFO in
   "Música") INFO="" ;;
   "Monitor de Actividad") INFO="" ;;
   "Microsoft Teams") INFO="󰊻" ;;
+  "News") INFO="󰎕" ;;
   "Notational Velocity") INFO="" ;;
   "osascript") INFO="󰯁" ;;
   "Photo Booth") INFO="" ;;
