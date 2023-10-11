@@ -40,4 +40,13 @@ yabai -m config                                   \
     mouse_action2                resize           \
     mouse_drop_action            swap
 
+yabai -m rule --add app="Música" manage=off
+yabai -m rule --add app="Configuración del Sistema" manage=off
+yabai -m rule --add app="DiskImages UI Agent" manage=off
+
+# NOTE: Desactivar la gestión de la ventana de Copiar del Finder porque es demasiado
+# pequeñia y efímera.
+yabai -m rule --add app="Finder" title="Copiar" manage=off
+yabai -m rule --add app="Finder" title="Configuración del Finder" manage=off
+
 echo "yabai configuration loaded.."
