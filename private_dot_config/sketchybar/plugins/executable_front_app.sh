@@ -25,6 +25,7 @@ case $INFO in
   "Creative Cloud") INFO="" ;;
   "Docker") INFO="󰡨" ;;
   "Dropbox") INFO="" ;;
+  "DiskImages UI Agent") INFO="󰨣" ;;
   "FaceTime") INFO="" ;;
   "Finder") INFO="󰀶" ;;
   "Firefox") INFO="󰈹" ;;
@@ -39,6 +40,7 @@ case $INFO in
   "Mail") INFO="󰛮" ;;
   "Mapas") INFO="" ;;
   "Menú de Kandji") INFO="󰾡" ;;
+  "Mensajes") INFO="󰍡" ;;
   "Miro") INFO="󱁉" ;;
   "Música") INFO="" ;;
   "Monitor de Actividad") INFO="" ;;
@@ -46,6 +48,7 @@ case $INFO in
   "News") INFO="󰎕" ;;
   "Notational Velocity") INFO="" ;;
   "osascript") INFO="󰯁" ;;
+  "Pages") INFO="" ;;
   "Photo Booth") INFO="" ;;
   "Safari") INFO="󰀹" ;;
   "ScreenSaverEngine") INFO="" ;;
