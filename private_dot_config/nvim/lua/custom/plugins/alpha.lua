@@ -56,7 +56,7 @@ return {
             dashboard.button(
                 "b",
                 icons.ui.Search .. "  Busque archivos en " .. get_current_directory(),
-                ":lua require('telescope.builtin').find_files({hidden=true})<CR>"
+                ":lua require('telescope.builtin').find_files()<CR>"
             ),
             dashboard.button(
                 "t",
