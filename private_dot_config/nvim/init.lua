@@ -8,15 +8,15 @@
 --          \ \_\
 --           \/_/
 --
---           Esta es mi configuracíon de Neovim que yo uso. Empece con
---           `nvim-lua/kickstart.nvim` para empezar pero ya es una configuracíon
---           que me queda más amamble.
+-- Esta es mi configuracíon de Neovim que yo uso. Empece con
+-- `nvim-lua/kickstart.nvim` para empezar pero ya es una configuracíon
+-- que me queda más amamble.
 --
---           Por mas informacíon de todo esto, vaya a
---           `https://git.sr.ht/~rogeruiz/.files` para vir más sobre todo los
---           elementos de mi configuracíon
+-- Por mas informacíon de todo esto, vaya a
+-- `https://git.sr.ht/~rogeruiz/.files` para vir más sobre todo los
+-- elementos de mi configuracíon
 --
---           Gracias por leer y disfruten el viaje.
+-- Gracias por leer y disfruten el viaje.
 
 -- Establecer Espacio como tecla de líder
 -- Mire `:help mapleader`
@@ -113,7 +113,7 @@ require('lazy').setup({
           text = {
             spinner = "triangle",
           },
-          window = { blend = 0 },
+          window = { blend = 30 },
         },
         tag = "legacy",
       },
@@ -123,7 +123,17 @@ require('lazy').setup({
     },
   },
 
-  -- Markdown
+  --       ___           ___           ___           ___          _____          ___           ___           ___
+  --      /__/\         /  /\         /  /\         /__/|        /  /::\        /  /\         /__/\         /__/\
+  --     |  |::\       /  /::\       /  /::\       |  |:|       /  /:/\:\      /  /::\       _\_ \:\        \  \:\
+  --     |  |:|:\     /  /:/\:\     /  /:/\:\      |  |:|      /  /:/  \:\    /  /:/\:\     /__/\ \:\        \  \:\
+  --   __|__|:|\:\   /  /:/~/::\   /  /:/~/:/    __|  |:|     /__/:/ \__\:|  /  /:/  \:\   _\_ \:\ \:\   _____\__\:\
+  --  /__/::::| \:\ /__/:/ /:/\:\ /__/:/ /:/___ /__/\_|:|____ \  \:\ /  /:/ /__/:/ \__\:\ /__/\ \:\ \:\ /__/::::::::\
+  --  \  \:\~~\__\/ \  \:\/:/__\/ \  \:\/:::::/ \  \:\/:::::/  \  \:\  /:/  \  \:\ /  /:/ \  \:\ \:\/:/ \  \:\~~\~~\/
+  --   \  \:\        \  \::/       \  \::/~~~~   \  \::/~~~~    \  \:\/:/    \  \:\  /:/   \  \:\ \::/   \  \:\  ~~~
+  --    \  \:\        \  \:\        \  \:\        \  \:\         \  \::/      \  \:\/:/     \  \:\/:/     \  \:\
+  --     \  \:\        \  \:\        \  \:\        \  \:\         \__\/        \  \::/       \  \::/       \  \:\
+  --      \__\/         \__\/         \__\/         \__\/                       \__\/         \__\/         \__\/
   {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown", "telekasten" },
@@ -131,12 +141,34 @@ require('lazy').setup({
     build = "cd app && yarn install",
   },
 
-  -- Autocompletacíon
+  --       ___           ___                         ___
+  --      /  /\         /  /\          ___          /  /\
+  --     /  /::\       /  /:/         /__/\        /  /::\
+  --    /  /:/\:\     /  /:/          \  \:\      /  /:/\:\
+  --   /  /::\ \:\   /  /:/            \__\:\    /  /:/  \:\
+  --  /__/:/\:\_\:\ /__/:/     /\      /  /::\  /__/:/ \__\:\
+  --  \__\/  \:\/:/ \  \:\    /:/     /  /:/\:\ \  \:\ /  /:/
+  --       \__\::/   \  \:\  /:/     /  /:/__\/  \  \:\  /:/
+  --       /  /:/     \  \:\/:/     /__/:/        \  \:\/:/
+  --      /__/:/       \  \::/      \__\/          \  \::/
+  --      \__\/         \__\/                       \__\/
+  --       ___           ___           ___                         ___       ___                         ___
+  --      /  /\         /  /\         /  /\          ___          /  /\     /  /\          ___          /  /\
+  --     /  /::\       /  /::\       /  /::|        /  /\        /  /:/    /  /::\        /__/\        /  /::\
+  --    /  /:/\:\     /  /:/\:\     /  /:|:|       /  /::\      /  /:/    /  /:/\:\       \  \:\      /  /:/\:\
+  --   /  /:/  \:\   /  /:/  \:\   /  /:/|:|__    /  /:/\:\    /  /:/    /  /::\ \:\       \__\:\    /  /::\ \:\
+  --  /__/:/ \  \:\ /__/:/ \__\:\ /__/:/_|::::\  /  /::\ \:\  /__/:/    /__/:/\:\ \:\      /  /::\  /__/:/\:\ \:\
+  --  \  \:\  \__\/ \  \:\ /  /:/ \__\/  /~~/:/ /__/:/\:\_\:\ \  \:\    \  \:\ \:\_\/     /  /:/\:\ \  \:\ \:\_\/
+  --   \  \:\        \  \:\  /:/        /  /:/  \__\/  \:\/:/  \  \:\    \  \:\ \:\      /  /:/__\/  \  \:\ \:\
+  --    \  \:\        \  \:\/:/        /  /:/        \  \::/    \  \:\    \  \:\_\/     /__/:/        \  \:\_\/
+  --     \  \:\        \  \::/        /__/:/          \__\/      \  \:\    \  \:\       \__\/          \  \:\
+  --      \__\/         \__\/         \__\/                       \__\/     \__\/                       \__\/
+  --
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
-      'L3MON4D3/LuaSnip',
+      { 'L3MON4D3/LuaSnip', run = "make install_jsregexp" },
       'saadparwaiz1/cmp_luasnip',
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -150,7 +182,21 @@ require('lazy').setup({
   },
 
   -- Complemento útil para mostrarle combinaciones de teclas pendientes.
-  { 'folke/which-key.nvim',          opts = {} },
+  {
+    'folke/which-key.nvim',
+    opts = {},
+    init = function()
+      local wk = require('which-key')
+      wk.register({
+        b = { name = "[B]uscar con Telescope" },
+        c = { name = "Acciones de [C]odigo" },
+        g = { name = "Usando [G]it" },
+        n = { name = "Usar [N]eogen" },
+        t = { name = "Espacio de [T]rabajo(s)" },
+        z = { name = "Telekasten" }
+      }, { prefix = '<leader>' })
+    end
+  },
 
   -- "gc" to comment visual regions/lines
   {
@@ -219,9 +265,10 @@ require("gitlinker").setup()
 vim.o.hlsearch = true
 
 -- Make line numbers default
-vim.wo.number = true
-vim.wo.relativenumber = true
+vim.o.number = true
+vim.o.relativenumber = true
 vim.o.colorcolumn = "50,72,80,100"
+vim.o.cursorline = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -254,10 +301,8 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
+--
 vim.o.termguicolors = true
-vim.cmd("hi Normal guibg=NONE")
-vim.cmd("au WinLeave * set nocursorline")
-vim.cmd("au WinEnter * set cursorline")
 
 vim.o.smartindent = true
 
@@ -286,10 +331,10 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-vim.keymap.set('n', '<C-Down>', ':resize +2<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-Up>', ':resize -2<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-Down>', ':resize -2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-Up>', ':resize +2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-Right>', ':vertical resize -2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-Left>', ':vertical resize +2<CR>', { noremap = true, silent = true })
 
 -- Keymaps para aumentar la indentacíon
 vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true })
@@ -328,9 +373,8 @@ require('telescope').setup {
     theme = "dropdown",
     layout_strategy = 'vertical',
     layout_config = {
-      width = 0.80,
-      height = 0.90,
-      -- preview_height = 0.70,
+      width = 0.60,
+      height = 0.85,
     },
   },
 }
@@ -346,17 +390,15 @@ vim.keymap.set('n', '<leader>/', function()
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
     previewer = false,
-    -- layout_config = {
-    --   preview_height = nil,
-    -- },
   })
 end, { desc = '[/] Búsqueda aproximada en el búfer actual' })
 
-vim.keymap.set('n', '<leader>ba', require('telescope.builtin').find_files, { desc = '[B]usca [A]rchivos' })
-vim.keymap.set('n', '<leader>bs', require('telescope.builtin').help_tags, { desc = '[B]usca [S]ocorro' })
-vim.keymap.set('n', '<leader>bp', require('telescope.builtin').grep_string, { desc = '[B]usca la [P]alabra actual' })
-vim.keymap.set('n', '<leader>bg', require('telescope.builtin').live_grep, { desc = '[B]usca con [G]rep' })
-vim.keymap.set('n', '<leader>bd', require('telescope.builtin').diagnostics, { desc = '[B]usca [D]iagnóstico' })
+vim.keymap.set('n', '<leader>ba', require('telescope.builtin').find_files, { desc = '[B]uscar [A]rchivos' })
+vim.keymap.set('n', '<leader>bs', require('telescope.builtin').help_tags, { desc = '[B]uscar [S]ocorro' })
+vim.keymap.set('n', '<leader>bp', require('telescope.builtin').grep_string, { desc = '[B]uscar la [P]alabra actual' })
+vim.keymap.set('n', '<leader>bg', require('telescope.builtin').live_grep, { desc = '[B]uscar con [G]rep' })
+vim.keymap.set('n', '<leader>bd', require('telescope.builtin').diagnostics, { desc = '[B]uscar [D]iagnóstico' })
+vim.keymap.set('n', '<leader>br', require('telescope.builtin').resume, { desc = '[B]uscar [R]eanudar' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -367,7 +409,10 @@ require('nvim-treesitter.configs').setup {
     'cpp',
     'go',
     'lua',
+    'markdown',
+    'markdown_inline',
     'python',
+    'query',
     'rust',
     'tsx',
     'typescript',
@@ -378,7 +423,7 @@ require('nvim-treesitter.configs').setup {
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
 
-  highlight = { enable = true },
+  highlight = { enable = true, additional_vim_regex_highlighting = false },
   indent = { enable = true, disable = { 'python' } },
   incremental_selection = {
     enable = true,
@@ -438,11 +483,12 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
+-- Configurar los parsers de Treesitter para lenguas novedosas
+vim.treesitter.language.register('markdown', { 'mdx', 'telekasten' })
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Ir al mensaje de diagnóstico anterior" })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Ir al siguiente mensaje de diagnóstico" })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Abrir mensaje de diagnóstico flotante" })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Abrir lista de diagnósticos" })
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
@@ -551,21 +597,53 @@ lsp_config()
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
   -- clangd = {},
-  gopls = {},
+  gopls = {
+    completeUnimported = true,
+    usePlaceholders = true,
+    analyses = {
+      unusedparams = true,
+    },
+  },
   -- pyright = {},
+  pylsp = {
+    plugins = {
+      -- formatter options
+      black = { enabled = true },
+      autopep8 = { enabled = false },
+      yapf = { enabled = false },
+      -- linter options
+      pylint = { enabled = true, executable = "pylint" },
+      pyflakes = { enabled = false },
+      pycodestyle = { enabled = false },
+      -- type checker
+      pylsp_mypy = { enabled = true },
+      -- auto-completion options
+      jedi_completion = { fuzzy = true },
+      -- import sorting
+      pyls_isort = { enabled = true },
+    },
+  },
   rust_analyzer = {},
   tsserver = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
+      diagnostics = {
+        disable = { "missing-fields" },
+      },
     },
   },
   yamlls = {
     yaml = {
+      format = {
+        enable = false,
+      },
       schemas = {
         ["https://json.schemastore.org/circleciconfig.json"] = "/.circleci/*",
         ["https://json.schemastore.org/github-action.json"] = "/.github/workflows/*",
+        ["https://raw.githubusercontent.com/distinction-dev/alacritty-schema/main/alacritty/reference.json"] =
+        "/.alacritty.yml",
       }
     }
   }
@@ -599,6 +677,14 @@ mason_lspconfig.setup_handlers {
 }
 
 -- nvim-cmp setup
+--                 __
+--   ___   __  __ /\_\    ___ ___              ___    ___ ___   _____
+-- /' _ `\/\ \/\ \\/\ \ /' __` __`\  _______  /'___\/' __` __`\/\ '__`\
+-- /\ \/\ \ \ \_/ |\ \ \/\ \/\ \/\ \/\______\/\ \__//\ \/\ \/\ \ \ \L\ \
+-- \ \_\ \_\ \___/  \ \_\ \_\ \_\ \_\/______/\ \____\ \_\ \_\ \_\ \ ,__/
+--  \/_/\/_/\/__/    \/_/\/_/\/_/\/_/         \/____/\/_/\/_/\/_/\ \ \/
+--                                                                \ \_\
+--                                                                 \/_/
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
@@ -666,6 +752,11 @@ cmp.setup {
   }, {
     { name = "buffer" },
   }),
+  cmp.setup.filetype({ 'lisp' }, {
+    sources = {
+      { name = "nvlime" },
+    },
+  }),
   cmp.setup.cmdline({ "/", "?" },
     {
       mapping = cmp.mapping.preset.cmdline(),
@@ -716,6 +807,10 @@ vim.cmd([[
   au FileType yaml setlocal shiftwidth=2 tabstop=2 nowrap spell expandtab tw=80 wm=0 linebreak list
   au FileType toml setlocal shiftwidth=2 tabstop=2 nowrap spell expandtab tw=80 wm=0 linebreak list
   au FileType gitcommit setlocal shiftwidth=4 tabstop=4 expandtab wrap spell tw=80 wm=0 linebreak list
+]])
+
+vim.cmd([[
+let g:loaded_matchit = 1
 ]])
 
 -- The line beneath this is called `modeline`. See `:help modeline`

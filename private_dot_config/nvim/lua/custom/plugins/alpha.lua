@@ -45,6 +45,9 @@ return {
         local fortune = require("alpha.fortune")
         local dashboard = require("alpha.themes.dashboard")
         local icons = require("custom.icons")
+        local ff_opts = {
+            hidden = true,
+        }
 
         -- Set header
         dashboard.section.header.val = random_header_figlet()
@@ -56,7 +59,7 @@ return {
             dashboard.button(
                 "b",
                 icons.ui.Search .. "  Busque archivos en " .. get_current_directory(),
-                ":lua require('telescope.builtin').find_files()<CR>"
+                ":lua require('telescope.builtin').find_files(ff_opts)<CR>"
             ),
             dashboard.button(
                 "t",
@@ -65,9 +68,7 @@ return {
             ),
             dashboard.button("r", icons.ui.History .. "  Reciente archivos", ":Telescope oldfiles<CR>"),
             dashboard.button("d", icons.ui.Pencil .. "  Diario", ":Telekasten panel<CR>"),
-            dashboard.button("dh", icons.ui.Pencil .. "  Diario de hoy", ":Telekasten goto_today<CR>"),
-            dashboard.button("ds", icons.ui.Pencil .. "  Diario de semana", ":Telekasten goto_thisweek<CR>"),
-            dashboard.button("a", icons.ui.Gear .. "  Ajustes", ":e $MYVIMRC | :cd %:p:h | :Neotree<CR>"),
+            dashboard.button("a", icons.ui.Gear .. "  Ajustes", ":e $MYVIMRC | :cd %:p:h | :Neotree right <CR><C-w><C-w>"),
             dashboard.button("s", icons.diagnostics.Error .. "  Salir de NVIM", ":qa<CR>"),
         }
 
@@ -80,7 +81,7 @@ return {
         -- Disable folding on alpha buffer
         vim.cmd([[
             autocmd FileType alpha setlocal nofoldenable
-            autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
+            autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=0
         ]])
     end
 }

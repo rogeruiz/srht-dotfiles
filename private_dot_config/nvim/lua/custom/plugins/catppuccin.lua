@@ -5,14 +5,13 @@ return {
     priority = 1000,
     name = "catppuccin",
     opts = {
-        flavour = "mocha", -- latte, frappe, macchiato, mocha
+        -- flavour = "mocha", -- latte, frappe, macchiato, mocha
         background = {
             -- :h background
             light = "latte",
             dark = "mocha",
         },
         transparent_background = true,
-        term_colors = false,
         dim_inactive = {
             enabled = true,
             shade = "dark",
@@ -58,8 +57,9 @@ return {
             which_key = true,
         },
     },
-    config = function()
+    config = function(_, opts)
         -- Establecer el color de fondo del tema más temprano
+        require('catppuccin').setup(opts)
         vim.o.background = "light"
         vim.cmd.colorscheme 'catppuccin'
     end,
