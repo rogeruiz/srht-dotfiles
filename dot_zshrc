@@ -3,7 +3,7 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=
 zstyle ':completion:*' menu select
 autoload -Uz compinit
 compinit
-fpath=(/Users/rsr/Developer/oss/zsh-completions/src $fpath)
+fpath=(/Users/yo/Developer/oss/zsh-completions/src $fpath)
 
 eval "$(nodenv init -)"
 eval "$(zoxide init zsh)"
@@ -72,7 +72,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # bun completions
-[ -s "/Users/rsr/.bun/_bun" ] && source "/Users/rsr/.bun/_bun"
+[ -s "/Users/yo/.bun/_bun" ] && source "/Users/yo/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
