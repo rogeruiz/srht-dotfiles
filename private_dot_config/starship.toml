@@ -4,10 +4,10 @@
 format = """$time$git_branch$git_commit$git_state$git_metrics$git_status
 $battery$directory
 $aws\
-[ 󰟀 ](bg:sky fg:surface0)$package$rust$nodejs$golang$terraform$ruby$nix_shell[ ](bg:sky)
+[ 󰟀  ](bg:sky fg:surface0)$package$python$rust$nodejs$golang$terraform$ruby$nix_shell[ ](bg:sky)
 $jobs$cmd_duration$character"""
 
-palette = "dark"
+palette = "light"
 
 # 
 # 
@@ -24,11 +24,15 @@ format = "$symbol   "
 
 [cmd_duration]
 min_time = 5_000
-format = "[   ](bold bg:yellow fg:surface0)[ $duration ](italic bg:surface0 fg:yellow)"
+format = "[   ](bg:yellow fg:surface0)[ $duration ](italic bg:surface0 fg:yellow)"
 
 [ruby]
 symbol = " "
 format = "[ $symbol ](bg:red fg:surface0)[ $version ](italic bg:surface0 fg:red)"
+
+[python]
+symbol = " "
+format = "[ $symbol ](bg:yellow fg:surface0)[ $version ](italic bg:surface0 fg:yellow)"
 
 [nodejs]
 symbol = "󰎙 "
@@ -36,7 +40,7 @@ format = "[ $symbol ](bg:green fg:surface0)[ $version ](italic bg:surface0 fg:gr
 
 [golang]
 symbol = " "
-format = "[ $symbol ](bg:sapphire fg:surface0)[ $version ](italic bg:surface0 fg:sapphire)"
+format = "[ $symbol](bg:sapphire fg:surface0)[ $version ](italic bg:surface0 fg:sapphire)"
 
 [rust]
 symbol = " "
@@ -50,7 +54,7 @@ format = "[ $symbol ](bg:mauve fg:surface0)[ $version ](italic bg:surface0 fg:ma
 [aws]
 symbol = "  "
 expiration_symbol = ""
-format = "[   ](bold bg:#ff9900 fg:surface0)[ $symbol](bold fg:#ff9900 bg:base)[ $profile ](bold bg:surface0 fg:sapphire)[$region ](bold bg:surface0 fg:sapphire) [$duration](italic fg:#ff9900) [ ](bg:#ff9900)"
+format = "[   ](bg:#ff9900 fg:surface0)[ $symbol](fg:#ff9900 bg:base)[ $profile ](bg:surface0 fg:sapphire)[$region ](bg:surface0 fg:sapphire) [$duration](italic fg:#ff9900) [ ](bg:#ff9900)"
 
 [aws.region_aliases]
 us-gov-west-1 = "    us-gov-west-1"
@@ -72,20 +76,20 @@ format = "[ $symbol ](bg:peach fg:surface0)[ $version ](italic bg:surface0 fg:pe
 
 [git_branch]
 symbol = "  "
-format = "[$symbol](bold bg:#f14e32 fg:surface0)[ $branch(:$remote_branch) ](italic bg:surface0 fg:#f14e32)[ ](bg:#f14e32)"
+format = "[$symbol](bg:#f14e32 fg:surface0)[ $branch(:$remote_branch) ](italic bg:surface0 fg:#f14e32)[ ](bg:#f14e32)"
 
 [git_status]
-format = "([](bold #f14e32) [$all_status$ahead_behind]($style) )" # NOTE: This is Git orange
-modified = "[](bold blue) "
-staged = "[](bold green) "
-deleted = "[](bold red) "
-renamed = "[](bold peach) "
-untracked = "[󰡯](bold yellow) "
-diverged = "[](bold maroon)"
-ahead = "[](bold green) "
-behind = "[](bold flamingo) "
-conflicted = "[](bold yellow) "
-stashed = "[󰘓](bold magenta) "
+format = "([](#f14e32) [$all_status$ahead_behind]($style) )" # NOTE: This is Git orange
+modified = "[](blue) "
+staged = "[](green) "
+deleted = "[](red) "
+renamed = "[](peach) "
+untracked = "[󰡯](yellow) "
+diverged = "[](maroon)"
+ahead = "[](green) "
+behind = "[](flamingo) "
+conflicted = "[](yellow) "
+stashed = "[󰘓](magenta) "
 
 [git_metrics]
 format = " ([ $added]($added_style) )([ $deleted]($deleted_style) )"
@@ -94,7 +98,7 @@ disabled = false
 [git_commit]
 commit_hash_length = 7
 only_detached = false
-format = "[＃](bold bg:flamingo fg:surface0)[ $hash$tag ](italic bg:surface0 fg:flamingo)[ ](bg:flamingo)"
+format = "[＃](bg:flamingo fg:surface0)[ $hash$tag ](italic bg:surface0 fg:flamingo)[ ](bg:flamingo)"
 
 [directory]
 truncation_length = 5
@@ -111,13 +115,13 @@ read_only = "  "
 read_only_style = "bg:pink fg:crust"
 
 truncate_to_repo = true
-format = "[   ](bg:green fg:crust)[ $path ]($style)[$read_only]($read_only_style)[ ](bg:green)"
-repo_root_format = "[   ](bg:green fg:crust)[ $before_root_path]($repo_root_style)[$repo_root[$path](dimmed bold fg:sky bg:surface0)[ ](bg:surface0)]($repo_root_style)[$read_only]($read_only_style)[ ](bg:green)"
+format = "[   ](bg:green fg:crust bold)[ $path ]($style)[$read_only]($read_only_style)[ ](bg:green)"
+repo_root_format = "[   ](bg:green fg:crust)[ $before_root_path]($repo_root_style)[$repo_root[$path](dimmed fg:sky bg:surface0)[ ](bg:surface0)]($repo_root_style)[$read_only]($read_only_style)[ ](bg:green)"
 
 [jobs]
 symbol = " "
-style = "bold bg:pink fg:surface1"
-format = "[ $symbol ]($style)[$number](bold bg:surface0 fg:subtext1)"
+style = "bg:pink fg:surface1"
+format = "[ $symbol ]($style)[$number](bg:surface0 fg:subtext1)"
 
 [time]
 disabled = false
@@ -129,7 +133,7 @@ utc_time_offset = "local"
 # command = "current_git_activity"
 # symbol = " "
 # when = """ git rev-parse --is-inside-work-tree """
-# style = "white bold dimmed"
+# style = "white dimmed"
 
 
 # [custom.git_color]
