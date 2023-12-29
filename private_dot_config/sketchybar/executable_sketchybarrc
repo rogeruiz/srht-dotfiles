@@ -2,13 +2,14 @@ PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 
 # WARN: Estos variables tiene que ser el mismo de ~/.yabairc con el mismo
 # nombre.
-margins=22
+margins=10
 altura=40
+bar_yoffset=24
 
 sketchybar --bar height=$altura \
   --bar corner_radius="10" \
   --bar margin=$margins \
-  --bar y_offset=$((margins)) \
+  --bar y_offset=$((bar_yoffset)) \
   --bar padding_left="5" \
   --bar padding_right="5"
 
@@ -19,8 +20,8 @@ sketchybar --bar height=$altura \
 
 sketchybar --default updates=when_shown                    \
                      drawing=on                            \
-                     icon.font="M+1Code Nerd Font:Regular:18.0"  \
-                     label.font="M+1Code Nerd Font:Regular:14.0" \
+                     icon.font="M+1Code Nerd Font:Light:18.0"  \
+                     label.font="M+1Code Nerd Font:Light:14.0" \
                      label.padding_left=4                  \
                      label.padding_right=4                 \
                      icon.padding_left=4                   \
@@ -38,8 +39,8 @@ do
   sid=$((i+1))
   sketchybar --add space space.$sid left \
              --set space.$sid associated_space=$sid \
-                              icon.font="M+1Code Nerd Font:Regular:18.0"  \
-                              label.font="M+1Code Nerd Font:Regular:18.0"  \
+                              icon.font="M+1Code Nerd Font:Light:18.0"  \
+                              label.font="M+1Code Nerd Font:Light:18.0"  \
                               icon="${SPACE_ICONS[i]}" \
                               icon.padding_left=0 \
                               icon.padding_right=0 \
@@ -62,7 +63,7 @@ sketchybar --add item front_app  left \
                                  background.padding_right=0 \
                                  icon.drawing=off \
                                  label.padding_left=10 \
-                                 label.font="M+1Code Nerd Font:Regular:18.0" \
+                                 label.font="M+1Code Nerd Font:Light:18.0" \
                                  label.padding_right=10 \
                                  updates=when_shown \
            --subscribe front_app front_app_switched
@@ -140,14 +141,14 @@ sketchybar --add item sound right \
                  script="$PLUGIN_DIR/sound.sh" \
            --subscribe sound volume_change
 
-sketchybar --add item mic right \
-           --set mic script="$PLUGIN_DIR/mic.sh" \
-                     background.height=$altura \
-                     label.drawing=off \
-                     icon.padding_left=10 \
-                     icon.padding_right=5 \
-                     click_script="$PLUGIN_DIR/mic_click.sh" \
-           --subscribe mic mouse.clicked mouse.entered.global mouse.exited.global
+# sketchybar --add item mic right \
+#            --set mic script="$PLUGIN_DIR/mic.sh" \
+#                      background.height=$altura \
+#                      label.drawing=off \
+#                      icon.padding_left=10 \
+#                      icon.padding_right=5 \
+#                      click_script="$PLUGIN_DIR/mic_click.sh" \
+#            --subscribe mic mouse.clicked mouse.entered.global mouse.exited.global
 
 # colors are managed seperately in the set_theme which listens to theme_changed
 # events, to swap between Catppuccin Mocha and Latte. Add `update_freq=2 \` to
