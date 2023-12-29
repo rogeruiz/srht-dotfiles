@@ -7,14 +7,14 @@
 
 # Definimos a `animado` afuera de la comprueba abajo para que todas las
 # capturas son quieto.
-animado=""
+animado=()
 
 # NOTE: Requiere `coreutils` instalado entonces vamos a comprobar
 if type shuf > /dev/null 2>&1
 then
   if test "$(shuf -i 1-10 -n 1)" -gt 5
   then
-    animado="--animate 3"
+    animado=("--a" "3")
   fi
 fi
 
@@ -57,10 +57,10 @@ then
     # shellcheck disable=SC2086
     lolcommits \
       --capture \
+      ${animado[@]} \
       --stealth \
-      --delay 2 \
-      --fork \
-      ${animado-} > /dev/null 2>&1
+      --delay 3 \
+      --fork > /dev/null 2>&1
     # NOTE: Arriba, aqui tambien se esta mandando toda la salida estandard a
     # `/dev/null` porque no me interesa ver ninguna vaina de texto a usar ha
     # `lolcommits`. Si algo sale raro, es bien facil ver que es el problema de
