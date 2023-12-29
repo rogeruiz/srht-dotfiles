@@ -124,6 +124,10 @@ return {
         Information = "",
         Question = "",
         Hint = "",
+        Todo = "",
+        Perf = "󱐋",
+        Test = "󰙨",
+        Hack = "󰗹",
     },
     misc = {
         Robot = "󰚩",
