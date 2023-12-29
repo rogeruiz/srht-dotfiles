@@ -29,6 +29,10 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 #
 export PATH=$PATH:~/.cargo/bin
 
+# Path for `roswell install`
+#
+export PATH=$PATH:~/.roswell/bin
+
 # Local binaries go last
 #
 export PATH=/Users/yo/.local/bin:/Users/yo/.local/bin/darwin:$PATH
