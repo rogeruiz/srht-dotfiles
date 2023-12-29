@@ -1,11 +1,11 @@
 window:
   decorations: buttonless
-  opacity: 0.90
+  opacity: 0.88
   startup_mode: Windowed
   title: te vez bien hoy
   padding:
-    x: 0
-    y: 0
+    x: 2
+    y: 2
 
 env:
   TERM: tmux-256color
@@ -17,10 +17,10 @@ scrolling:
 font:
   normal:
     family: M+1Code Nerd Font
-    style: Regular
+    style: ExtraLight
   bold:
     family: M+1Code Nerd Font
-    style: Bold
+    style: Regular
   italic:
     family: FantasqueSansMono Nerd Font
     style: Italic
@@ -208,7 +208,8 @@ schemes:
       - { index: 16, color: "#FE640B" }
       - { index: 17, color: "#DC8A78" }
 
-colors: *dark
+# prettier-ignore
+colors: *light
 
   # Dim colors
   #
