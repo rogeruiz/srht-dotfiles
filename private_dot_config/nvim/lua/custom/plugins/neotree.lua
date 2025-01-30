@@ -2,32 +2,43 @@
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
 return {
-    "nvim-neo-tree/neo-tree.nvim",
-    lazy = false,
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-        "MunifTanjim/nui.nvim",
+  "nvim-neo-tree/neo-tree.nvim",
+  lazy = false,
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    "MunifTanjim/nui.nvim",
+  },
+  keys = {
+    {
+      "<leader>o",
+      "<cmd>Neotree float<cr>",
+      mode = "n",
+      desc = "Enfocar el Explorardor"
     },
-    keys = {
-        { "<leader>o",  "<cmd>Neotree focus<cr>",            mode = "n", desc = "Enfocar el Explorardor" },
-        { "<leader>gs", "<cmd>Neotree float git_status<cr>", mode = "n", desc = "Obtener la estado de Git" },
+  },
+  opts = {
+    enable_git_status = true,
+    enable_diagnostics = true,
+    source_selector = {
+      winbar = false,
+      statusline = false
     },
-    opts = {
-        enable_git_status = true,
-        enable_diagnostics = true,
-        source_selector = {
-            winbar = false,
-            statusline = false
-        },
-        filesystem = {
-            filtered_items = {
-                hide_dotfiles = false,
-                hide_gitignored = false,
-            },
-        },
+    filesystem = {
+      filtered_items = {
+        hide_dotfiles = false,
+        hide_gitignored = false,
+      },
     },
-    config = function(_, opts)
-        require('neo-tree').setup(opts)
-    end,
+    window = {
+      position = "float",
+      popup = {
+        height = "80%",
+        width = "50%",
+      },
+    },
+  },
+  config = function(_, opts)
+    require('neo-tree').setup(opts)
+  end,
 }

@@ -1,6 +1,6 @@
 return {
-    {
-        'echasnovski/mini.pairs',
-        version = '*',
-    }
+  {
+    'echasnovski/mini.pairs',
+    version = '*',
+  }
 }

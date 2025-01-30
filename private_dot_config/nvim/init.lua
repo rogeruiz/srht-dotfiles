@@ -56,30 +56,12 @@ vim.opt.rtp:prepend(lazypath)
 -- Puedes configurar tus complementos usando la llave `config` o la
 -- meza `opts = {}`
 require('lazy').setup({
-  --       ___                       ___
-  --     /\  \          ___        /\  \
-  --    /::\  \        /\  \       \:\  \
-  --   /:/\:\  \       \:\  \       \:\  \
-  --  /:/  \:\  \      /::\__\      /::\  \
-  -- /:/__/_\:\__\  __/:/\/__/     /:/\:\__\
-  -- \:\  /\ \/__/ /\/:/  /       /:/  \/__/
-  --  \:\ \:\__\   \::/__/       /:/  /
-  --   \:\/:/  /    \:\__\       \/__/
-  --    \::/  /      \/__/
-  --     \/__/
-  -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
 
-  {
-    "ruifm/gitlinker.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    }
-  },
+  -- Complementos relacionados con Git
+  { import = 'tools.git' },
 
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  -- Complementos relacionados con texto
+  { import = "tools.text" },
 
   'nvim-lua/popup.nvim',
 
@@ -91,10 +73,6 @@ require('lazy').setup({
     },
   },
 
-  -- Editorconfig escrito en Lua
-  'gpanders/editorconfig.nvim',
-
-  'RRethy/vim-illuminate',
 
   -- NOTE: Aquí es donde puedes instalar so complementos sobre LSP. La
   -- configuracíon del LSP esta abajo. Busque con `lspconfig` para incontrarlo.
@@ -113,7 +91,7 @@ require('lazy').setup({
           text = {
             spinner = "triangle",
           },
-          window = { blend = 30 },
+          window = { blend = 0 },
         },
         tag = "legacy",
       },
@@ -136,9 +114,31 @@ require('lazy').setup({
   --      \__\/         \__\/         \__\/         \__\/                       \__\/         \__\/         \__\/
   {
     "iamcco/markdown-preview.nvim",
-    ft = { "markdown", "telekasten" },
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     lazy = true,
-    build = "cd app && yarn install",
+    build = "cd app && npx --yes yarn install",
+    ft = { "markdown", "text" },
+    keys = {
+      {
+        "<leader>mdp",
+        "<cmd>MarkdownPreview<cr>",
+        desc = "Preview in browser (Markdown Preview)",
+      },
+      {
+        "<leader>mds",
+        "<cmd>MarkdownPreviewStop<cr>",
+        desc = "Stop preview in browser (Markdown Preview)",
+      },
+      {
+        "<leader>mdt",
+        "<cmd>MarkdownPreviewToggle<cr>",
+        desc = "Toggle preview in browser (Markdown Preview)",
+      },
+    },
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown", "text" }
+      vim.g.mkdp_echo_preview_url = 1
+    end,
   },
 
   --       ___           ___                         ___
@@ -184,24 +184,27 @@ require('lazy').setup({
   -- Complemento útil para mostrarle combinaciones de teclas pendientes.
   {
     'folke/which-key.nvim',
+    event = 'VeryLazy',
     opts = {},
-    init = function()
-      local wk = require('which-key')
-      wk.register({
-        b = { name = "[B]uscar con Telescope" },
-        c = { name = "Acciones de [C]odigo" },
-        g = { name = "Usando [G]it" },
-        n = { name = "Usar [N]eogen" },
-        t = { name = "Espacio de [T]rabajo(s)" },
-        z = { name = "Telekasten" }
-      }, { prefix = '<leader>' })
-    end
+    keys = {
+      { "<leader>b", group = "[B]uscar con Telescope" },
+      { "<leader>c", group = "Acciones de [C]odigo" },
+      { "<leader>g", group = "Usando [G]it" },
+      { "<leader>n", group = "Usar [N]eogen" },
+      { "<leader>t", group = "Espacio de [T]rabajo(s)" },
+      { "<leader>z", group = "Telekasten" },
+    },
   },
 
   -- "gc" to comment visual regions/lines
   {
     'numToStr/Comment.nvim',
     opts = {},
+    init = function()
+      local ft = require('Comment.ft')
+      ft.structurizr = { '# %s', '/* %s */' }
+      ft.just = { '# %s' }
+    end
   },
 
   --  __           ___
@@ -214,7 +217,13 @@ require('lazy').setup({
   --                                                       \ \_\
   --                                                        \/_/
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
+  {
+    'nvim-telescope/telescope.nvim',
+    version = '*',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+
+  { 'nvim-telescope/telescope-ui-select.nvim' },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
@@ -256,7 +265,6 @@ require('lazy').setup({
   },
 })
 
-require("gitlinker").setup()
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -316,7 +324,7 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 
 vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldlevel = 3
 
 vim.o.spelllang = "en,es"
@@ -371,16 +379,31 @@ require('telescope').setup {
       },
     },
     theme = "dropdown",
-    layout_strategy = 'vertical',
+    path_display = {
+      truncate = 3,
+    },
+    layout_strategy = 'horizontal',
     layout_config = {
-      width = 0.60,
-      height = 0.85,
+      width = 0.9,
+      height = 0.6,
+    },
+    file_ignore_patterns = {
+      "^.git/"
     },
   },
+  extensions = {
+    fzf = {},
+    ['ui-select'] = {
+      require('telescope.themes').get_dropdown({}),
+    }
+  }
 }
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
+
+-- Enable telescope ui-select, if installed
+pcall(require('telescope').load_extension, 'ui-select')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Buscar en los archivos recientes' })
@@ -388,15 +411,20 @@ vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { d
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
+    -- winblend = 10,
     previewer = false,
   })
 end, { desc = '[/] Búsqueda aproximada en el búfer actual' })
 
-vim.keymap.set('n', '<leader>ba', require('telescope.builtin').find_files, { desc = '[B]uscar [A]rchivos' })
+vim.keymap.set('n', '<leader>ba', function()
+  require('telescope.builtin').find_files({ hidden = true })
+end, { desc = '[B]uscar [A]rchivos' })
+vim.keymap.set('n', '<leader>by', require('telescope.builtin').lsp_document_symbols, { desc = '[B]uscar S[i]mbolos' })
 vim.keymap.set('n', '<leader>bs', require('telescope.builtin').help_tags, { desc = '[B]uscar [S]ocorro' })
 vim.keymap.set('n', '<leader>bp', require('telescope.builtin').grep_string, { desc = '[B]uscar la [P]alabra actual' })
-vim.keymap.set('n', '<leader>bg', require('telescope.builtin').live_grep, { desc = '[B]uscar con [G]rep' })
+vim.keymap.set('n', '<leader>bg', function()
+  require('telescope.builtin').live_grep({ hidden = true })
+end, { desc = '[B]uscar con [G]rep' })
 vim.keymap.set('n', '<leader>bd', require('telescope.builtin').diagnostics, { desc = '[B]uscar [D]iagnóstico' })
 vim.keymap.set('n', '<leader>br', require('telescope.builtin').resume, { desc = '[B]uscar [R]eanudar' })
 
@@ -540,6 +568,7 @@ local on_attach = function(client, bufnr)
         client.name ~= "spectral" and
         client.name ~= "eslint" and
         client.name ~= "emmet_ls" and
+        client.name ~= "rnix" and
         client.name ~= "tailwindcss") then
     require("nvim-navic").attach(client, bufnr)
   end
@@ -624,13 +653,25 @@ local servers = {
     },
   },
   rust_analyzer = {},
-  tsserver = {},
+  ts_ls = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
       diagnostics = {
         disable = { "missing-fields" },
+      },
+    },
+  },
+  tailwindcss = {
+    settings = {
+      tailwindCSS = {
+        experimental = {
+          classRegex = {
+            "cva\\(([^)]*)\\)",
+            "[\"'`]([^\"'`]*).*?[\"'`]",
+          }
+        }
       },
     },
   },
@@ -641,9 +682,11 @@ local servers = {
       },
       schemas = {
         ["https://json.schemastore.org/circleciconfig.json"] = "/.circleci/*",
-        ["https://json.schemastore.org/github-action.json"] = "/.github/workflows/*",
+        ["https://json.schemastore.org/github-action.json"] = "/.github/actions/*",
+        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
         ["https://raw.githubusercontent.com/distinction-dev/alacritty-schema/main/alacritty/reference.json"] =
         "/.alacritty.yml",
+        ["https://json.schemastore.org/lefthook.json"] = "/lefthook.yml",
       }
     }
   }
@@ -676,6 +719,38 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
+-- local s9r_client = vim.lsp.start_client({
+--   name = "c4-language-server",
+--   cmd = { "/Users/yo/.local/bin/darwin/c4-language-server/bin/c4-language-server" },
+--   on_attach = on_attach,
+-- })
+--
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "structurizr",
+--   callback = function()
+--     vim.lsp.buf_attach_client(0, s9r_client)
+--   end,
+-- })
+
+require('lspconfig').nixd.setup({
+  cmd = { 'nixd' },
+  settings = {
+    nixd = {
+      nixpkgs = {
+        expr = "import <nixpkgs> { }",
+      },
+      formatting = {
+        command = { "nixfmt" },
+      },
+      options = {
+        home_manager = {
+          expr = "(builtins.getFlake \"/Users/yo/.files.nix\").nixosConfigurations.x86_64.options",
+        },
+      },
+    }
+  }
+})
+
 -- nvim-cmp setup
 --                 __
 --   ___   __  __ /\_\    ___ ___              ___    ___ ___   _____
@@ -688,9 +763,32 @@ mason_lspconfig.setup_handlers {
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
-luasnip.config.setup {}
+luasnip.config.set_config({
+  history = false,
+  updateevents = "TextChanged,TextChangedI",
+})
+
+for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/custom/snippets/*.lua", true)) do
+  loadfile(ft_path)()
+end
+
+vim.keymap.set({ "i", "s" }, "<C-k>", function()
+  if luasnip.expand_or_jumpable() then
+    luasnip.expand_or_jump()
+  end
+end, { silent = true })
+
+vim.keymap.set({ "i", "s" }, "<C-j>", function()
+  if luasnip.jumpable(-1) then
+    luasnip.jump(-1)
+  end
+end, { silent = true })
 
 cmp.setup {
+  completion = {
+    -- autocomplete = false,
+    -- keyword_length = 3,
+  },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -703,11 +801,11 @@ cmp.setup {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete {},
-    ['<CR>'] = cmp.mapping.confirm {
+    ['<C-y'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = cmp.mapping(function(fallback)
+    ['<C-n>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -716,7 +814,7 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
+    ['<C-p>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
@@ -745,7 +843,6 @@ cmp.setup {
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'buffer' },
     { name = 'path' },
     { name = 'emoji' },
     { name = 'luasnip' },
@@ -768,10 +865,41 @@ cmp.setup {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
       { name = "cmdline" },
+    }, {
       { name = "path" },
     }),
   }),
 }
+
+-- local completionDelay = 750
+-- local timer = nil
+--
+-- function _G.setAutoCompleteDelay(delay)
+--   completionDelay = delay
+-- end
+--
+-- function _G.getAutoCompleteDelay()
+--   return completionDelay
+-- end
+--
+-- vim.api.nvim_create_autocmd({ "TextChangedI", "CmdlineChanged" }, {
+--   pattern = "*",
+--   callback = function()
+--     if timer then
+--       vim.loop.timer_stop(timer)
+--       timer = nil
+--     end
+--
+--     timer = vim.loop.new_timer()
+--     timer:start(
+--       _G.getAutoCompleteDelay(),
+--       0,
+--       vim.schedule_wrap(function()
+--         cmp.complete({ reason = cmp.ContextReason.Auto })
+--       end)
+--     )
+--   end,
+-- })
 
 -- Filetype mappings
 vim.cmd([[
@@ -786,6 +914,7 @@ vim.cmd([[
   au BufNewFile,BufRead *.blade.php set ft=blade.html.php
   au BufNewFile,BufRead *.ejs set ft=liquid.html.js.css
   au BufNewFile,BufRead *.twig set ft=html.twig
+  au BufNewFile,BufRead *.hbs set ft=html
   au BufNewFile,BufRead *.toml set ft=toml
   au BufNewFile,BufRead *.js set ft=javascript
   au BufNewFile,BufRead *.jsx set ft=javascript
