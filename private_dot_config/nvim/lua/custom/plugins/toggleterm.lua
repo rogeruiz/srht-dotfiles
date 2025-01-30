@@ -125,7 +125,7 @@ return {
             height = math.floor(vim.o.lines * 0.75),
           })
           gh_dash:toggle()
-          git:focus()
+          gh_dash:focus()
         end,
         { desc = "[G]it[H]ub CLI [D]ashboard" })
       vim.keymap.set('n', '<leader>ghpr', function()
@@ -136,7 +136,7 @@ return {
           })
           gh:open()
           gh:send(cmd, false)
-          git:focus()
+          gh:focus()
         end,
         { desc = "[G]it[H]ub CLI [P]ull [R]equest" })
       vim.keymap.set('n', '<leader>gprb', function()
@@ -148,7 +148,7 @@ return {
           })
           gh:open()
           gh:send(cmd, false)
-          git:focus()
+          gh:focus()
         end,
         { desc = "[G]it[H]ub CLI [P]ull [R]equest con base personalizada" })
     end
