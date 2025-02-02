@@ -80,7 +80,7 @@ return {
           "neo-tree",
           "qf",
           "trouble",
-          -- "toggleterm",
+          "toggleterm",
           -- winbar = {
           --   "help",
           -- },
@@ -158,41 +158,8 @@ return {
           linenumber_with_icons,
         },
       },
-      tabline = {
-        -- lualine_a = {
-        --   {
-        --     'tabs',
-        --     tab_max_length = 40,
-        --     mode = 2,
-        --     path = 2,
-        --     symbols = {
-        --       modified = icons.documents.ui.Modified,
-        --     },
-        --   }
-        -- },
-        -- lualine_z = {
-        --   'buffers',
-        -- }
-      },
       winbar = {
         lualine_a = {
-          {
-            "filename",
-            icon = icons.ui.NewFile .. " ",
-            icons_enabled = true,
-            file_status = true,
-            newfile_status = true,
-            path = 1,
-            shorting_target = 150,
-            symbols = {
-              modified = icons.documents.ui.Modified,
-              readonly = icons.documents.ui.ReadOnly,
-              unnamed = icons.documents.ui.Unnamed,
-              newfile = icons.documents.ui.NewFile,
-            },
-          },
-        },
-        lualine_b = {
           {
             function()
               return navic.get_location()
@@ -233,19 +200,51 @@ return {
           },
         },
         lualine_b = {
-          {
-            function()
-              return navic.get_location()
-            end,
-            cond = function()
-              return navic.is_available()
-            end,
-          },
+          -- {
+          --   function()
+          --     return navic.get_location()
+          --   end,
+          --   cond = function()
+          --     return navic.is_available()
+          --   end,
+          -- },
         },
         lualine_c = {},
         lualine_x = {},
         lualine_y = { "filetype" },
         lualine_z = {},
+      },
+      tabline = {
+        lualine_z = {
+          {
+            'tabs',
+            mode = 0,
+            path = 3,
+            use_mode_colors = true,
+            show_modified_status = true,
+            symbols = {
+              modified = icons.git.Mod .. ' ',
+            },
+          },
+
+        },
+        lualine_a = {
+          {
+            "filename",
+            icon = icons.ui.NewFile .. " ",
+            icons_enabled = true,
+            file_status = true,
+            newfile_status = true,
+            path = 1,
+            shorting_target = 150,
+            symbols = {
+              modified = icons.documents.ui.Modified,
+              readonly = icons.documents.ui.ReadOnly,
+              unnamed = icons.documents.ui.Unnamed,
+              newfile = icons.documents.ui.NewFile,
+            },
+          },
+        },
       },
       extensions = {},
     })

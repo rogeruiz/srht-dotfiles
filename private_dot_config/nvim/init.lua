@@ -901,6 +901,9 @@ cmp.setup {
 --   end,
 -- })
 
+-- Keymaps genericos
+vim.keymap.set('n', '<leader>nr', '<cmd>set relativenumber!<cr>', { desc = 'Alternar [n]umeros [r]elativos' })
+
 -- Filetype mappings
 vim.cmd([[
   au BufRead,BufNewFile *.jshintrc set ft=json

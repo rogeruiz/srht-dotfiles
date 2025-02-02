@@ -78,7 +78,7 @@ return {
     -- Disable folding on alpha buffer
     vim.cmd([[
             autocmd FileType alpha setlocal nofoldenable
-            autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=0
+            autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
         ]])
   end
 }
