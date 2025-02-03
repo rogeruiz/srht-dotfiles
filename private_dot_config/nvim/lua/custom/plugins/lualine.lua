@@ -46,11 +46,11 @@ return {
     end
 
     local function location_with_icons()
-      return "%l " .. icons.ui.LineNumber .. " %c " .. icons.ui.ColumnNumber
+      return "%l" .. icons.ui.LineNumber .. " %c" .. icons.ui.ColumnNumber
     end
 
     local function linenumber_with_icons()
-      return "%p%%" .. icons.ui.SeparatorForward .. "  %L"
+      return "%p%%" .. icons.ui.SeparatorForward .. "%L"
     end
 
     require("lualine").setup({
@@ -89,10 +89,10 @@ return {
       },
       sections = {
         lualine_a = {
-          {
-            "mode",
-            fmt = function(str) return str:sub(1, 1) end,
-          },
+          -- {
+          --   "mode",
+          --   fmt = function(str) return str:sub(1, 1) end,
+          -- },
         },
         lualine_b = {
           {
@@ -110,7 +110,16 @@ return {
             source = diff_source,
           },
         },
-        lualine_c = {},
+        lualine_c = {
+          {
+            function()
+              return navic.get_location()
+            end,
+            cond = function()
+              return navic.is_available()
+            end,
+          },
+        },
         lualine_x = {
           {
             "diagnostics",
@@ -126,13 +135,24 @@ return {
         },
         lualine_y = { search_result },
         lualine_z = {
+          {
+            "filetype",
+            colored = false,
+            icon_only = true,
+            icon = { align = 'right' },
+          },
           "fileformat",
           location_with_icons,
           linenumber_with_icons,
         },
       },
       inactive_sections = {
-        lualine_a = {},
+        lualine_a = {
+          -- {
+          --   "mode",
+          --   fmt = function(str) return str:sub(1, 1) end,
+          -- },
+        },
         lualine_b = {
           {
             "b:gitsigns_head",
@@ -149,17 +169,7 @@ return {
             source = diff_source,
           },
         },
-        lualine_c = {},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {
-          "fileformat",
-          location_with_icons,
-          linenumber_with_icons,
-        },
-      },
-      winbar = {
-        lualine_a = {
+        lualine_c = {
           {
             function()
               return navic.get_location()
@@ -168,6 +178,60 @@ return {
               return navic.is_available()
             end,
           },
+        },
+        lualine_x = {
+          {
+            "diagnostics",
+            source = { "nvim" },
+            sections = { "error", "warn", "info", "hint" },
+            diagnostics_color = {
+              error = { bg = colors.red, fg = colors.crust },
+              warn = { bg = colors.yellow, fg = colors.crust },
+              info = { bg = colors.teal, fg = colors.crust },
+              hint = { bg = colors.rosewater, fg = colors.crust },
+            },
+          },
+        },
+        lualine_y = { search_result },
+        lualine_z = {
+          {
+            "filetype",
+            colored = false,
+            icon_only = true,
+            icon = { align = 'right' },
+          },
+          "fileformat",
+          location_with_icons,
+          linenumber_with_icons,
+        },
+      },
+      winbar = {
+        lualine_a = {
+          {
+            "filename",
+            icon = icons.ui.NewFile .. " ",
+            icons_enabled = true,
+            file_status = true,
+            newfile_status = true,
+            path = 1,
+            shorting_target = 150,
+            symbols = {
+              modified = icons.documents.ui.Modified,
+              readonly = icons.documents.ui.ReadOnly,
+              unnamed = icons.documents.ui.Unnamed,
+              newfile = icons.documents.ui.NewFile,
+            },
+          },
+        },
+        lualine_b = {
+          -- {
+          --   function()
+          --     return navic.get_location()
+          --   end,
+          --   cond = function()
+          --     return navic.is_available()
+          --   end,
+          -- },
         },
         lualine_c = {},
         lualine_x = {},
@@ -190,7 +254,7 @@ return {
             file_status = true,
             newfile_status = true,
             path = 1,
-            shorting_target = 50,
+            shorting_target = 150,
             symbols = {
               modified = icons.documents.ui.Modified,
               readonly = icons.documents.ui.ReadOnly,
@@ -211,10 +275,23 @@ return {
         },
         lualine_c = {},
         lualine_x = {},
-        lualine_y = { "filetype" },
+        lualine_y = {
+          {
+            "filetype",
+            colored = true,
+            icon_only = false,
+            icon = { align = 'right' },
+          }
+        },
         lualine_z = {},
       },
       tabline = {
+        lualine_a = {
+          {
+            "mode",
+            fmt = function(str) return str:sub(1, 1) end,
+          },
+        },
         lualine_z = {
           {
             'tabs',
@@ -224,24 +301,6 @@ return {
             show_modified_status = true,
             symbols = {
               modified = icons.git.Mod .. ' ',
-            },
-          },
-
-        },
-        lualine_a = {
-          {
-            "filename",
-            icon = icons.ui.NewFile .. " ",
-            icons_enabled = true,
-            file_status = true,
-            newfile_status = true,
-            path = 1,
-            shorting_target = 150,
-            symbols = {
-              modified = icons.documents.ui.Modified,
-              readonly = icons.documents.ui.ReadOnly,
-              unnamed = icons.documents.ui.Unnamed,
-              newfile = icons.documents.ui.NewFile,
             },
           },
         },
