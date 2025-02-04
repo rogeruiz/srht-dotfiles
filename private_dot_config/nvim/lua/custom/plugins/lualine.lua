@@ -88,29 +88,7 @@ return {
         always_divide_middle = true,
       },
       sections = {
-        lualine_a = {
-          -- {
-          --   "mode",
-          --   fmt = function(str) return str:sub(1, 1) end,
-          -- },
-        },
         lualine_b = {
-          {
-            "b:gitsigns_head",
-            icon = "",
-            fmt = trunc(80, 4, nil, true),
-          },
-          {
-            'diff',
-            symbols = {
-              added = icons.git.Add .. ' ',
-              modified = icons.git.Mod .. ' ',
-              removed = icons.git.Remove .. ' ',
-            },
-            source = diff_source,
-          },
-        },
-        lualine_c = {
           {
             function()
               return navic.get_location()
@@ -120,6 +98,8 @@ return {
             end,
           },
         },
+        lualine_a = {},
+        lualine_c = {},
         lualine_x = {
           {
             "diagnostics",
@@ -147,29 +127,7 @@ return {
         },
       },
       inactive_sections = {
-        lualine_a = {
-          -- {
-          --   "mode",
-          --   fmt = function(str) return str:sub(1, 1) end,
-          -- },
-        },
         lualine_b = {
-          {
-            "b:gitsigns_head",
-            icon = "",
-            fmt = trunc(80, 4, nil, true),
-          },
-          {
-            'diff',
-            symbols = {
-              added = icons.git.Add .. ' ',
-              modified = icons.git.Mod .. ' ',
-              removed = icons.git.Remove .. ' ',
-            },
-            source = diff_source,
-          },
-        },
-        lualine_c = {
           {
             function()
               return navic.get_location()
@@ -179,6 +137,8 @@ return {
             end,
           },
         },
+        lualine_a = {},
+        lualine_c = {},
         lualine_x = {
           {
             "diagnostics",
@@ -290,6 +250,22 @@ return {
           {
             "mode",
             fmt = function(str) return str:sub(1, 1) end,
+          },
+        },
+        lualine_b = {
+          {
+            "b:gitsigns_head",
+            icon = "",
+            fmt = trunc(80, 4, nil, true),
+          },
+          {
+            'diff',
+            symbols = {
+              added = icons.git.Add .. ' ',
+              modified = icons.git.Mod .. ' ',
+              removed = icons.git.Remove .. ' ',
+            },
+            source = diff_source,
           },
         },
         lualine_z = {

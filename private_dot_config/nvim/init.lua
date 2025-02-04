@@ -65,14 +65,7 @@ require('lazy').setup({
 
   'nvim-lua/popup.nvim',
 
-  -- Para mejorar la experencia de usando un database con Neovim
-  {
-    "kristijanhusak/vim-dadbod-ui",
-    dependencies = {
-      "tpope/vim-dadbod",
-    },
-  },
-
+  { import = 'tools.database' },
 
   -- NOTE: Aquí es donde puedes instalar so complementos sobre LSP. La
   -- configuracíon del LSP esta abajo. Busque con `lspconfig` para incontrarlo.
@@ -939,6 +932,8 @@ vim.cmd([[
   au FileType yaml setlocal shiftwidth=2 tabstop=2 nowrap spell expandtab tw=80 wm=0 linebreak list
   au FileType toml setlocal shiftwidth=2 tabstop=2 nowrap spell expandtab tw=80 wm=0 linebreak list
   au FileType gitcommit setlocal shiftwidth=4 tabstop=4 expandtab wrap spell tw=80 wm=0 linebreak list
+  au FileType gitcommit setlocal shiftwidth=4 tabstop=4 expandtab wrap spell tw=80 wm=0 linebreak list
+  au FileType dbui setlocal shiftwidth=2 tabstop=2 expandtab wrap
 ]])
 
 vim.cmd([[
