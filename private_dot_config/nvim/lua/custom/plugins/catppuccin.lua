@@ -51,10 +51,13 @@ return {
         CurSearch           = { bg = colors.teal, fg = colors.base },
         FloatShadow         = { bg = colors.mauve, fg = colors.blue },
         FloatShadowThrough  = { bg = colors.mauve, fg = colors.blue },
-        -- For DadBod UI
+        -- Pa' DadBod UI (https://github.com/kristijanhusak/vim-dadbod-ui)
         NotificationInfo    = { bg = colors.crust, fg = colors.overlay2 },
         NotificationWarning = { bg = colors.yellow, fg = colors.base },
-        NotificationError   = { bg = colors.red, fg = colors.base }
+        NotificationError   = { bg = colors.red, fg = colors.base },
+        -- Pa' Lualine (https://github.com/nvim-lualine/lualine.nvim)
+        LualineActiveTab    = { bg = colors.mauve, fg = colors.mantle },
+        LualineInactiveTab  = { bg = colors.mantle, fg = colors.mauve },
       }
     end,
     integrations = {
@@ -114,7 +117,7 @@ return {
   },
   config = function(_, opts)
     vim.o.termguicolors = true;
-    vim.o.background = "light"
+    vim.o.background = "dark"
     -- Mejor soporte de colores y estilos usando a `terminfo`
     vim.cmd([[
       " Styled and colored underline support

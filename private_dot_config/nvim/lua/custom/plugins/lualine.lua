@@ -273,10 +273,14 @@ return {
             'tabs',
             mode = 0,
             path = 3,
-            use_mode_colors = true,
+            use_mode_colors = false,
             show_modified_status = true,
             symbols = {
               modified = ' ' .. icons.git.Mod,
+            },
+            tabs_color = {
+              active = 'LualineActiveTab',
+              inactive = 'LualineInactiveTab',
             },
           },
         },
