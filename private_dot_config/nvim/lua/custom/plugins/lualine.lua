@@ -276,7 +276,7 @@ return {
             use_mode_colors = true,
             show_modified_status = true,
             symbols = {
-              modified = icons.git.Mod .. ' ',
+              modified = ' ' .. icons.git.Mod,
             },
           },
         },

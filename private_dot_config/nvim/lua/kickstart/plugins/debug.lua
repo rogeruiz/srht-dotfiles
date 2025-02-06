@@ -20,6 +20,9 @@ return {
 
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
+
+    -- Pa' .NET
+    'NicholasMata/nvim-dap-cs',
   },
   config = function()
     local dap = require 'dap'
@@ -55,6 +58,7 @@ return {
     vim.keymap.set('n', '<leader>P', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end, { desc = "Añadir un punto con expresíon para pausar" })
+    vim.keymap.set('n', '<leader>dnm', '<cmd>DapNew Attach MMGAT<cr>', { desc = "[D]ap[N]ew [M]MGAT" })
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
@@ -98,6 +102,10 @@ return {
       return require("dap.utils").pick_process({ filter = "milmove_gin" })
     end
 
+    local pick_mmgatui = function()
+      return require("dap.utils").pick_process({ filter = "CDC.MMGAT.WebUI" })
+    end
+
     -- Install golang specific config
     require('dap-go').setup({
       dap_configurations = {
@@ -107,6 +115,22 @@ return {
           request = "attach",
           mode = "local",
           processId = pick_process,
+        },
+      },
+    })
+
+    -- Install .Net specific config
+    require('dap-cs').setup({
+      dap_configurations = {
+        {
+          name = "MMGAT",
+          type = "coreclr",
+          request = "attach",
+          mode = "local",
+          processId = pick_mmgatui,
+        },
+        netcoredbg = {
+          path = "netcoredbg",
         },
       },
     })
