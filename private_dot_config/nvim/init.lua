@@ -531,10 +531,19 @@ local on_attach = function(client, bufnr)
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ombrar')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
-  nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinición')
-  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferencias')
-  nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementación')
-  nmap('<leader>D', vim.lsp.buf.type_definition, '[D]efinición de tipo')
+  if (client.name ~= 'omnisharp') then
+    local oe = require("omnisharp_extended")
+    nmap('gd', oe.lsp_definition, '[G]oto [D]efinición')
+    nmap('<leader>D', oe.lsp_type_definition, '[D]efinición de tipo')
+    nmap('gr', oe.lsp_references, '[G]oto [R]eferencias')
+    nmap('gI', oe.lsp_implementation, '[G]oto [I]mplementación')
+  else
+    nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinición')
+    nmap('<leader>D', vim.lsp.buf.type_definition, '[D]efinición de tipo')
+    nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferencias')
+    nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementación')
+  end
+
   nmap('<leader>sd', require('telescope.builtin').lsp_document_symbols, '[S]ímbolos de [D]ocumentos')
   nmap('<leader>st', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[S]ímbolos del Espacio de [T]rabajo')
 
@@ -682,7 +691,7 @@ local servers = {
         ["https://json.schemastore.org/lefthook.json"] = "/lefthook.yml",
       }
     }
-  }
+  },
 }
 
 -- Setup neovim lua configuration
@@ -727,6 +736,7 @@ mason_lspconfig.setup_handlers {
 
 require('lspconfig').nixd.setup({
   cmd = { 'nixd' },
+  on_attach = on_attach,
   settings = {
     nixd = {
       nixpkgs = {
@@ -741,6 +751,49 @@ require('lspconfig').nixd.setup({
         },
       },
     }
+  }
+})
+
+require('lspconfig').omnisharp.setup({
+  cmd = { 'dotnet', '/nix/store/dfxx8m2h69r8848hk4hd31ya87hial7c-omnisharp-roslyn-1.39.12/lib/omnisharp-roslyn/OmniSharp.dll' },
+  on_attach = on_attach,
+  settings = {
+    FormattingOptions = {
+      -- Enables support for reading code style, naming convention and analyzer
+      -- settings from .editorconfig.
+      EnableEditorConfigSupport = true,
+      -- Specifies whether 'using' directives should be grouped and sorted during
+      -- document formatting.
+      OrganizeImports = nil,
+    },
+    MsBuild = {
+      -- If true, MSBuild project system will only load projects for files that
+      -- were opened in the editor. This setting is useful for big C# codebases
+      -- and allows for faster initialization of code navigation features only
+      -- for projects that are relevant to code that is being edited. With this
+      -- setting enabled OmniSharp may load fewer projects and may thus display
+      -- incomplete reference lists for symbols.
+      LoadProjectsOnDemand = nil,
+    },
+    RoslynExtensionsOptions = {
+      -- Enables support for roslyn analyzers, code fixes and rulesets.
+      EnableAnalyzersSupport = nil,
+      -- Enables support for showing unimported types and unimported extension
+      -- methods in completion lists. When committed, the appropriate using
+      -- directive will be added at the top of the current file. This option can
+      -- have a negative impact on initial completion responsiveness,
+      -- particularly for the first few completion sessions after opening a
+      -- solution.
+      EnableImportCompletion = nil,
+      -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
+      -- true
+      AnalyzeOpenDocumentsOnly = nil,
+    },
+    Sdk = {
+      -- Specifies whether to include preview versions of the .NET SDK when
+      -- determining which version to use for project loading.
+      IncludePrereleases = true,
+    },
   }
 })
 
