@@ -23,7 +23,7 @@ return {
           filetypes = { 'json', 'css', 'javascriptreact', 'js', 'markdown', 'typescriptreact' }
         }),
 
-        formatting.just,
+        -- formatting.just,
 
         -- diagnostics.ruff,
         -- formatting.black,

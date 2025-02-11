@@ -31,6 +31,40 @@ ls.add_snippets("all", {
   }, {
     repeat_duplicates = true,
   })),
+  s("CC0", fmt([[{comment} {project}
+{comment} Public Domain (CC0) {year} {author}
+{comment}
+{comment} This program is free software: you can redistribute it and/or modify it
+{comment} freely. It is in the public domain within the United States.
+{comment}
+{comment} The person who associated a work with this deed has dedicated the work to the
+{comment} public domain by waiving all of his or her rights to the work worldwide under
+{comment} copyright law, including all related and neighboring rights, to the extent
+{comment} allowed by law.
+{comment}
+{comment} You can copy, modify, distribute and perform the work, even for commercial
+{comment} purposes, all without asking permission.
+{comment}
+{comment} In no way are the patent or trademark rights of any person affected by CC0, nor
+{comment} are the rights that other persons may have in the work or in how the work is
+{comment} used, such as publicity or privacy rights.
+{comment}
+{comment} Unless expressly stated otherwise, the person who associated a work with this
+{comment} deed makes no warranties about the work, and disclaims liability for all uses of
+{comment} the work, to the fullest extent permitted by applicable law. When using or
+{comment} citing the work, you should not imply endorsement by the author or the affirmer.
+{comment}
+{comment} You should have received a copy of the CC0 1.0 Universal License along with
+{comment} this program. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
+{}]], {
+    comment = i(1, "#"),
+    project = i(2, "<PROJECT>"),
+    year = i(3, "<YEAR>"),
+    author = i(4, "<AUTHOR>"),
+    i(0),
+  }, {
+    repeat_duplicates = true,
+  })),
   s(":lgtm:", fmt([[🌈 lgtm
 {}]], {
     i(0),
