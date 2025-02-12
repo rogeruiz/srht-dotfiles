@@ -98,7 +98,8 @@ return {
         map("n", "<leader>hD", function()
           gs.diffthis("~")
         end, { desc = "" })
-        map("n", "<leader>td", gs.toggle_deleted, { desc = "Git toggle deletions" })
+        map("n", "<leader>td", gs.preview_hunk_inline, { desc = "Git toggle deletions" })
+        map("n", "<leader>hl", gs.toggle_linehl, { desc = "Git toggle line highlights" })
 
         -- Text object
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "Git text objects select_hunk" })
