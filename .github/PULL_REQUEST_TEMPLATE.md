@@ -13,5 +13,5 @@ _mention the name of this repository in your cover letter_ so it's easier to
 find.
 
 [ml]: https://lists.sr.ht/~rogeruiz/bandeja-paisa
-[repo]: https://git.sr.ht/~rogeruiz/.files.nix
+[repo]: https://git.sr.ht/~rogeruiz/.files
 [git-sm]: https://git-send-email.io
