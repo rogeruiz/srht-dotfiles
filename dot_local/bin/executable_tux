@@ -1,6 +1,6 @@
 #!/bin/zsh
-export PATH="$PATH:/Users/yo/.local/bin/darwin:/usr/local/bin"
-lolcat_bin=$(which lolcat)
+export PATH="$PATH:/etc/profiles/per-user/yo/bin/:/Users/yo/.local/bin/darwin:/usr/local/bin"
+lolcat_bin=$(which blahaj)
 
 # Set all my themes to Dark or Light modes based on macOS (for now) Dark or
 # Night modes.
@@ -14,17 +14,17 @@ fi
 # Check if we're already in a tmux session
 if [[ "$TMUX" != "" ]]; then
   # echo "Already running within tmux so bailing." | ${lolcat_bin}
-  echo "Ya se está ejecutando dentro de tmux, por lo que está saliendo." | ${lolcat_bin}
+  echo "Ya se está ejecutando dentro de tmux, por lo que está saliendo." | ${lolcat_bin} -r -b
   exit 0
 fi
 
-echo "Esto es lo que has trabajado hoy..." | ${lolcat_bin}
+echo "Esto es lo que has trabajado hoy..." | ${lolcat_bin} -r -b
 ${lolcat_bin} <(tick --verbose list | rg -A3 --color=never "$(date +"%Y-%m-%d")" || echo "¡Vaya! No has iniciado sesión en ningún momento hoy.")
 echo
 
 PS3="Por favor elige tu sesión: "
 #shellcheck disable=2207
-sessions=($(tmux list-sessions -F "#S" 2>/dev/null) "nuevo sesión" "zsh" "nushell")
+sessions=($(tmux list-sessions -F "#S" 2>/dev/null) "nuevo sesión" "zsh" "nushell" "pwsh")
 incoming_message='¿Qué quieres lograr?: '
 outgoing_message='¿Qué lograste?: '
 
@@ -48,9 +48,9 @@ function punch_clock {
  fi
 }
 
-${lolcat_bin} <(echo ">-< ------------------ >-<")
-${lolcat_bin} <(echo "    Sesiones disponibles")
-${lolcat_bin} <(echo ">-< ------------------ >-<")
+${lolcat_bin} -r -b <(echo ">-< ------------------ >-<")
+${lolcat_bin} -r -b <(echo "    Sesiones disponibles")
+${lolcat_bin} -r -b <(echo ">-< ------------------ >-<")
 echo
 
 # Let's start by punching in.
@@ -69,11 +69,15 @@ do
       break
       ;;
    "zsh")
-     /bin/zsh --login
+     cd $HOME ; /etc/profiles/per-user/yo/bin/zsh --login
      break
      ;;
    "nushell")
-     /usr/local/bin/nu --login
+     cd $HOME ; /etc/profiles/per-user/yo/bin/nu --login
+     break
+     ;;
+   "pwsh")
+     cd $HOME ; /etc/profiles/per-user/yo/bin/pwsh --login
      break
      ;;
    *)
@@ -99,16 +103,16 @@ then
   read -r "session_message?"
   punch_clock "stop" "$current_tux_session" "$outgoing_message$session_message"
   echo
-  ${lolcat_bin} <(echo ">-< --------------------------- >-<")
-  ${lolcat_bin} <(echo "    Aquí hay un registro de su tiempo.")
-  ${lolcat_bin} <(echo ">-< --------------------------- >-<")
-  ${lolcat_bin} <(punch_clock "list" "$current_tux_session")
+  ${lolcat_bin} -r -b  <(echo ">-< --------------------------- >-<")
+  ${lolcat_bin} -r -b  <(echo "    Aquí hay un registro de su tiempo.")
+  ${lolcat_bin} -r -b  <(echo ">-< --------------------------- >-<")
+  ${lolcat_bin} -r -b  <(punch_clock "list" "$current_tux_session")
 fi
 
 echo
-${lolcat_bin} <(echo ">-< -------------------- >-<")
-${lolcat_bin} <(echo "    Te ves bien hoy.")
-${lolcat_bin} <(echo ">-< -------------------- >-<")
+${lolcat_bin} -r -b <(echo ">-< -------------------- >-<")
+${lolcat_bin} -r -b <(echo "    Te ves bien hoy.")
+${lolcat_bin} -r -b <(echo ">-< -------------------- >-<")
 
 # Wait for it
 #
