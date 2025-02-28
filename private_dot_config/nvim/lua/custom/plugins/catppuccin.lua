@@ -58,6 +58,8 @@ return {
         -- Pa' Lualine (https://github.com/nvim-lualine/lualine.nvim)
         LualineActiveTab    = { bg = colors.mauve, fg = colors.mantle },
         LualineInactiveTab  = { bg = colors.mantle, fg = colors.mauve },
+        -- Pa' Zen Mode (https://github.com/folke/zen-mode.nvim)
+        ZenBg               = { bg = colors.none },
       }
     end,
     integrations = {

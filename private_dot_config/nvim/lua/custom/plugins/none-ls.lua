@@ -20,7 +20,7 @@ return {
       sources = {
         formatting.terraform_fmt,
         formatting.prettierd.with({
-          filetypes = { 'json', 'css', 'javascriptreact', 'js', 'markdown', 'typescriptreact' }
+          filetypes = { 'json', 'css', 'javascriptreact', 'js', 'markdown', 'typescriptreact', 'typescript' }
         }),
 
         -- formatting.just,

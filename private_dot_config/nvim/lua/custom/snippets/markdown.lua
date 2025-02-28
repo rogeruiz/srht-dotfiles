@@ -100,4 +100,17 @@ ls.add_snippets("markdown", {
   }, {
     repeat_duplicates = true,
   })),
+  s("!badge",
+    fmt(
+      [[![{alt_text}](https://img.shields.io/badge/-{display_name}-{bg_color}?style=for-the-badge&logo={logo_icon}&logoColor={logo_color})
+{}]], {
+        alt_text = i(1, "Alternative text"),
+        display_name = i(2, "Display name as URI-encoded string"),
+        bg_color = i(3, "The background color for the text, either a hex without `#` or a string"),
+        logo_icon = i(4, "Logo icon from Simple Icons (https://simpleicons.org)"),
+        logo_color = i(5, "white"),
+        i(0),
+      }, {
+        repeat_duplicates = true,
+      }))
 })

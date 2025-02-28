@@ -65,6 +65,25 @@ require('lazy').setup({
 
   'nvim-lua/popup.nvim',
 
+  -- {
+  --   '3rd/image.nvim',
+  --   build = false,
+  --   opts = {
+  --     backend = "kitty",
+  --     processor = "magick_cli",
+  --     tmux_show_only_in_active_window = true,
+  --     markdown = {
+  --       enabled = true,
+  --       clear_in_insert_mode = true,
+  --       download_remote_images = true,
+  --       only_render_image_at_cursor = true,
+  --       floating_windows = false,              -- if true, images will be rendered in floating markdown windows
+  --       filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
+  --     },
+  --     kitty_method = "normal",
+  --   },
+  -- },
+
   { import = 'tools.database' },
 
   -- NOTE: Aquí es donde puedes instalar so complementos sobre LSP. La
@@ -344,14 +363,15 @@ require('telescope').setup {
         ['<C-d>'] = false,
       },
     },
-    theme = "dropdown",
+    theme = "ivy",
     path_display = {
       truncate = 3,
     },
-    layout_strategy = 'horizontal',
+    layout_strategy = 'center',
     layout_config = {
-      width = 0.9,
-      height = 0.6,
+      width = 0.7,
+      preview_cutoff = 40,
+      height = 0.3,
     },
     file_ignore_patterns = {
       "^.git/"
@@ -360,7 +380,7 @@ require('telescope').setup {
   extensions = {
     fzf = {},
     ['ui-select'] = {
-      require('telescope.themes').get_dropdown({}),
+      require('telescope.themes').get_ivy({}),
     }
   }
 }
@@ -372,27 +392,94 @@ pcall(require('telescope').load_extension, 'fzf')
 pcall(require('telescope').load_extension, 'ui-select')
 
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Buscar en los archivos recientes' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Buscar en búferes abiertos' })
-vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    -- winblend = 10,
-    previewer = false,
-  })
-end, { desc = '[/] Búsqueda aproximada en el búfer actual' })
-
-vim.keymap.set('n', '<leader>ba', function()
-  require('telescope.builtin').find_files({ hidden = true })
-end, { desc = '[B]uscar [A]rchivos' })
-vim.keymap.set('n', '<leader>by', require('telescope.builtin').lsp_document_symbols, { desc = '[B]uscar S[i]mbolos' })
-vim.keymap.set('n', '<leader>bs', require('telescope.builtin').help_tags, { desc = '[B]uscar [S]ocorro' })
-vim.keymap.set('n', '<leader>bp', require('telescope.builtin').grep_string, { desc = '[B]uscar la [P]alabra actual' })
-vim.keymap.set('n', '<leader>bg', function()
-  require('telescope.builtin').live_grep({ hidden = true })
-end, { desc = '[B]uscar con [G]rep' })
-vim.keymap.set('n', '<leader>bd', require('telescope.builtin').diagnostics, { desc = '[B]uscar [D]iagnóstico' })
-vim.keymap.set('n', '<leader>br', require('telescope.builtin').resume, { desc = '[B]uscar [R]eanudar' })
+vim.keymap.set(
+  'n',
+  'z=',
+  require('telescope.builtin').spell_suggest,
+  { desc = '[z=] Corregir la ortografía' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>?',
+  require('telescope.builtin').oldfiles,
+  { desc = '[?] Buscar en los archivos recientes' }
+)
+vim.keymap.set(
+  'n',
+  '<leader><space>',
+  require('telescope.builtin').buffers,
+  { desc = '[ ] Buscar en búferes abiertos' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>/',
+  function()
+    -- You can pass additional configuration to telescope to change theme, layout, etc.
+    require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+      -- winblend = 10,
+      previewer = false,
+    })
+  end,
+  { desc = '[/] Búsqueda aproximada en el búfer actual' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>ba',
+  function()
+    require('telescope.builtin').find_files({ hidden = true })
+  end,
+  { desc = '[B]uscar [A]rchivos' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>by',
+  require('telescope.builtin').lsp_document_symbols,
+  { desc = '[B]uscar S[i]mbolos' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>bGS',
+  require('telescope.builtin').git_status,
+  { desc = '[B]uscar [G]it [S]tatus' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>bGC',
+  require('telescope.builtin').git_commits,
+  { desc = '[B]uscar [G]it [C]ommits' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>bs',
+  require('telescope.builtin').help_tags,
+  { desc = '[B]uscar [S]ocorro' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>bp',
+  require('telescope.builtin').grep_string,
+  { desc = '[B]uscar la [P]alabra actual' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>bg',
+  function()
+    require('telescope.builtin').live_grep({ hidden = true })
+  end,
+  { desc = '[B]uscar con [G]rep' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>bd',
+  require('telescope.builtin').diagnostics,
+  { desc = '[B]uscar [D]iagnóstico' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>br',
+  require('telescope.builtin').resume,
+  { desc = '[B]uscar [R]eanudar' }
+)
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -544,6 +631,7 @@ local on_attach = function(client, bufnr)
         client.name ~= "eslint" and
         client.name ~= "emmet_ls" and
         client.name ~= "rnix" and
+        client.name ~= "nixd" and
         client.name ~= "tailwindcss") then
     require("nvim-navic").attach(client, bufnr)
   end
@@ -852,10 +940,10 @@ cmp.setup {
       -- NOTE: order matters
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
-        buffer = "[Buffer]",
+        luasnip = "[LuaSnip]",
         path = "[Path]",
         emoji = "[Emoji]",
-        luasnip = "[LuaSnip]",
+        buffer = "[Buffer]",
       })[entry.source.name]
       return vim_item
     end,

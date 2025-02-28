@@ -65,6 +65,7 @@ return {
       ),
       dashboard.button("r", icons.ui.History .. "  Reciente archivos", ":Telescope oldfiles<CR>"),
       dashboard.button("d", icons.ui.Pencil .. "  Diario", ":Telekasten panel<CR>"),
+      dashboard.button("g", icons.git.Repo .. "  Estado de Git", ":Telescope git_status<CR>"),
       dashboard.button("a", icons.ui.Gear .. "  Ajustes", ":e $MYVIMRC | :cd %:p:h <CR>"),
       dashboard.button("s", icons.diagnostics.Error .. "  Salir de NVIM", ":qa<CR>"),
     }

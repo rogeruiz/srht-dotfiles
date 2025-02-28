@@ -70,5 +70,5 @@ ls.add_snippets("all", {
     i(0),
   }, {
     repeat_duplicates = true,
-  }))
+  })),
 })
