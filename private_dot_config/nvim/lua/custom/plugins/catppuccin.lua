@@ -39,14 +39,14 @@ return {
     custom_highlights = function(colors)
       return {
         -- Change color for line numbers in general
-        LineNr              = { fg = colors.mauve, bold = true, },
+        LineNr              = { fg = colors.overlay1, bold = false, },
         -- Change color for line numbers when CursorLine is enabled
         CursorLineNr        = { fg = colors.mauve, bold = true, },
         -- Change colors for relative line numbers above & below current line
         LineNrAbove         = { fg = colors.overlay1, },
         LineNrBelow         = { fg = colors.overlay1, },
         CursorLine          = { bg = colors.crust, },
-        ColorColumn         = { bg = colors.crust, },
+        ColorColumn         = { bg = colors.mantle, },
         Search              = { bg = colors.teal, fg = colors.base },
         CurSearch           = { bg = colors.teal, fg = colors.base },
         FloatShadow         = { bg = colors.mauve, fg = colors.blue },
@@ -60,6 +60,16 @@ return {
         LualineInactiveTab  = { bg = colors.mantle, fg = colors.mauve },
         -- Pa' Zen Mode (https://github.com/folke/zen-mode.nvim)
         ZenBg               = { bg = colors.none },
+        -- Pa' todotxt.nvim y treesitter todotxt
+        todo_txt_date       = { fg = colors.subtext0 },
+        todo_txt_pri_a      = { fg = colors.red },
+        todo_txt_pri_b      = { fg = colors.green },
+        todo_txt_pri_c      = { fg = colors.yellow },
+        todo_txt_pri_d      = { fg = colors.blue },
+        todo_txt_context    = { fg = colors.yellow },
+        todo_txt_project    = { fg = colors.mauve },
+        todo_txt_done_task  = { fg = colors.overlay0 },
+
       }
     end,
     integrations = {

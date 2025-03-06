@@ -23,7 +23,7 @@ return {
     --   }
     -- },
     image_link_style = "markdown",
-    command_palette_theme = "dropdown",
+    command_palette_theme = "ivy",
   },
   init = function()
     -- Most used functions

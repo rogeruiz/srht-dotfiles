@@ -52,22 +52,33 @@ return {
 
     -- Set menu
     dashboard.section.buttons.val = {
-      dashboard.button("n", icons.documents.File .. "  Nuevo archivo", ":ene <BAR> startinsert <CR>"),
-      dashboard.button(
-        "b",
+      dashboard.button("n",
+        icons.documents.File .. "  Nuevo archivo",
+        ":ene <BAR> startinsert <CR>"),
+      dashboard.button("b",
         icons.ui.Search .. "  Busque archivos en " .. get_current_directory(),
-        ":lua require('telescope.builtin').find_files({ hidden = true })<CR>"
-      ),
-      dashboard.button(
-        "t",
+        ":lua require('telescope.builtin').find_files({ hidden = true })<CR>"),
+      dashboard.button("t",
         icons.ui.Search .. "  Busque texto en " .. get_current_directory(),
-        ":lua require('telescope.builtin').live_grep({ hidden = true })<CR>"
-      ),
-      dashboard.button("r", icons.ui.History .. "  Reciente archivos", ":Telescope oldfiles<CR>"),
-      dashboard.button("d", icons.ui.Pencil .. "  Diario", ":Telekasten panel<CR>"),
-      dashboard.button("g", icons.git.Repo .. "  Estado de Git", ":Telescope git_status<CR>"),
-      dashboard.button("a", icons.ui.Gear .. "  Ajustes", ":e $MYVIMRC | :cd %:p:h <CR>"),
-      dashboard.button("s", icons.diagnostics.Error .. "  Salir de NVIM", ":qa<CR>"),
+        ":lua require('telescope.builtin').live_grep({ hidden = true })<CR>"),
+      dashboard.button("r",
+        icons.ui.History .. "  Reciente archivos",
+        ":Telescope oldfiles<CR>"),
+      dashboard.button("d",
+        icons.ui.Pencil .. "  Diario",
+        ":Telekasten panel<CR>"),
+      dashboard.button("e",
+        icons.diagnostics.Todo .. "  Recordatorios",
+        ":ToDoTxtTasksOpen<CR>"),
+      dashboard.button("g",
+        icons.git.Repo .. "  Estado de Git",
+        ":Telescope git_status<CR>"),
+      dashboard.button("a",
+        icons.ui.Gear .. "  Ajustes",
+        ":e $MYVIMRC | :cd %:p:h <CR>"),
+      dashboard.button("s",
+        icons.diagnostics.Error .. "  Salir de NVIM",
+        ":qa<CR>"),
     }
 
     -- Set footer

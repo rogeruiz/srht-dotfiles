@@ -1,6 +1,33 @@
-return {
+local M = {}
 
-  -- NOTE: Local fonts were generated with ~rogeruiz/figsay on sourcehut.
+M.run = function()
+  local isAvailable, Job = pcall(require, 'plenary.job')
+
+  if not isAvailable then
+    return
+  end
+
+  Job:new({
+    command = 'figsay',
+    cwd = '/Users/yo/.nix-profile/bin',
+    args = {
+      '-t "Neovim"',
+      '-f "BlurVision ASCII"'
+    },
+    on_exit = function(j, return_val)
+      print(return_val)
+      local result = j:result()
+      for k in pairs(result) do
+        print(k)
+      end
+    end,
+  }):start()
+end
+
+-- M.run()
+
+M.headers = {
+  -- NOTE: All ascii-art generated with ~rogeruiz/figsay on sourcehut.
 
   { -- Impossible - https://patorjk.com/software/taag/#p=display&f=Impossible&t=Neovim
     [[         _             _            _      _          _        _         _   _       ]],
@@ -48,7 +75,6 @@ return {
     [[                                ░                  ]],
   },
   { -- 3D diagonal https://patorjk.com/software/taag/#p=display&f=3D%20Diagonal&t=Neovim
-    [[                                                                      ]],
     [[          ,--.                                                        ]],
     [[        ,--.'|                                                 ____   ]],
     [[    ,--,:  : |                                ,--,           ,'  , `. ]],
@@ -63,7 +89,6 @@ return {
     [[ '   : |      |   :    |  `----'     \   \ |;  :    ;|   ;/           ]],
     [[ ;   |.'       \   \  /               '---" |  ,   / '---'            ]],
     [[ '---'          `----'                       ---`-'                   ]],
-    [[                                                                      ]],
   },
 
   { -- BlurVision ASCII - https://patorjk.com/software/taag/#p=display&f=BlurVision%20ASCII&t=Neovim
@@ -76,13 +101,11 @@ return {
     [[ ░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░▒▓██████▓▒░   ░▒▓██▓▒░  ░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░ ]],
   },
   { -- o8.flf
-    [[                                                                  ]],
     [[ oooo   oooo                                  o88                 ]],
     [[  8888o  88  ooooooooo8  ooooooo  oooo   oooo oooo  oo ooo oooo   ]],
     [[  88 888o88 888oooooo8 888     888 888   888   888   888 888 888  ]],
     [[  88   8888 888        888     888  888 888    888   888 888 888  ]],
     [[ o88o    88   88oooo888  88ooo88      888     o888o o888o888o888o ]],
-    [[                                                                  ]],
   },
   {
     [[  __   __    _____   _____     _     _   __    __    __   ]],
@@ -92,7 +115,6 @@ return {
     [[\ \ \   / // /__/_\ \ )_/ / /\ \ \_/ / // / /\ \ \\// / / ]],
     [[ )_) \ (_(( (_____\\ \/_\/ /  \ \   / /( (_(  )_) )( (_(  ]],
     [[ \_\/ \/_/ \/_____/ )_____(    \_\_/_/  \/_/  \_\/  \/_/  ]],
-    [[                                                          ]],
   },
   { -- Ghoulish - https://patorjk.com/software/taag/#p=display&f=Ghoulish&t=Neovim
     [[  )\  )\   )\.---.     .-./(       .-.  .'(   )\   )\  ]],
@@ -101,7 +123,6 @@ return {
     [[ ( ( \ \    ) ,-`    ) '._\ )  ) './ /  \  ) (  \(\ \  ]],
     [[  `.)/  )  (  ``-.  (  ,   (  (  ,  (    ) \  `.) /  ) ]],
     [[     '.(    )..-.(   )/ ._.'   )/..'      )/      '.(  ]],
-    [[                                                       ]],
   },
   { -- smisome1.flf
     [[    ___       ___       ___       ___       ___       ___ ]],
@@ -239,3 +260,5 @@ return {
     [[ /^^      /^^  /^^^^      /^^        /^^    /^^/^^^  /^  /^^ ]],
   }
 }
+
+return M.headers

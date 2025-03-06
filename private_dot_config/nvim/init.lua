@@ -1017,8 +1017,6 @@ vim.cmd([[
   au BufRead,BufNewFile *.bowerrc set ft=json
   au BufRead,BufNewFile *.pantheonrc set ft=json
   au BufRead,BufNewFile *.eslintrc set ft=json
-  au BufRead,BufNewFile *.txt set ft=markdown
-  au BufRead,BufNewFile *.text set ft=markdown
   au BufRead,BufNewFile *.applescript set ft=applescript
   au BufNewFile,BufRead *.php set ft=php.html.js.css
   au BufNewFile,BufRead *.blade.php set ft=blade.html.php
@@ -1034,6 +1032,7 @@ vim.cmd([[
   au BufNewFile,BufRead .env* set ft=sh
   au BufNewFile,BufRead Brewfile set ft=ruby
   au BufNewFile,BufRead sketchybarrc set ft=sh
+  au BufRead,BufNewFile todo.txt set ft=todotxt
 ]])
 
 vim.cmd([[
