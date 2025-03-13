@@ -7,6 +7,30 @@ local fmt = require("luasnip.extras.fmt").fmt
 -- local extras = require("luasnip.extras")
 
 ls.add_snippets("all", {
+  s("agpl3", fmt([[{comment} {project}
+{comment} Copyright (C) {year}  {author}
+{comment}
+{comment} This program is free software: you can redistribute it and/or modify
+{comment} it under the terms of the GNU Affero General Public License as
+{comment} published by the Free Software Foundation, either version 3 of the
+{comment} License, or (at your option) any later version.
+{comment}
+{comment} This program is distributed in the hope that it will be useful,
+{comment} but WITHOUT ANY WARRANTY; without even the implied warranty of
+{comment} MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+{comment} GNU Affero General Public License for more details.
+{comment}
+{comment} You should have received a copy of the GNU Affero General Public License
+{comment} along with this program.  If not, see <https://www.gnu.org/licenses/>.
+{}]], {
+    comment = i(1, "#"),
+    project = i(2, "<PROJECT>"),
+    year = i(3, "<YEAR>"),
+    author = i(4, "<AUTHOR>"),
+    i(0),
+  }, {
+    repeat_duplicates = true,
+  })),
   s("gpl3", fmt([[{comment} {project}
 {comment} Copyright (C) {year} {author}
 {comment}

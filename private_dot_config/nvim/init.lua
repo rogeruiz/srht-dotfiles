@@ -63,6 +63,9 @@ require('lazy').setup({
   -- Complementos relacionados con texto
   { import = "tools.text" },
 
+  -- Complementos relacionados con Nix
+  { import = "tools.nix" },
+
   'nvim-lua/popup.nvim',
 
   -- {
@@ -494,9 +497,11 @@ require('nvim-treesitter.configs').setup {
     'markdown_inline',
     'python',
     'query',
+    'ruby',
     'rust',
     'tsx',
     'typescript',
+    'todotxt',
     'vim',
     'vimdoc',
   },
@@ -715,6 +720,15 @@ local servers = {
       pyls_isort = { enabled = true },
     },
   },
+  -- ruby_lsp = {
+  --   cmd = { 'ruby-lsp' },
+  --   filetypes = { 'ruby', 'eruby' },
+  --   root_dir = require('lspconfig.util').root_pattern('Gemfile', '.git'),
+  --   init_options = {
+  --     formatter = 'auto',
+  --   },
+  --   single_file_support = true,
+  -- },
   rust_analyzer = {},
   ts_ls = {},
   lua_ls = {

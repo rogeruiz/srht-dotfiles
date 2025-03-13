@@ -30,5 +30,7 @@ return {
         ft.structurizr = { '# %s', '/* %s */' }
       end
     },
+
+    -- { 'edluffy/hologram.nvim' },
   }
 }

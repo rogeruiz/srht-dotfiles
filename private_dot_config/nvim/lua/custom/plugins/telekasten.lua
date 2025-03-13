@@ -23,7 +23,8 @@ return {
     --   }
     -- },
     image_link_style = "markdown",
-    command_palette_theme = "ivy",
+    command_palette_theme = "dropdown",
+    show_tags_theme = "get_cursor",
   },
   init = function()
     -- Most used functions
@@ -53,9 +54,9 @@ return {
     require("zen-mode").setup({
       tmux = { enabled = true },
       window = {
-        backdrop = 0.68,
-        width = 0.90,
-        height = 0.80,
+        backdrop = 0.4,
+        width = 0.85,
+        height = 0.65,
       },
       plugins = {
         gisigns = {
